@@ -14,5 +14,8 @@ namespace TicketVerkoop.Domain.Context
         public string City { get; set; }
         public string Zipcode { get; set; }
         public string Country { get; set; }
+
+        public ICollection<Section> Sections { get; set; }
+        public ICollection<Match> Matches { get; set; }
     }
 }

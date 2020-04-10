@@ -67,6 +67,10 @@ namespace TicketVerkoop.Areas.Identity.Pages.Account
             public string City { get; set; }
 
             [Required]
+            [Display(Name = "Zipcode")]
+            public string Zipcode { get; set; }
+
+            [Required]
             [Display(Name = "Country")]
             public string Country { get; set; }
             // End own properties
@@ -111,6 +115,7 @@ namespace TicketVerkoop.Areas.Identity.Pages.Account
                         DateOfBirth = Input.DateOfBirth,
                         Street = Input.Street,
                         City = Input.City,
+                        Zipcode = Input.Zipcode,
                         Country = Input.Country
                     };
                     await _customerService.AddAsync(customer);

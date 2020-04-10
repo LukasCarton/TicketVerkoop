@@ -11,5 +11,8 @@ namespace TicketVerkoop.Domain.Context
         public string Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        public ICollection<Match> Matches { get; set; }
+        public ICollection<Subscription> Subscriptions { get; set; }
     }
 }

@@ -11,9 +11,16 @@ namespace TicketVerkoop.Domain.Context
         public string Id { get; set; }
         public DateTime MatchDate { get; set; }
         public double BasePriceTicket { get; set; }
+        public string StadiumId { get; set; }
+        public string SeasonId { get; set; }
+        public string HomeTeamId { get; set; }
+        public string AwayTeamId { get; set; }
+
         public Stadium Stadium { get; set; }
         public Season Season { get; set; }
-        public Team HomeTeam { get; set; }
-        public Team AwayTeam { get; set; }
+        public HomeTeam HomeTeam { get; set; }
+        public AwayTeam AwayTeam { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

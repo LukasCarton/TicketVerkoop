@@ -14,7 +14,12 @@ namespace TicketVerkoop.Domain.Context
         public int OccupiedSeats { get; set; }
         public double PriceFactor { get; set; }
         public int Ring { get; set; }
+        public string StadiumId { get; set; }
+
         public Stadium Stadium { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
+        public ICollection<Subscription> Subscriptions { get; set; }
 
     }
 }

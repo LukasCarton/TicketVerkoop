@@ -11,6 +11,10 @@ namespace TicketVerkoop.Domain.Context
         public string Id { get; set; }
         public DateTime ReservationDate { get; set; }
         public int NumberOfTickets { get; set; }
+        public string CustomerId { get; set; }
+        public string MatchId { get; set; }
+        public string SectionId { get; set; }
+
         public Customer Customer { get; set; }
         public Match Match { get; set; }
         public Section Section { get; set; }

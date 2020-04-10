@@ -49,6 +49,10 @@ namespace TicketVerkoop
             // Stadium
             services.AddTransient<IStadiumService, StadiumService>();
             services.AddTransient<IStadiumDAO, StadiumDAO>();
+            //Section
+            services.AddTransient<ISectionService, SectionService>();
+            services.AddTransient<ISectionDAO, SectionDAO>();
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketVerkoop.Domain.Context;
 
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    partial class TicketVerkoopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200410144843_addZipCodeToStadiumAndCustomer")]
+    partial class addZipCodeToStadiumAndCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,20 +113,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Seasons");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            EndDate = new DateTime(2020, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDate = new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = "2",
-                            EndDate = new DateTime(2021, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDate = new DateTime(2020, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Section", b =>
@@ -169,62 +157,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stadia");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            City = "Brugge",
-                            Country = "België",
-                            Name = "Jan Breydelstadion",
-                            Street = "Olympialaan 74",
-                            Zipcode = "8000"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            City = "Brussel",
-                            Country = "België",
-                            Name = "Constant Vanden Stock stadion",
-                            Street = "Theo Verbeecklaan 2",
-                            Zipcode = "1070"
-                        },
-                        new
-                        {
-                            Id = "3",
-                            City = "Oostende",
-                            Country = "België",
-                            Name = "Albertparkstadion",
-                            Street = "Leopold Van Tyghemlaan 62",
-                            Zipcode = "8400"
-                        },
-                        new
-                        {
-                            Id = "4",
-                            City = "Waregem",
-                            Country = "België",
-                            Name = "Regenboogstadion",
-                            Street = "Zuiderlaan 17",
-                            Zipcode = "8790"
-                        },
-                        new
-                        {
-                            Id = "5",
-                            City = "Gentbrugge",
-                            Country = "België",
-                            Name = "Ghelamco Arena",
-                            Street = "Bruiloftstraat 42",
-                            Zipcode = "9050"
-                        },
-                        new
-                        {
-                            Id = "6",
-                            City = "Genk",
-                            Country = "België",
-                            Name = "Cristal Arena",
-                            Street = "Stadionplein",
-                            Zipcode = "3600"
-                        });
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Subscription", b =>
@@ -263,38 +195,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teams");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            Name = "Club Brugge"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "Oostende"
-                        },
-                        new
-                        {
-                            Id = "3",
-                            Name = "RSC Anderlecht"
-                        },
-                        new
-                        {
-                            Id = "4",
-                            Name = "Zulte Waregem"
-                        },
-                        new
-                        {
-                            Id = "5",
-                            Name = "Genk"
-                        },
-                        new
-                        {
-                            Id = "6",
-                            Name = "AA Gent"
-                        });
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Match", b =>

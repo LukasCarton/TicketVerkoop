@@ -16,12 +16,14 @@ namespace TicketVerkoop.Controllers
     public class HomeController : Controller
     {
         private ICustomerService _customerService;
+        private ITeamService _teamService;
         private readonly IMapper _mapper;
 
-        public HomeController(IMapper mapper, ICustomerService customerService)
+        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService)
         {
             _mapper = mapper;
             _customerService = customerService;
+            _teamService = teamService;
         }
 
         public async Task<IActionResult> Index()
@@ -32,6 +34,13 @@ namespace TicketVerkoop.Controllers
             customerVM = _mapper.Map<CustomerVM>(customer);
 
             return View(customerVM);
+        }
+
+        public async Task<IActionResult> Teams() 
+        {
+            var list = await _teamService.GetAllAsync();
+            List<TeamVM> listVM = _mapper.Map<List<TeamVM>>(list);
+            return View(listVM);
         }
 
 

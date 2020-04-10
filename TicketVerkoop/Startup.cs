@@ -52,7 +52,9 @@ namespace TicketVerkoop
             //Section
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<ISectionDAO, SectionDAO>();
-
+            //Team
+            services.AddTransient<ITeamService, TeamService>();
+            services.AddTransient<ITeamDAO, TeamDAO>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

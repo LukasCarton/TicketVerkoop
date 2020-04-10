@@ -34,6 +34,8 @@ namespace TicketVerkoop.Controllers
             return View(customerVM);
         }
 
+
+
         public IActionResult Privacy()
         {
             return View();

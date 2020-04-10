@@ -43,9 +43,12 @@ namespace TicketVerkoop
 
             //----> Dependency Injection
             // syntax services.AddTransient<service, implType>();
+            //Customer
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICustomerDAO, CustomerDAO>();
-
+            // Stadium
+            services.AddTransient<IStadiumService, StadiumService>();
+            services.AddTransient<IStadiumDAO, StadiumDAO>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

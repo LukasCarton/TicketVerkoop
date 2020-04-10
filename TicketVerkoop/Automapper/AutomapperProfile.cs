@@ -14,6 +14,8 @@ namespace TicketVerkoop.Automapper
         {
             //CreateMap<TSource, TDestination>;
             CreateMap<Customer, CustomerVM>();
+
+            CreateMap<Stadium, StadiumVM>();
         }
     }
 }

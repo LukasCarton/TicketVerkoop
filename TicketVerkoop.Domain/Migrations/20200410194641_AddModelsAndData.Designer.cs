@@ -10,8 +10,8 @@ using TicketVerkoop.Domain.Context;
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    [Migration("20200410180417_addDataForSections")]
-    partial class addDataForSections
+    [Migration("20200410194641_AddModelsAndData")]
+    partial class AddModelsAndData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,20 +20,6 @@ namespace TicketVerkoop.Domain.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("TicketVerkoop.Domain.Context.AwayTeam", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("AwayTeam");
-                });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Customer", b =>
                 {
@@ -57,20 +43,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("TicketVerkoop.Domain.Context.HomeTeam", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("HomeTeam");
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Match", b =>
@@ -101,6 +73,108 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasIndex("StadiumId");
 
                     b.ToTable("Matches");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AwayTeamId = "2",
+                            BasePriceTicket = 15.0,
+                            HomeTeamId = "1",
+                            MatchDate = new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "1",
+                            StadiumId = "1"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AwayTeamId = "1",
+                            BasePriceTicket = 12.0,
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "2"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AwayTeamId = "4",
+                            BasePriceTicket = 13.0,
+                            HomeTeamId = "3",
+                            MatchDate = new DateTime(2020, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "1",
+                            StadiumId = "3"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AwayTeamId = "3",
+                            BasePriceTicket = 14.0,
+                            HomeTeamId = "4",
+                            MatchDate = new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "4"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AwayTeamId = "6",
+                            BasePriceTicket = 20.0,
+                            HomeTeamId = "5",
+                            MatchDate = new DateTime(2020, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "1",
+                            StadiumId = "5"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            AwayTeamId = "5",
+                            BasePriceTicket = 25.0,
+                            HomeTeamId = "6",
+                            MatchDate = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "6"
+                        },
+                        new
+                        {
+                            Id = "7",
+                            AwayTeamId = "3",
+                            BasePriceTicket = 30.0,
+                            HomeTeamId = "1",
+                            MatchDate = new DateTime(2020, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "1"
+                        },
+                        new
+                        {
+                            Id = "8",
+                            AwayTeamId = "1",
+                            BasePriceTicket = 21.0,
+                            HomeTeamId = "3",
+                            MatchDate = new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "2"
+                        },
+                        new
+                        {
+                            Id = "9",
+                            AwayTeamId = "2",
+                            BasePriceTicket = 14.0,
+                            HomeTeamId = "4",
+                            MatchDate = new DateTime(2020, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "1",
+                            StadiumId = "3"
+                        },
+                        new
+                        {
+                            Id = "10",
+                            AwayTeamId = "4",
+                            BasePriceTicket = 12.0,
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2020, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "1",
+                            StadiumId = "4"
+                        });
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Reservation", b =>
@@ -809,28 +883,14 @@ namespace TicketVerkoop.Domain.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TicketVerkoop.Domain.Context.AwayTeam", b =>
-                {
-                    b.HasOne("TicketVerkoop.Domain.Context.Team", "Team")
-                        .WithMany("AwayTeams")
-                        .HasForeignKey("TeamId");
-                });
-
-            modelBuilder.Entity("TicketVerkoop.Domain.Context.HomeTeam", b =>
-                {
-                    b.HasOne("TicketVerkoop.Domain.Context.Team", "Team")
-                        .WithMany("HomeTeams")
-                        .HasForeignKey("TeamId");
-                });
-
             modelBuilder.Entity("TicketVerkoop.Domain.Context.Match", b =>
                 {
-                    b.HasOne("TicketVerkoop.Domain.Context.AwayTeam", "AwayTeam")
-                        .WithMany("Matches")
+                    b.HasOne("TicketVerkoop.Domain.Context.Team", "AwayTeam")
+                        .WithMany()
                         .HasForeignKey("AwayTeamId");
 
-                    b.HasOne("TicketVerkoop.Domain.Context.HomeTeam", "HomeTeam")
-                        .WithMany("Matches")
+                    b.HasOne("TicketVerkoop.Domain.Context.Team", "HomeTeam")
+                        .WithMany()
                         .HasForeignKey("HomeTeamId");
 
                     b.HasOne("TicketVerkoop.Domain.Context.Season", "Season")

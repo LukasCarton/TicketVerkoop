@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TicketVerkoop.Domain.Context
@@ -18,8 +19,10 @@ namespace TicketVerkoop.Domain.Context
 
         public Stadium Stadium { get; set; }
         public Season Season { get; set; }
-        public HomeTeam HomeTeam { get; set; }
-        public AwayTeam AwayTeam { get; set; }
+        [ForeignKey("HomeTeamId")]
+        public Team HomeTeam { get; set; }
+        [ForeignKey("AwayTeamId")]
+        public Team AwayTeam { get; set; }
 
         public ICollection<Reservation> Reservations { get; set; }
     }

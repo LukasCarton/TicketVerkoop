@@ -18,6 +18,13 @@ namespace TicketVerkoop.Automapper
             CreateMap<Stadium, StadiumVM>();
 
             CreateMap<Team, TeamVM>();
+
+            CreateMap<Match, MatchVM>()
+                .ForMember(dest => dest.StadiumNaam, opts => opts.MapFrom(src => src.Stadium.Name))
+                .ForMember(dest => dest.SeasonStartDate, opts => opts.MapFrom(src => src.Season.StartDate))
+                .ForMember(dest => dest.SeasonEndDate, opts => opts.MapFrom(src => src.Season.EndDate))
+                .ForMember(dest => dest.HomeTeamNaam, opts => opts.MapFrom(src => src.HomeTeam.Name))
+                .ForMember(dest => dest.AwayTeamNaam, opts => opts.MapFrom(src => src.AwayTeam.Name));
         }
     }
 }

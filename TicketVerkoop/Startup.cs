@@ -56,6 +56,12 @@ namespace TicketVerkoop
             services.AddTransient<ITeamService, TeamService>();
             services.AddTransient<ITeamDAO, TeamDAO>();
 
+            //Match
+            services.AddTransient<IMatchService, MatchService>();
+            services.AddTransient<IMatchDAO, MatchDAO>();
+
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

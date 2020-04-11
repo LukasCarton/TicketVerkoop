@@ -9,5 +9,6 @@ namespace TicketVerkoop.Repository.Interfaces
     public interface ITeamDAO
     {
         Task<IEnumerable<Team>> GetAllAsync();
+        Task<Team> GetAsync(string name);
     }
 }

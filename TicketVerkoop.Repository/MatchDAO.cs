@@ -36,6 +36,23 @@ namespace TicketVerkoop.Repository
             }
         }
 
+        public async Task<IEnumerable<Match>> GetAllByHomeTeam(string homeTeamId)
+        {
+            try
+            {
+                return await _dbContext.Matches.Where(m => m.HomeTeamId == homeTeamId)
+                    .Include(m => m.Stadium)
+                    .Include(m => m.Season)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<Match> GetAsync(string id)
         {
             try

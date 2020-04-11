@@ -17,13 +17,15 @@ namespace TicketVerkoop.Controllers
     {
         private ICustomerService _customerService;
         private ITeamService _teamService;
+        private IMatchService _matchService;
         private readonly IMapper _mapper;
 
-        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService)
+        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService, IMatchService matchService)
         {
             _mapper = mapper;
             _customerService = customerService;
             _teamService = teamService;
+            _matchService = matchService;
         }
 
         public async Task<IActionResult> Index()
@@ -43,6 +45,17 @@ namespace TicketVerkoop.Controllers
             return View(listVM);
         }
 
+        public async Task<IActionResult> Matches(string team)
+        {
+            var currentTeam = await _teamService.GetAsync(team);
+            var homeTeamId = currentTeam.Id;
+
+
+            var list = await _matchService.GetAllByHomeTeam(homeTeamId);
+            List<MatchVM> listVM = _mapper.Map<List<MatchVM>>(list);
+
+            return View(listVM);
+        }
 
 
         public IActionResult Privacy()

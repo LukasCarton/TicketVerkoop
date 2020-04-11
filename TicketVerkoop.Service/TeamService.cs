@@ -21,5 +21,10 @@ namespace TicketVerkoop.Service
         {
             return await _teamDAO.GetAllAsync();
         }
+
+        public async Task<Team> GetAsync(string name)
+        {
+            return await _teamDAO.GetAsync(name);
+        }
     }
 }

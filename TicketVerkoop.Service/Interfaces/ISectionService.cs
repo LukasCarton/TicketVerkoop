@@ -9,5 +9,6 @@ namespace TicketVerkoop.Service.Interfaces
     public interface ISectionService
     {
         Task<IEnumerable<Section>> GetAllAsync();
+        Task<IEnumerable<Section>> GetAllByStadiumAsync(string stadiumId);
     }
 }

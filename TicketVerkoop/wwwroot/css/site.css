@@ -2,55 +2,157 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
 }
+
+
+/*----Start page-------*/
+.logo {
+    padding:10px;
+    display:block;
+    margin:auto;
+}
+
+
+/*-------------Matches partial view---------------*/
+.matches {
+    list-style-type: none;
+    /*padding-left:0;*/
+    margin: 0;
+    padding: 0;
+}
+
+    .matches li {
+        margin-bottom: 20px;
+    }
+
+.tile {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    padding: 25px 20px;
+    
+    width: auto;
+}
+
+.date {
+    display: inline-block;
+    width: 10%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.teams {
+    display: inline-block;
+    width: 40%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.stadium {
+    display: inline-block;
+    width: 30%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.reservationArea {
+    display: inline-block;
+    width: 15%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.reservationButton{
+    border-radius:5px;
+    /*padding-left:10px;
+    padding-right:10px;*/
+    padding: 5px 10px 5px 10px;
+    color:white;
+    background-color:rgb(22,115,230);
+}
+
+.tile:hover{
+    background-color:lightblue;
+}
+
+.reservationButton:hover{
+    background-color:darkblue;
+}
+
+@media screen and (max-width: 991px){
+    .date {
+        display:none;
+    }
+
+    .teams {
+        display: inline-block;
+        width: 70%;
+        box-sizing: border-box;
+        color: black;
+    }
+
+    .stadium {
+        display:none;
+    }
+
+    .reservationArea {
+        display: inline-block;
+        width: 29%;
+        box-sizing: border-box;
+        color: black;
+    }
+}
+

@@ -4,12 +4,14 @@
     ViewData["Title"] = "Matches";
 }
 
-<h1>Matches</h1>
+<h1>Matchen</h1>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
-        <br />
-    }
+<div>
+    <ul class="matches">
+        @foreach (var item in Model)
+        {
+            @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
+
+        }
+    </ul>
 </div>

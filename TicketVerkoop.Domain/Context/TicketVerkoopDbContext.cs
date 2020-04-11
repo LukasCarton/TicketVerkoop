@@ -84,59 +84,59 @@ namespace TicketVerkoop.Domain.Context
                 );
 
             // Add section
-            var section1 = new Section { Id = "1", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "1" };
-            var section2 = new Section { Id = "2", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "1" };
-            var section3 = new Section { Id = "3", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "1" };
-            var section4 = new Section { Id = "4", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "1" };
-            var section5 = new Section { Id = "5", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "1" };
-            var section6 = new Section { Id = "6", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "1" };
-            var section7 = new Section { Id = "7", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "1" };
-            var section8 = new Section { Id = "8", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "1" };
+            var section1 = new Section { Id = "1", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0,OccupiedSubscriptionSeats=0, PriceFactor = 0.8, Ring = 0, StadiumId = "1" };
+            var section2 = new Section { Id = "2", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "1" };
+            var section3 = new Section { Id = "3", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "1" };
+            var section4 = new Section { Id = "4", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "1" };
+            var section5 = new Section { Id = "5", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "1" };
+            var section6 = new Section { Id = "6", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "1" };
+            var section7 = new Section { Id = "7", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "1" };
+            var section8 = new Section { Id = "8", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "1" };
 
-            var section9 = new Section { Id = "9", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "2" };
-            var section10 = new Section { Id = "10", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "2" };
-            var section11 = new Section { Id = "11", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "2" };
-            var section12 = new Section { Id = "12", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "2" };
-            var section13 = new Section { Id = "13", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "2" };
-            var section14 = new Section { Id = "14", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "2" };
-            var section15 = new Section { Id = "15", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "2" };
-            var section16 = new Section { Id = "16", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "2" };
+            var section9 = new Section { Id = "9", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "2" };
+            var section10 = new Section { Id = "10", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "2" };
+            var section11 = new Section { Id = "11", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "2" };
+            var section12 = new Section { Id = "12", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "2" };
+            var section13 = new Section { Id = "13", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "2" };
+            var section14 = new Section { Id = "14", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "2" };
+            var section15 = new Section { Id = "15", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "2" };
+            var section16 = new Section { Id = "16", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "2" };
 
-            var section17 = new Section { Id = "17", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "3" };
-            var section18 = new Section { Id = "18", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "3" };
-            var section19 = new Section { Id = "19", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "3" };
-            var section20 = new Section { Id = "20", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "3" };
-            var section21 = new Section { Id = "21", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "3" };
-            var section22 = new Section { Id = "22", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "3" };
-            var section23 = new Section { Id = "23", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "3" };
-            var section24 = new Section { Id = "24", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "3" };
+            var section17 = new Section { Id = "17", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "3" };
+            var section18 = new Section { Id = "18", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "3" };
+            var section19 = new Section { Id = "19", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "3" };
+            var section20 = new Section { Id = "20", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "3" };
+            var section21 = new Section { Id = "21", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "3" };
+            var section22 = new Section { Id = "22", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "3" };
+            var section23 = new Section { Id = "23", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "3" };
+            var section24 = new Section { Id = "24", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "3" };
 
-            var section25 = new Section { Id = "25", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "4" };
-            var section26 = new Section { Id = "26", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "4" };
-            var section27 = new Section { Id = "27", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "4" };
-            var section28 = new Section { Id = "28", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "4" };
-            var section29 = new Section { Id = "29", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "4" };
-            var section30 = new Section { Id = "30", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "4" };
-            var section31 = new Section { Id = "31", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "4" };
-            var section32 = new Section { Id = "32", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "4" };
+            var section25 = new Section { Id = "25", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "4" };
+            var section26 = new Section { Id = "26", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "4" };
+            var section27 = new Section { Id = "27", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "4" };
+            var section28 = new Section { Id = "28", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "4" };
+            var section29 = new Section { Id = "29", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "4" };
+            var section30 = new Section { Id = "30", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "4" };
+            var section31 = new Section { Id = "31", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "4" };
+            var section32 = new Section { Id = "32", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "4" };
 
-            var section33 = new Section { Id = "33", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "5" };
-            var section34 = new Section { Id = "34", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "5" };
-            var section35 = new Section { Id = "35", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "5" };
-            var section36 = new Section { Id = "36", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "5" };
-            var section37 = new Section { Id = "37", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "5" };
-            var section38 = new Section { Id = "38", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "5" };
-            var section39 = new Section { Id = "39", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "5" };
-            var section40 = new Section { Id = "40", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "5" };
+            var section33 = new Section { Id = "33", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "5" };
+            var section34 = new Section { Id = "34", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "5" };
+            var section35 = new Section { Id = "35", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "5" };
+            var section36 = new Section { Id = "36", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "5" };
+            var section37 = new Section { Id = "37", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "5" };
+            var section38 = new Section { Id = "38", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "5" };
+            var section39 = new Section { Id = "39", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "5" };
+            var section40 = new Section { Id = "40", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "5" };
 
-            var section41 = new Section { Id = "41", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "6" };
-            var section42 = new Section { Id = "42", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "6" };
-            var section43 = new Section { Id = "43", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "6" };
-            var section44 = new Section { Id = "44", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "6" };
-            var section45 = new Section { Id = "45", Name = "North", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "6" };
-            var section46 = new Section { Id = "46", Name = "East", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "6" };
-            var section47 = new Section { Id = "47", Name = "South", Capacity = 1000, OccupiedSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "6" };
-            var section48 = new Section { Id = "48", Name = "West", Capacity = 3000, OccupiedSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "6" };
+            var section41 = new Section { Id = "41", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "6" };
+            var section42 = new Section { Id = "42", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "6" };
+            var section43 = new Section { Id = "43", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 0.8, Ring = 0, StadiumId = "6" };
+            var section44 = new Section { Id = "44", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.2, Ring = 0, StadiumId = "6" };
+            var section45 = new Section { Id = "45", Name = "North", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "6" };
+            var section46 = new Section { Id = "46", Name = "East", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "6" };
+            var section47 = new Section { Id = "47", Name = "South", Capacity = 1000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.1, Ring = 1, StadiumId = "6" };
+            var section48 = new Section { Id = "48", Name = "West", Capacity = 3000, OccupiedReservationSeats = 0, OccupiedSubscriptionSeats = 0, PriceFactor = 1.5, Ring = 1, StadiumId = "6" };
 
             modelBuilder.Entity<Section>().HasData(
                 section1, section2, section3, section4, section5, section6, section7, section8, section9, section10,

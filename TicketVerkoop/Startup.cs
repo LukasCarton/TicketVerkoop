@@ -60,7 +60,13 @@ namespace TicketVerkoop
             services.AddTransient<IMatchService, MatchService>();
             services.AddTransient<IMatchDAO, MatchDAO>();
 
+            //Reservation
+            services.AddTransient<IReservationService,ReservationService>();
+            services.AddTransient<IReservationDAO, ReservationDAO>();
 
+            //Subscription
+            services.AddTransient<ISubscriptionService, SubscriptionService>();
+            services.AddTransient<ISubscriptionDAO, SubscriptionDAO>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

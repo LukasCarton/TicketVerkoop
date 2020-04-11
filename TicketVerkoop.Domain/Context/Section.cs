@@ -11,7 +11,8 @@ namespace TicketVerkoop.Domain.Context
         public string Id { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
-        public int OccupiedSeats { get; set; }
+        public int OccupiedReservationSeats { get; set; }
+        public int OccupiedSubscriptionSeats { get; set; }
         public double PriceFactor { get; set; }
         public int Ring { get; set; }
         public string StadiumId { get; set; }

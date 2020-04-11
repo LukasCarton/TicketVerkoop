@@ -238,7 +238,9 @@ namespace TicketVerkoop.Domain.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("OccupiedSeats");
+                    b.Property<int>("OccupiedReservationSeats");
+
+                    b.Property<int>("OccupiedSubscriptionSeats");
 
                     b.Property<double>("PriceFactor");
 
@@ -258,7 +260,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "1",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "1"
@@ -268,7 +271,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "2",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "1"
@@ -278,7 +282,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "3",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "1"
@@ -288,7 +293,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "4",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "1"
@@ -298,7 +304,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "5",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "1"
@@ -308,7 +315,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "6",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "1"
@@ -318,7 +326,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "7",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "1"
@@ -328,7 +337,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "8",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "1"
@@ -338,7 +348,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "9",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "2"
@@ -348,7 +359,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "10",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "2"
@@ -358,7 +370,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "11",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "2"
@@ -368,7 +381,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "12",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "2"
@@ -378,7 +392,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "13",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "2"
@@ -388,7 +403,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "14",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "2"
@@ -398,7 +414,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "15",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "2"
@@ -408,7 +425,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "16",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "2"
@@ -418,7 +436,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "17",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "3"
@@ -428,7 +447,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "18",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "3"
@@ -438,7 +458,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "19",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "3"
@@ -448,7 +469,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "20",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "3"
@@ -458,7 +480,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "21",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "3"
@@ -468,7 +491,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "22",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "3"
@@ -478,7 +502,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "23",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "3"
@@ -488,7 +513,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "24",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "3"
@@ -498,7 +524,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "25",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "4"
@@ -508,7 +535,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "26",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "4"
@@ -518,7 +546,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "27",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "4"
@@ -528,7 +557,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "28",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "4"
@@ -538,7 +568,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "29",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "4"
@@ -548,7 +579,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "30",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "4"
@@ -558,7 +590,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "31",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "4"
@@ -568,7 +601,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "32",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "4"
@@ -578,7 +612,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "33",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "5"
@@ -588,7 +623,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "34",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "5"
@@ -598,7 +634,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "35",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "5"
@@ -608,7 +645,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "36",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "5"
@@ -618,7 +656,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "37",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "5"
@@ -628,7 +667,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "38",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "5"
@@ -638,7 +678,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "39",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "5"
@@ -648,7 +689,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "40",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "5"
@@ -658,7 +700,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "41",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "6"
@@ -668,7 +711,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "42",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "6"
@@ -678,7 +722,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "43",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 0.80000000000000004,
                             Ring = 0,
                             StadiumId = "6"
@@ -688,7 +733,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "44",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.2,
                             Ring = 0,
                             StadiumId = "6"
@@ -698,7 +744,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "45",
                             Capacity = 1000,
                             Name = "North",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "6"
@@ -708,7 +755,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "46",
                             Capacity = 3000,
                             Name = "East",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "6"
@@ -718,7 +766,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "47",
                             Capacity = 1000,
                             Name = "South",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.1000000000000001,
                             Ring = 1,
                             StadiumId = "6"
@@ -728,7 +777,8 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "48",
                             Capacity = 3000,
                             Name = "West",
-                            OccupiedSeats = 0,
+                            OccupiedReservationSeats = 0,
+                            OccupiedSubscriptionSeats = 0,
                             PriceFactor = 1.5,
                             Ring = 1,
                             StadiumId = "6"

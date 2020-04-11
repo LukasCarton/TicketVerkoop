@@ -38,12 +38,12 @@ namespace TicketVerkoop.Domain.Context
         // Add Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var team1 = new Team { Id = "1", Name = "Club Brugge" };
-            var team2 = new Team { Id = "2", Name = "Oostende" };
-            var team3 = new Team { Id = "3", Name = "RSC Anderlecht" };
-            var team4 = new Team { Id = "4", Name = "Zulte Waregem" };
-            var team5 = new Team { Id = "5", Name = "Genk" };
-            var team6 = new Team { Id = "6", Name = "AA Gent" };
+            var team1 = new Team { Id = "1", Name = "Club Brugge",Logo= "/images/Club_Brugge.png" };  //1 - 1
+            var team2 = new Team { Id = "2", Name = "Oostende", Logo = "/images/Oostende.png"};  //2 - 3
+            var team3 = new Team { Id = "3", Name = "RSC Anderlecht", Logo = "/images/RSC_Anderlecht.png" }; // 3 - 2
+            var team4 = new Team { Id = "4", Name = "Zulte Waregem" ,Logo = "/images/Zulte_Waregem.png" }; // 4 - 4
+            var team5 = new Team { Id = "5", Name = "Genk", Logo = "/images/Genk.png" };  // 5 - 6
+            var team6 = new Team { Id = "6", Name = "AA Gent", Logo = "/images/AA_Gent.png"}; // 6 - 5
 
             // Add teams
             modelBuilder.Entity<Team>().HasData(
@@ -56,6 +56,19 @@ namespace TicketVerkoop.Domain.Context
             var stadium4 = new Stadium { Id = "4", Name = "Regenboogstadion", Street = "Zuiderlaan 17", City = "Waregem", Zipcode = "8790", Country = "België" };
             var stadium5 = new Stadium { Id = "5", Name = "Ghelamco Arena", Street = "Bruiloftstraat 42", City = "Gentbrugge", Zipcode = "9050", Country = "België" };
             var stadium6 = new Stadium { Id = "6", Name = "Cristal Arena", Street = "Stadionplein", City = "Genk", Zipcode = "3600", Country = "België" };
+
+            // Add Matches
+            var match1 = new Match { Id = "1", MatchDate = new DateTime(2020, 4, 30), BasePriceTicket = 15, StadiumId = "1", SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
+            var match2 = new Match { Id = "2", MatchDate = new DateTime(2020, 4, 30), BasePriceTicket = 12, StadiumId = "2", SeasonId = "1", HomeTeamId = "3", AwayTeamId = "1" };
+            var match3 = new Match { Id = "3", MatchDate = new DateTime(2021, 5, 5), BasePriceTicket = 13, StadiumId = "3", SeasonId = "2", HomeTeamId = "2", AwayTeamId = "4" };
+            var match4 = new Match { Id = "4", MatchDate = new DateTime(2020, 5, 7), BasePriceTicket = 14, StadiumId = "4", SeasonId = "1", HomeTeamId = "4", AwayTeamId = "3" };
+            var match5 = new Match { Id = "5", MatchDate = new DateTime(2021, 5, 20), BasePriceTicket = 20, StadiumId = "5", SeasonId = "2", HomeTeamId = "6", AwayTeamId = "4" };
+            var match6 = new Match { Id = "6", MatchDate = new DateTime(2020, 5, 21), BasePriceTicket = 25, StadiumId = "6", SeasonId = "1", HomeTeamId = "2", AwayTeamId = "5" };
+            var match7 = new Match { Id = "7", MatchDate = new DateTime(2020, 5, 22), BasePriceTicket = 30, StadiumId = "1", SeasonId = "1", HomeTeamId = "1", AwayTeamId = "3" };
+            var match8 = new Match { Id = "8", MatchDate = new DateTime(2020, 5, 23), BasePriceTicket = 21, StadiumId = "2", SeasonId = "1", HomeTeamId = "3", AwayTeamId = "1" };
+            var match9 = new Match { Id = "9", MatchDate = new DateTime(2021, 5, 12), BasePriceTicket = 14, StadiumId = "3", SeasonId = "2", HomeTeamId = "2", AwayTeamId = "3" };
+            var match10 = new Match { Id = "10", MatchDate = new DateTime(2021, 5, 18), BasePriceTicket = 12, StadiumId = "4", SeasonId = "2", HomeTeamId = "4", AwayTeamId = "3" };
+            modelBuilder.Entity<Match>().HasData(match1, match2, match3, match4, match5, match6, match7, match8, match9, match10);
 
             // Add Stadium
             modelBuilder.Entity<Stadium>().HasData(
@@ -132,17 +145,7 @@ namespace TicketVerkoop.Domain.Context
                 section31, section32, section33, section34, section35, section36, section37, section38, section39, section40,
                 section41, section42, section43, section44, section45, section46, section47, section48
                 );
-            var match1 = new Match { Id = "1", MatchDate = new DateTime(2020, 4, 30), BasePriceTicket = 15, StadiumId = "1", SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
-            var match2 = new Match { Id = "2", MatchDate = new DateTime(2020, 4, 30), BasePriceTicket = 12, StadiumId = "2", SeasonId = "2", HomeTeamId = "2", AwayTeamId = "1" };
-            var match3 = new Match { Id = "3", MatchDate = new DateTime(2020, 5, 5), BasePriceTicket = 13, StadiumId = "3", SeasonId = "1", HomeTeamId = "3", AwayTeamId = "4" };
-            var match4 = new Match { Id = "4", MatchDate = new DateTime(2020, 5, 7), BasePriceTicket = 14, StadiumId = "4", SeasonId = "2", HomeTeamId = "4", AwayTeamId = "3" };
-            var match5 = new Match { Id = "5", MatchDate = new DateTime(2020, 5, 20), BasePriceTicket = 20, StadiumId = "5", SeasonId = "1", HomeTeamId = "5", AwayTeamId = "6" };
-            var match6 = new Match { Id = "6", MatchDate = new DateTime(2020, 5, 21), BasePriceTicket = 25, StadiumId = "6", SeasonId = "2", HomeTeamId = "6", AwayTeamId = "5" };
-            var match7 = new Match { Id = "7", MatchDate = new DateTime(2020, 5, 22), BasePriceTicket = 30, StadiumId = "1", SeasonId = "2", HomeTeamId = "1", AwayTeamId = "3" };
-            var match8 = new Match { Id = "8", MatchDate = new DateTime(2020, 5, 23), BasePriceTicket = 21, StadiumId = "2", SeasonId = "2", HomeTeamId = "3", AwayTeamId = "1" };
-            var match9 = new Match { Id = "9", MatchDate = new DateTime(2020, 5, 12), BasePriceTicket = 14, StadiumId = "3", SeasonId = "1", HomeTeamId = "4", AwayTeamId = "2" };
-            var match10 = new Match { Id = "10", MatchDate = new DateTime(2020, 5, 18), BasePriceTicket = 12, StadiumId = "4", SeasonId = "1", HomeTeamId = "2", AwayTeamId = "4" };
-            modelBuilder.Entity<Match>().HasData(match1, match2, match3, match4, match5, match6, match7, match8, match9, match10);
+            
         }
     }
 }

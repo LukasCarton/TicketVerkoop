@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TicketVerkoop.Domain.Migrations
 {
-    public partial class AddModelsAndData : Migration
+    public partial class AddDataAndModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,7 +59,8 @@ namespace TicketVerkoop.Domain.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Logo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -227,15 +228,15 @@ namespace TicketVerkoop.Domain.Migrations
 
             migrationBuilder.InsertData(
                 table: "Teams",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Logo", "Name" },
                 values: new object[,]
                 {
-                    { "1", "Club Brugge" },
-                    { "2", "Oostende" },
-                    { "3", "RSC Anderlecht" },
-                    { "4", "Zulte Waregem" },
-                    { "5", "Genk" },
-                    { "6", "AA Gent" }
+                    { "1", "/images/Club_Brugge.png", "Club Brugge" },
+                    { "2", "/images/Oostende.png", "Oostende" },
+                    { "3", "/images/RSC_Anderlecht.png", "RSC Anderlecht" },
+                    { "4", "/images/Zulte_Waregem.png", "Zulte Waregem" },
+                    { "5", "/images/Genk.png", "Genk" },
+                    { "6", "/images/AA_Gent.png", "AA Gent" }
                 });
 
             migrationBuilder.InsertData(
@@ -243,16 +244,16 @@ namespace TicketVerkoop.Domain.Migrations
                 columns: new[] { "Id", "AwayTeamId", "BasePriceTicket", "HomeTeamId", "MatchDate", "SeasonId", "StadiumId" },
                 values: new object[,]
                 {
-                    { "6", "5", 25.0, "6", new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "6" },
+                    { "5", "4", 20.0, "6", new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "5" },
                     { "1", "2", 15.0, "1", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1" },
-                    { "2", "1", 12.0, "2", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "2" },
-                    { "7", "3", 30.0, "1", new DateTime(2020, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "1" },
-                    { "8", "1", 21.0, "3", new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "2" },
-                    { "5", "6", 20.0, "5", new DateTime(2020, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "5" },
-                    { "4", "3", 14.0, "4", new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "4" },
-                    { "9", "2", 14.0, "4", new DateTime(2020, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "3" },
-                    { "10", "4", 12.0, "2", new DateTime(2020, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
-                    { "3", "4", 13.0, "3", new DateTime(2020, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "3" }
+                    { "2", "1", 12.0, "3", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
+                    { "7", "3", 30.0, "1", new DateTime(2020, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1" },
+                    { "8", "1", 21.0, "3", new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
+                    { "6", "5", 25.0, "2", new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
+                    { "3", "4", 13.0, "2", new DateTime(2021, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" },
+                    { "4", "3", 14.0, "4", new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
+                    { "10", "3", 12.0, "4", new DateTime(2021, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "4" },
+                    { "9", "3", 14.0, "2", new DateTime(2021, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" }
                 });
 
             migrationBuilder.InsertData(

@@ -88,9 +88,9 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "2",
                             AwayTeamId = "1",
                             BasePriceTicket = 12.0,
-                            HomeTeamId = "2",
+                            HomeTeamId = "3",
                             MatchDate = new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "2",
+                            SeasonId = "1",
                             StadiumId = "2"
                         },
                         new
@@ -98,9 +98,9 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "3",
                             AwayTeamId = "4",
                             BasePriceTicket = 13.0,
-                            HomeTeamId = "3",
-                            MatchDate = new DateTime(2020, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2021, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
                             StadiumId = "3"
                         },
                         new
@@ -110,17 +110,17 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 14.0,
                             HomeTeamId = "4",
                             MatchDate = new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "2",
+                            SeasonId = "1",
                             StadiumId = "4"
                         },
                         new
                         {
                             Id = "5",
-                            AwayTeamId = "6",
+                            AwayTeamId = "4",
                             BasePriceTicket = 20.0,
-                            HomeTeamId = "5",
-                            MatchDate = new DateTime(2020, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
+                            HomeTeamId = "6",
+                            MatchDate = new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
                             StadiumId = "5"
                         },
                         new
@@ -128,9 +128,9 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "6",
                             AwayTeamId = "5",
                             BasePriceTicket = 25.0,
-                            HomeTeamId = "6",
+                            HomeTeamId = "2",
                             MatchDate = new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "2",
+                            SeasonId = "1",
                             StadiumId = "6"
                         },
                         new
@@ -140,7 +140,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 30.0,
                             HomeTeamId = "1",
                             MatchDate = new DateTime(2020, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "2",
+                            SeasonId = "1",
                             StadiumId = "1"
                         },
                         new
@@ -150,27 +150,27 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 21.0,
                             HomeTeamId = "3",
                             MatchDate = new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "2",
+                            SeasonId = "1",
                             StadiumId = "2"
                         },
                         new
                         {
                             Id = "9",
-                            AwayTeamId = "2",
+                            AwayTeamId = "3",
                             BasePriceTicket = 14.0,
-                            HomeTeamId = "4",
-                            MatchDate = new DateTime(2020, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2021, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
                             StadiumId = "3"
                         },
                         new
                         {
                             Id = "10",
-                            AwayTeamId = "4",
+                            AwayTeamId = "3",
                             BasePriceTicket = 12.0,
-                            HomeTeamId = "2",
-                            MatchDate = new DateTime(2020, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
+                            HomeTeamId = "4",
+                            MatchDate = new DateTime(2021, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
                             StadiumId = "4"
                         });
                 });
@@ -842,6 +842,8 @@ namespace TicketVerkoop.Domain.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Logo");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -852,31 +854,37 @@ namespace TicketVerkoop.Domain.Migrations
                         new
                         {
                             Id = "1",
+                            Logo = "/images/Club_Brugge.png",
                             Name = "Club Brugge"
                         },
                         new
                         {
                             Id = "2",
+                            Logo = "/images/Oostende.png",
                             Name = "Oostende"
                         },
                         new
                         {
                             Id = "3",
+                            Logo = "/images/RSC_Anderlecht.png",
                             Name = "RSC Anderlecht"
                         },
                         new
                         {
                             Id = "4",
+                            Logo = "/images/Zulte_Waregem.png",
                             Name = "Zulte Waregem"
                         },
                         new
                         {
                             Id = "5",
+                            Logo = "/images/Genk.png",
                             Name = "Genk"
                         },
                         new
                         {
                             Id = "6",
+                            Logo = "/images/AA_Gent.png",
                             Name = "AA Gent"
                         });
                 });

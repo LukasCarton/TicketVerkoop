@@ -10,7 +10,7 @@ namespace TicketVerkoop.Domain.Context
         [Key]
         public string Id { get; set; }
         public string Name { get; set; }
-
+        public string Logo { get; set; }
         public ICollection<Subscription> Subscriptions { get; set; }
     }
 }

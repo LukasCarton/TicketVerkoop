@@ -19,11 +19,9 @@
                 <a asp-controller="Home"
                    asp-action="Matches"
                    asp-route-team="@team.Name">
-                    @{ 
-                        var image = team.Name + ".png";
-                    }
+                    
                     <figure>
-                        <img src="~/images/@image" />
+                        <img src=@team.Logo />
                         <figcaption>@team.Name</figcaption>
                     </figure>
                     

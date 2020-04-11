@@ -6,73 +6,10 @@
 
 <h1>Matches</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatchDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BasePriceTicket)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StadiumNaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeasonStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeasonEndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeTeamNaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayTeamNaam)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MatchDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BasePriceTicket)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StadiumNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SeasonStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SeasonEndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeTeamNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AwayTeamNaam)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
+        <br />
+    }
+</div>

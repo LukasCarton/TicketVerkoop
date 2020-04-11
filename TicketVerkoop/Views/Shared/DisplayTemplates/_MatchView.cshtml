@@ -1,0 +1,11 @@
+﻿@model TicketVerkoop.ViewModels.MatchVM
+
+@if (Model != null)
+{
+    <div class="col-md-12" style="background-color:lightgrey; margin:0.5em;">
+        @Model.MatchDate
+        @Model.HomeTeamNaam at
+        @Model.AwayTeamNaam
+        @Model.StadiumNaam
+    </div>
+}

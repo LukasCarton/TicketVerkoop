@@ -22,7 +22,11 @@
                     @{ 
                         var image = team.Name + ".png";
                     }
-                    <img src="~/images/@image" />
+                    <figure>
+                        <img src="~/images/@image" />
+                        <figcaption>@team.Name</figcaption>
+                    </figure>
+                    
                 </a>
             </div>
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TicketVerkoop.Domain.Migrations
 {
-    public partial class AddModelAndData : Migration
+    public partial class addDataAndModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,7 +74,6 @@ namespace TicketVerkoop.Domain.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Capacity = table.Column<int>(nullable: false),
-                    OccupiedReservationSeats = table.Column<int>(nullable: false),
                     OccupiedSubscriptionSeats = table.Column<int>(nullable: false),
                     PriceFactor = table.Column<double>(nullable: false),
                     Ring = table.Column<int>(nullable: false),
@@ -172,6 +171,32 @@ namespace TicketVerkoop.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MatchSections",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    OccupiedReservationSeats = table.Column<int>(nullable: false),
+                    MatchId = table.Column<string>(nullable: true),
+                    SectionId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MatchSections", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MatchSections_Matches_MatchId",
+                        column: x => x.MatchId,
+                        principalTable: "Matches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_MatchSections_Sections_SectionId",
+                        column: x => x.SectionId,
+                        principalTable: "Sections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -179,8 +204,7 @@ namespace TicketVerkoop.Domain.Migrations
                     ReservationDate = table.Column<DateTime>(nullable: false),
                     NumberOfTickets = table.Column<int>(nullable: false),
                     CustomerId = table.Column<string>(nullable: true),
-                    MatchId = table.Column<string>(nullable: true),
-                    SectionId = table.Column<string>(nullable: true)
+                    MatchSectionId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -192,15 +216,9 @@ namespace TicketVerkoop.Domain.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Reservations_Matches_MatchId",
-                        column: x => x.MatchId,
-                        principalTable: "Matches",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Sections_SectionId",
-                        column: x => x.SectionId,
-                        principalTable: "Sections",
+                        name: "FK_Reservations_MatchSections_MatchSectionId",
+                        column: x => x.MatchSectionId,
+                        principalTable: "MatchSections",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -248,68 +266,64 @@ namespace TicketVerkoop.Domain.Migrations
                     { "5", "4", 20.0, "6", new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "5" },
                     { "1", "2", 15.0, "1", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1" },
                     { "2", "1", 12.0, "3", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
-                    { "7", "3", 30.0, "1", new DateTime(2020, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1" },
-                    { "8", "1", 21.0, "3", new DateTime(2020, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
-                    { "6", "5", 25.0, "2", new DateTime(2020, 5, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
-                    { "3", "4", 13.0, "2", new DateTime(2021, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" },
+                    { "6", "5", 25.0, "2", new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
                     { "4", "3", 14.0, "4", new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
-                    { "10", "3", 12.0, "4", new DateTime(2021, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "4" },
-                    { "9", "3", 14.0, "2", new DateTime(2021, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" }
+                    { "3", "4", 13.0, "2", new DateTime(2021, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Sections",
-                columns: new[] { "Id", "Capacity", "Name", "OccupiedReservationSeats", "OccupiedSubscriptionSeats", "PriceFactor", "Ring", "StadiumId" },
+                columns: new[] { "Id", "Capacity", "Name", "OccupiedSubscriptionSeats", "PriceFactor", "Ring", "StadiumId" },
                 values: new object[,]
                 {
-                    { "31", 1000, "South", 0, 0, 1.1000000000000001, 1, "4" },
-                    { "32", 3000, "West", 0, 0, 1.5, 1, "4" },
-                    { "33", 1000, "North", 0, 0, 0.80000000000000004, 0, "5" },
-                    { "34", 3000, "East", 0, 0, 1.2, 0, "5" },
-                    { "35", 1000, "South", 0, 0, 0.80000000000000004, 0, "5" },
-                    { "36", 3000, "West", 0, 0, 1.2, 0, "5" },
-                    { "37", 1000, "North", 0, 0, 1.1000000000000001, 1, "5" },
-                    { "38", 3000, "East", 0, 0, 1.5, 1, "5" },
-                    { "40", 3000, "West", 0, 0, 1.5, 1, "5" },
-                    { "41", 1000, "North", 0, 0, 0.80000000000000004, 0, "6" },
-                    { "42", 3000, "East", 0, 0, 1.2, 0, "6" },
-                    { "30", 3000, "East", 0, 0, 1.5, 1, "4" },
-                    { "44", 3000, "West", 0, 0, 1.2, 0, "6" },
-                    { "45", 1000, "North", 0, 0, 1.1000000000000001, 1, "6" },
-                    { "46", 3000, "East", 0, 0, 1.5, 1, "6" },
-                    { "47", 1000, "South", 0, 0, 1.1000000000000001, 1, "6" },
-                    { "48", 3000, "West", 0, 0, 1.5, 1, "6" },
-                    { "39", 1000, "South", 0, 0, 1.1000000000000001, 1, "5" },
-                    { "43", 1000, "South", 0, 0, 0.80000000000000004, 0, "6" },
-                    { "29", 1000, "North", 0, 0, 1.1000000000000001, 1, "4" },
-                    { "27", 1000, "South", 0, 0, 0.80000000000000004, 0, "4" },
-                    { "2", 3000, "East", 0, 0, 1.2, 0, "1" },
-                    { "3", 1000, "South", 0, 0, 0.80000000000000004, 0, "1" },
-                    { "4", 3000, "West", 0, 0, 1.2, 0, "1" },
-                    { "5", 1000, "North", 0, 0, 1.1000000000000001, 1, "1" },
-                    { "6", 3000, "East", 0, 0, 1.5, 1, "1" },
-                    { "7", 1000, "South", 0, 0, 1.1000000000000001, 1, "1" },
-                    { "8", 3000, "West", 0, 0, 1.5, 1, "1" },
-                    { "9", 1000, "North", 0, 0, 0.80000000000000004, 0, "2" },
-                    { "10", 3000, "East", 0, 0, 1.2, 0, "2" },
-                    { "11", 1000, "South", 0, 0, 0.80000000000000004, 0, "2" },
-                    { "12", 3000, "West", 0, 0, 1.2, 0, "2" },
-                    { "13", 1000, "North", 0, 0, 1.1000000000000001, 1, "2" },
-                    { "14", 3000, "East", 0, 0, 1.5, 1, "2" },
-                    { "15", 1000, "South", 0, 0, 1.1000000000000001, 1, "2" },
-                    { "16", 3000, "West", 0, 0, 1.5, 1, "2" },
-                    { "17", 1000, "North", 0, 0, 0.80000000000000004, 0, "3" },
-                    { "18", 3000, "East", 0, 0, 1.2, 0, "3" },
-                    { "19", 1000, "South", 0, 0, 0.80000000000000004, 0, "3" },
-                    { "20", 3000, "West", 0, 0, 1.2, 0, "3" },
-                    { "21", 1000, "North", 0, 0, 1.1000000000000001, 1, "3" },
-                    { "22", 3000, "East", 0, 0, 1.5, 1, "3" },
-                    { "23", 1000, "South", 0, 0, 1.1000000000000001, 1, "3" },
-                    { "24", 3000, "West", 0, 0, 1.5, 1, "3" },
-                    { "25", 1000, "North", 0, 0, 0.80000000000000004, 0, "4" },
-                    { "26", 3000, "East", 0, 0, 1.2, 0, "4" },
-                    { "28", 3000, "West", 0, 0, 1.2, 0, "4" },
-                    { "1", 1000, "North", 0, 0, 0.80000000000000004, 0, "1" }
+                    { "29", 1000, "North", 0, 1.1000000000000001, 1, "4" },
+                    { "30", 3000, "East", 0, 1.5, 1, "4" },
+                    { "31", 1000, "South", 0, 1.1000000000000001, 1, "4" },
+                    { "32", 3000, "West", 0, 1.5, 1, "4" },
+                    { "33", 1000, "North", 0, 0.80000000000000004, 0, "5" },
+                    { "34", 3000, "East", 0, 1.2, 0, "5" },
+                    { "35", 1000, "South", 0, 0.80000000000000004, 0, "5" },
+                    { "36", 3000, "West", 0, 1.2, 0, "5" },
+                    { "37", 1000, "North", 0, 1.1000000000000001, 1, "5" },
+                    { "38", 3000, "East", 0, 1.5, 1, "5" },
+                    { "28", 3000, "West", 0, 1.2, 0, "4" },
+                    { "41", 1000, "North", 0, 0.80000000000000004, 0, "6" },
+                    { "42", 3000, "East", 0, 1.2, 0, "6" },
+                    { "43", 1000, "South", 0, 0.80000000000000004, 0, "6" },
+                    { "44", 3000, "West", 0, 1.2, 0, "6" },
+                    { "45", 1000, "North", 0, 1.1000000000000001, 1, "6" },
+                    { "46", 3000, "East", 0, 1.5, 1, "6" },
+                    { "47", 1000, "South", 0, 1.1000000000000001, 1, "6" },
+                    { "48", 3000, "West", 0, 1.5, 1, "6" },
+                    { "39", 1000, "South", 0, 1.1000000000000001, 1, "5" },
+                    { "40", 3000, "West", 0, 1.5, 1, "5" },
+                    { "27", 1000, "South", 0, 0.80000000000000004, 0, "4" },
+                    { "25", 1000, "North", 0, 0.80000000000000004, 0, "4" },
+                    { "2", 3000, "East", 0, 1.2, 0, "1" },
+                    { "3", 1000, "South", 0, 0.80000000000000004, 0, "1" },
+                    { "4", 3000, "West", 0, 1.2, 0, "1" },
+                    { "5", 1000, "North", 0, 1.1000000000000001, 1, "1" },
+                    { "6", 3000, "East", 0, 1.5, 1, "1" },
+                    { "7", 1000, "South", 0, 1.1000000000000001, 1, "1" },
+                    { "8", 3000, "West", 0, 1.5, 1, "1" },
+                    { "9", 1000, "North", 0, 0.80000000000000004, 0, "2" },
+                    { "10", 3000, "East", 0, 1.2, 0, "2" },
+                    { "11", 1000, "South", 0, 0.80000000000000004, 0, "2" },
+                    { "12", 3000, "West", 0, 1.2, 0, "2" },
+                    { "13", 1000, "North", 0, 1.1000000000000001, 1, "2" },
+                    { "14", 3000, "East", 0, 1.5, 1, "2" },
+                    { "15", 1000, "South", 0, 1.1000000000000001, 1, "2" },
+                    { "16", 3000, "West", 0, 1.5, 1, "2" },
+                    { "17", 1000, "North", 0, 0.80000000000000004, 0, "3" },
+                    { "18", 3000, "East", 0, 1.2, 0, "3" },
+                    { "19", 1000, "South", 0, 0.80000000000000004, 0, "3" },
+                    { "20", 3000, "West", 0, 1.2, 0, "3" },
+                    { "21", 1000, "North", 0, 1.1000000000000001, 1, "3" },
+                    { "22", 3000, "East", 0, 1.5, 1, "3" },
+                    { "23", 1000, "South", 0, 1.1000000000000001, 1, "3" },
+                    { "24", 3000, "West", 0, 1.5, 1, "3" },
+                    { "26", 3000, "East", 0, 1.2, 0, "4" },
+                    { "1", 1000, "North", 0, 0.80000000000000004, 0, "1" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -333,19 +347,24 @@ namespace TicketVerkoop.Domain.Migrations
                 column: "StadiumId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MatchSections_MatchId",
+                table: "MatchSections",
+                column: "MatchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MatchSections_SectionId",
+                table: "MatchSections",
+                column: "SectionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_CustomerId",
                 table: "Reservations",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_MatchId",
+                name: "IX_Reservations_MatchSectionId",
                 table: "Reservations",
-                column: "MatchId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reservations_SectionId",
-                table: "Reservations",
-                column: "SectionId");
+                column: "MatchSectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sections_StadiumId",
@@ -382,10 +401,13 @@ namespace TicketVerkoop.Domain.Migrations
                 name: "Subscriptions");
 
             migrationBuilder.DropTable(
-                name: "Matches");
+                name: "MatchSections");
 
             migrationBuilder.DropTable(
                 name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "Matches");
 
             migrationBuilder.DropTable(
                 name: "Sections");

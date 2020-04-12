@@ -24,6 +24,6 @@ namespace TicketVerkoop.Domain.Context
         [ForeignKey("AwayTeamId")]
         public Team AwayTeam { get; set; }
 
-        public ICollection<Reservation> Reservations { get; set; }
+        public ICollection<MatchSection> MatchSections { get; set; }
     }
 }

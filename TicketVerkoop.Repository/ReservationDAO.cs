@@ -27,12 +27,11 @@ namespace TicketVerkoop.Repository
                 ReservationDate = entity.ReservationDate,
                 NumberOfTickets = entity.NumberOfTickets,
                 CustomerId = entity.CustomerId,
-                MatchId = entity.MatchId,
-                SectionId = entity.SectionId
+                MatchSectionId = entity.MatchSectionId,
             };
             _dbContext.Entry(reservation).State = EntityState.Added;
-            var section = await _dbContext.Sections.FirstOrDefaultAsync(s => s.Id == entity.SectionId);
-            section.OccupiedReservationSeats++;
+            var matchSection = await _dbContext.MatchSections.FirstOrDefaultAsync(s => s.Id == entity.MatchSectionId);
+            matchSection.OccupiedReservationSeats++;
 
             try
             {
@@ -50,8 +49,7 @@ namespace TicketVerkoop.Repository
             {
                 return await _dbContext.Reservations.Where(r => r.CustomerId == customerId)
                     .Include(r => r.Customer)
-                    .Include(r => r.Match)
-                    .Include(r => r.Section)
+                    .Include(r => r.MatchSection)
                     .ToListAsync();
 
 
@@ -64,8 +62,8 @@ namespace TicketVerkoop.Repository
         public async Task RemoveAsync(Reservation reservation)
         {
             _dbContext.Reservations.Remove(reservation);
-            var section = await _dbContext.Sections.FirstOrDefaultAsync(s => s.Id == reservation.SectionId);
-            section.OccupiedReservationSeats--;
+            var matchSection = await _dbContext.MatchSections.FirstOrDefaultAsync(s => s.Id == reservation.MatchSectionId);
+            matchSection.OccupiedReservationSeats--;
             try
             {
                 await _dbContext.SaveChangesAsync();

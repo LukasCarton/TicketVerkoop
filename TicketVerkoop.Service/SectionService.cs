@@ -8,7 +8,7 @@ using TicketVerkoop.Service.Interfaces;
 
 namespace TicketVerkoop.Service
 {
-    public class SectionService: ISectionService
+    public class SectionService : ISectionService
     {
         private ISectionDAO _sectionDAO;
 
@@ -20,6 +20,11 @@ namespace TicketVerkoop.Service
         public async Task<IEnumerable<Section>> GetAllAsync()
         {
             return await _sectionDAO.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<Section>> GetAllByStadiumAsync(string stadiumId)
+        {
+            return await _sectionDAO.GetAllByStadiumAsync(stadiumId);
         }
     }
 }

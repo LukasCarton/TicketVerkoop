@@ -18,28 +18,23 @@ namespace TicketVerkoop.Controllers
         private ICustomerService _customerService;
         private ITeamService _teamService;
         private IMatchService _matchService;
+        private ISectionService _sectionService;
         private readonly IMapper _mapper;
 
-        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService, IMatchService matchService)
+        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService, IMatchService matchService, ISectionService sectionService)
         {
             _mapper = mapper;
             _customerService = customerService;
             _teamService = teamService;
             _matchService = matchService;
+            _sectionService = sectionService;
         }
 
         public async Task<IActionResult> Index()
         {
+            // Get the id of the current user
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = await _customerService.GetAsync(id);
-            var customerVM = new CustomerVM();
-            customerVM = _mapper.Map<CustomerVM>(customer);
 
-            return View(customerVM);
-        }
-
-        public async Task<IActionResult> Teams() 
-        {
             var list = await _teamService.GetAllAsync();
             List<TeamVM> listVM = _mapper.Map<List<TeamVM>>(list);
             return View(listVM);
@@ -54,6 +49,16 @@ namespace TicketVerkoop.Controllers
             var list = await _matchService.GetAllByHomeTeam(homeTeamId);
             List<MatchVM> listVM = _mapper.Map<List<MatchVM>>(list);
 
+            return View(listVM);
+        }
+
+        public async Task<IActionResult> Sections(string match)
+        {
+            var currentMatch = await _matchService.GetAsync(match);
+            var basePrice = currentMatch.BasePriceTicket;
+            var stadiumId = currentMatch.StadiumId;
+            var sections = await _sectionService.GetAllByStadiumAsync(stadiumId);
+            List<SectionVM> listVM = _mapper.Map<List<SectionVM>>(sections);
             return View(listVM);
         }
 

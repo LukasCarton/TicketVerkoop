@@ -45,6 +45,7 @@ namespace TicketVerkoop.Repository
                     .Include(m => m.Season)
                     .Include(m => m.HomeTeam)
                     .Include(m => m.AwayTeam)
+                    .OrderBy(m => m.MatchDate)
                     .ToListAsync();
             }
             catch (Exception ex)

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<TicketVerkoop.ViewModels.SectionVM>
+
+@{
+    ViewData["Title"] = "Sections";
+}
+
+<h1>Sections</h1>
+
+<div>
+    <ul class="matches">
+        @foreach (var item in Model)
+        {
+            @await Html.PartialAsync("DisplayTemplates/_SectionView", item)
+
+        }
+    </ul>
+</div>

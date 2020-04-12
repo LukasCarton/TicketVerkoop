@@ -1,20 +1,32 @@
-﻿@model TicketVerkoop.ViewModels.CustomerVM
-
+﻿@model IEnumerable<TicketVerkoop.ViewModels.TeamVM>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Teams";
+    int counter = 0;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Welkom op de officiële site van de Profliga!</h1>
+<p>
+    Koop nu uw Tickets, zodat u niets mist van uw favoriete club.<br />
+    U kunt een jaarabonnement kopen of zitjes reserveren voor een bepaalde match door op de gewenste club te klikken.
+</p>
+<div class="container">
+    <div class="row">
+        @foreach (var team in Model)
+        {
+            if (counter != 0 && counter % 3 == 0)
+            {
+            @:</div>
+            @:<div class="row">
+            }
+
+            <div class="col-md-4 col-6 logo">
+
+                <a asp-controller="Home"
+                   asp-action="Matches"
+                   asp-route-team="@team.Name">
+                    <img src=@team.Logo width="120" />
+                </a>
+            </div>
+        }
+    </div>
 </div>
-
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello @Model.FirstName @Model.LastName</p>
-    <p>Id: @Model.Id</p>
-    @*@foreach (var item in Model)
-    {
-        <p>@item</p>
-    }*@
-}

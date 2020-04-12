@@ -2,10 +2,26 @@
 
 @if (Model != null)
 {
-    <div class="col-md-12" style="background-color:lightgrey; margin:0.5em;">
-        @Model.MatchDate
-        @Model.HomeTeamNaam at
-        @Model.AwayTeamNaam
-        @Model.StadiumNaam
-    </div>
+    <li>
+        <a asp-controller="Home"
+           asp-action="Sections"
+           asp-route-match="@Model.Id">
+            <div class="tile">
+                <div class="date">
+                    @Model.MatchDate.ToString("dd/MM/yyyy")
+                </div>
+                <div class="teams">
+                    @Model.HomeTeamNaam - @Model.AwayTeamNaam
+                </div>
+                <div class="stadium">
+                    @@@Model.StadiumNaam
+                </div>
+                <div class="reservationArea">
+                    <span class="reservationButton">
+                        Reservate Now
+                    </span>
+                </div>
+            </div>
+        </a>
+    </li>
 }

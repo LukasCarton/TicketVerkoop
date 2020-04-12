@@ -61,15 +61,12 @@ body {
 
 /*----Start page-------*/
 .logo {
-<<<<<<< HEAD
     padding: 10px;
     display: block;
     margin: auto;
-=======
     padding:10px;
     display:block;
     margin:auto;
->>>>>>> 2743bec3e48ca619f0bf3d052b4d71d11a65bfb0
 }
 
 
@@ -81,18 +78,14 @@ body {
     padding: 0;
 }
 
-    .matches li {
-        margin-bottom: 20px;
-    }
+.matches li {
+    margin-bottom: 20px;
+}
 
 .tile {
     border: 1px solid lightgrey;
     border-radius: 15px;
     padding: 25px 20px;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 2743bec3e48ca619f0bf3d052b4d71d11a65bfb0
     width: auto;
 }
 
@@ -118,7 +111,6 @@ body {
     width: 15%;
 }
 
-<<<<<<< HEAD
 .reservationButton {
     border-radius: 5px;
     /*padding-left:10px;
@@ -139,90 +131,85 @@ body {
 @media screen and (max-width: 991px) {
     .date {
         display: none;
-=======
-.reservationButton{
-    border-radius:5px;
-    /*padding-left:10px;
+    }
+
+    .reservationButton {
+        border-radius: 5px;
+        /*padding-left:10px;
     padding-right:10px;*/
-    padding: 5px 10px 5px 10px;
-    color:white;
-    background-color:rgb(22,115,230);
-}
-
-.tile:hover{
-    background-color:lightblue;
-}
-
-.reservationButton:hover{
-    background-color:darkblue;
-}
-
-@media screen and (max-width: 991px){
-    .date {
-        display:none;
->>>>>>> 2743bec3e48ca619f0bf3d052b4d71d11a65bfb0
+        padding: 5px 10px 5px 10px;
+        color: white;
+        background-color: rgb(22,115,230);
     }
 
-    .teams {
-        display: inline-block;
-        width: 70%;
-        box-sizing: border-box;
-        color: black;
+    .tile:hover {
+        background-color: lightblue;
     }
 
-    .stadium {
-<<<<<<< HEAD
-        display: none;
-=======
-        display:none;
->>>>>>> 2743bec3e48ca619f0bf3d052b4d71d11a65bfb0
+    .reservationButton:hover {
+        background-color: darkblue;
     }
 
-    .reservationArea {
-        display: inline-block;
-        width: 29%;
-        box-sizing: border-box;
-        color: black;
-    }
-}
+    @media screen and (max-width: 991px) {
+        .date {
+            display: none;
+        }
 
-/*-------------Sections partial view---------------*/
-.sectionTile {
-    border: 1px solid lightgrey;
-    border-radius: 15px;
-    padding: 25px 20px;
-    width: auto;
-}
-<<<<<<< HEAD
+        .teams {
+            display: inline-block;
+            width: 70%;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        .stadium {
+            display: none;
+            display: none;
+        }
+
+        .reservationArea {
+            display: inline-block;
+            width: 29%;
+            box-sizing: border-box;
+            color: black;
+        }
+    }
+
+    /*-------------Sections partial view---------------*/
+    .sectionTile {
+        border: 1px solid lightgrey;
+        border-radius: 15px;
+        padding: 25px 20px;
+        width: auto;
+    }
 
     .sectionTile:hover {
         background-color: lightblue;
     }
-=======
-.sectionTile:hover {
-    background-color: lightblue;
-}
->>>>>>> 2743bec3e48ca619f0bf3d052b4d71d11a65bfb0
 
+    .sectionTile:hover {
+        background-color: lightblue;
+    }
 
-.sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
-    display: inline-block;
-    box-sizing: border-box;
-    color: black;
-}
+    .sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
+        display: inline-block;
+        box-sizing: border-box;
+        color: black;
+    }
 
-.sectionName {
-    width: 24%;
-}
+    .sectionName {
+        width: 24%;
+    }
 
-.sectionAvailablePlaces {
-    width: 24%;
-}
+    .sectionAvailablePlaces {
+        width: 24%;
+    }
 
-.sectionPrice {
-    width: 25%;
-}
+    .sectionPrice {
+        width: 25%;
+    }
 
-.sectionRing {
-    width: 25%;
+    .sectionRing {
+        width: 25%;
+    }
 }

@@ -28,7 +28,7 @@ namespace TicketVerkoop.Controllers
             Subscription s = new Subscription
             {
                 SeasonId = "1",
-                TeamId ="1",
+                TeamId = "1",
                 CustomerId = id,
                 SectionId = "1"
             };

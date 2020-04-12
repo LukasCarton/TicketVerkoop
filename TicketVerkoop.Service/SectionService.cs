@@ -8,7 +8,7 @@ using TicketVerkoop.Service.Interfaces;
 
 namespace TicketVerkoop.Service
 {
-    public class SectionService: ISectionService
+    public class SectionService : ISectionService
     {
         private ISectionDAO _sectionDAO;
 

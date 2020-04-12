@@ -11,7 +11,6 @@ namespace TicketVerkoop.Domain.Context
         public string Id { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
-        public int OccupiedReservationSeats { get; set; }
         public int OccupiedSubscriptionSeats { get; set; }
         public double PriceFactor { get; set; }
         public int Ring { get; set; }
@@ -19,8 +18,8 @@ namespace TicketVerkoop.Domain.Context
 
         public Stadium Stadium { get; set; }
 
-        public ICollection<Reservation> Reservations { get; set; }
         public ICollection<Subscription> Subscriptions { get; set; }
+        public ICollection<MatchSection> MatchSections { get; set; }
 
     }
 }

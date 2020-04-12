@@ -51,7 +51,8 @@ namespace TicketVerkoop.Controllers
             return View(listVM);
         }
 
-        public async Task<IActionResult> Sections(string match) 
+
+        public async Task<IActionResult> Sections(string match)
         {
             var currentMatch = await _matchService.GetAsync(match);
             var basePrice = currentMatch.BasePriceTicket;

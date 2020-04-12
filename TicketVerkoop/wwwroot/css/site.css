@@ -61,6 +61,9 @@ body {
 
 /*----Start page-------*/
 .logo {
+    padding: 10px;
+    display: block;
+    margin: auto;
     padding:10px;
     display:block;
     margin:auto;
@@ -75,15 +78,14 @@ body {
     padding: 0;
 }
 
-    .matches li {
-        margin-bottom: 20px;
-    }
+.matches li {
+    margin-bottom: 20px;
+}
 
 .tile {
     border: 1px solid lightgrey;
     border-radius: 15px;
     padding: 25px 20px;
-    
     width: auto;
 }
 
@@ -109,77 +111,105 @@ body {
     width: 15%;
 }
 
-.reservationButton{
-    border-radius:5px;
+.reservationButton {
+    border-radius: 5px;
     /*padding-left:10px;
     padding-right:10px;*/
     padding: 5px 10px 5px 10px;
-    color:white;
-    background-color:rgb(22,115,230);
+    color: white;
+    background-color: rgb(22,115,230);
 }
 
-.tile:hover{
-    background-color:lightblue;
-}
-
-.reservationButton:hover{
-    background-color:darkblue;
-}
-
-@media screen and (max-width: 991px){
-    .date {
-        display:none;
-    }
-
-    .teams {
-        display: inline-block;
-        width: 70%;
-        box-sizing: border-box;
-        color: black;
-    }
-
-    .stadium {
-        display:none;
-    }
-
-    .reservationArea {
-        display: inline-block;
-        width: 29%;
-        box-sizing: border-box;
-        color: black;
-    }
-}
-
-/*-------------Sections partial view---------------*/
-.sectionTile {
-    border: 1px solid lightgrey;
-    border-radius: 15px;
-    padding: 25px 20px;
-    width: auto;
-}
-.sectionTile:hover {
+.tile:hover {
     background-color: lightblue;
 }
 
-
-.sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
-    display: inline-block;
-    box-sizing: border-box;
-    color: black;
+.reservationButton:hover {
+    background-color: darkblue;
 }
 
-.sectionName {
-    width: 24%;
-}
+@media screen and (max-width: 991px) {
+    .date {
+        display: none;
+    }
 
-.sectionAvailablePlaces {
-    width: 24%;
-}
+    .reservationButton {
+        border-radius: 5px;
+        /*padding-left:10px;
+    padding-right:10px;*/
+        padding: 5px 10px 5px 10px;
+        color: white;
+        background-color: rgb(22,115,230);
+    }
 
-.sectionPrice {
-    width: 25%;
-}
+    .tile:hover {
+        background-color: lightblue;
+    }
 
-.sectionRing {
-    width: 25%;
+    .reservationButton:hover {
+        background-color: darkblue;
+    }
+
+    @media screen and (max-width: 991px) {
+        .date {
+            display: none;
+        }
+
+        .teams {
+            display: inline-block;
+            width: 70%;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        .stadium {
+            display: none;
+            display: none;
+        }
+
+        .reservationArea {
+            display: inline-block;
+            width: 29%;
+            box-sizing: border-box;
+            color: black;
+        }
+    }
+
+    /*-------------Sections partial view---------------*/
+    .sectionTile {
+        border: 1px solid lightgrey;
+        border-radius: 15px;
+        padding: 25px 20px;
+        width: auto;
+    }
+
+    .sectionTile:hover {
+        background-color: lightblue;
+    }
+
+    .sectionTile:hover {
+        background-color: lightblue;
+    }
+
+    .sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
+        display: inline-block;
+        box-sizing: border-box;
+        color: black;
+    }
+
+    .sectionName {
+        width: 24%;
+    }
+
+    .sectionAvailablePlaces {
+        width: 24%;
+    }
+
+    .sectionPrice {
+        width: 25%;
+    }
+
+    .sectionRing {
+        width: 25%;
+    }
 }

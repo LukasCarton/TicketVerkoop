@@ -32,8 +32,7 @@ namespace TicketVerkoop.Controllers
                 ReservationDate = DateTime.Today,
                 NumberOfTickets = 5,
                 CustomerId = id,
-                MatchId = "1",
-                SectionId = "1"
+                MatchSectionId = "1"
             };
             await _reservationService.CreateAsync(r);
             return View(r);

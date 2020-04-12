@@ -138,6 +138,13 @@ namespace TicketVerkoop.Domain.Context
             var matchSection47 = new MatchSection{Id = "47", OccupiedReservationSeats=0,MatchId = "6", SectionId ="47"};
             var matchSection48 = new MatchSection{Id = "48", OccupiedReservationSeats=0,MatchId = "6", SectionId ="48"};
 
+            modelBuilder.Entity<MatchSection>().HasData(
+                matchSection1, matchSection2, matchSection3, matchSection4, matchSection5, matchSection6, matchSection7, matchSection8, matchSection9,
+                matchSection10, matchSection11, matchSection12, matchSection13, matchSection14,matchSection15, matchSection16, matchSection17, matchSection18, matchSection19,
+                matchSection20, matchSection21, matchSection22, matchSection23, matchSection24, matchSection25, matchSection26, matchSection27, matchSection28, matchSection29,
+                matchSection30, matchSection31, matchSection32, matchSection33, matchSection34, matchSection35, matchSection36, matchSection37, matchSection38, matchSection39,
+                matchSection40, matchSection41, matchSection42, matchSection43, matchSection44, matchSection45, matchSection46, matchSection47,matchSection48
+                );
 
             // Add section
             var section1 = new Section { Id = "1", Name = "North", Capacity = 1000,OccupiedSubscriptionSeats=0, PriceFactor = 0.8, Ring = 0, StadiumId = "1" };

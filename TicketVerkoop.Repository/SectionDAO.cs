@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TicketVerkoop.Domain.Context;
@@ -22,6 +23,20 @@ namespace TicketVerkoop.Repository
             try
             {
                 return await _dbContext.Sections.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Section>> GetAllByStadiumAsync(string stadiumId)
+        {
+            try
+            {
+                return await _dbContext.Sections
+                    .Where(s => s.StadiumId == stadiumId)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {

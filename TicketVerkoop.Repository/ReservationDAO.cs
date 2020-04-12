@@ -53,7 +53,8 @@ namespace TicketVerkoop.Repository
                     .ToListAsync();
 
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -67,7 +68,8 @@ namespace TicketVerkoop.Repository
             try
             {
                 await _dbContext.SaveChangesAsync();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }

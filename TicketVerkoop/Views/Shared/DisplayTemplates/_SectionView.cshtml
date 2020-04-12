@@ -1,4 +1,21 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TicketVerkoop.ViewModels.SectionVM
+
+@if (Model != null)
+{
+<li>
+    <div class="sectionTile">
+        <div class="sectionName">
+            @Model.Name
+        </div>
+        <div class="sectionAvailablePlaces">
+            Beschikbare plaatsen: @Model.AvailablePlaces
+        </div>
+        <div class="sectionPrice">
+            @Model.Price
+        </div>
+        <div class="sectionRing">
+            Ring: @Model.Ring
+        </div>
+    </div>
+</li>
+}

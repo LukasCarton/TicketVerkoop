@@ -7,7 +7,7 @@
 <h1>Matchen</h1>
 
 <div>
-    <ul class="matches">
+    <ul id="matches">
         @foreach (var item in Model)
         {
             @await Html.PartialAsync("DisplayTemplates/_MatchView", item)

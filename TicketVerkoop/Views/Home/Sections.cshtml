@@ -6,8 +6,14 @@
 
 <h1>Sections</h1>
 
+<ul id="test">
+    <li class="yolo">Item 1</li>
+    <li class="yolo">Item 2</li>
+    <li class="yolo">Item 3</li>
+</ul>
+
 <div>
-    <ul class="matches">
+    <ul id="sections">
         @foreach (var item in Model)
         {
             @await Html.PartialAsync("DisplayTemplates/_SectionView", item)
@@ -16,19 +22,17 @@
     </ul>
 </div>
 
-<div id="test">Dit is een waarde</div>
+
 
 @section Scripts{
-<script>
-    $(() => {
-        console.log("test");
-        $("#test").click(() => {
-            console.log("test clicked")
-            $(this).css("background-color", "red");
-            
+    <script>
+        $(() => {
+            $(".yolo").click(() => {
+                $(this).parent.addClass("geslaagd");
+            });
+            $("#test").hide();
         });
-        $("#test").css("background-color", "yellow");
-        
-    })
-</script>
- }
+
+        //$(document).ready(() => { });
+    </script>
+}

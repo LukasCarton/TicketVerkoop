@@ -57,15 +57,12 @@ namespace TicketVerkoop
             //Team
             services.AddTransient<ITeamService, TeamService>();
             services.AddTransient<ITeamDAO, TeamDAO>();
-
             //Match
             services.AddTransient<IMatchService, MatchService>();
             services.AddTransient<IMatchDAO, MatchDAO>();
-
             //Reservation
             services.AddTransient<IReservationService,ReservationService>();
             services.AddTransient<IReservationDAO, ReservationDAO>();
-
             //Subscription
             services.AddTransient<ISubscriptionService, SubscriptionService>();
             services.AddTransient<ISubscriptionDAO, SubscriptionDAO>();

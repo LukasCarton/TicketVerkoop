@@ -71,14 +71,14 @@ body {
 
 
 /*-------------Matches partial view---------------*/
-.matches {
+#matches {
     list-style-type: none;
     /*padding-left:0;*/
     margin: 0;
     padding: 0;
 }
 
-    .matches li {
+    #matches li {
         margin-bottom: 20px;
     }
 
@@ -177,6 +177,18 @@ body {
 }
 
 /*-------------Sections partial view---------------*/
+#sections {
+    list-style-type: none;
+    /*padding-left:0;*/
+    margin: 0;
+    padding: 0;
+}
+
+    #sections li {
+        margin-bottom: 20px;
+    }
+
+
 .sectionTile {
     border: 1px solid lightgrey;
     border-radius: 15px;
@@ -212,5 +224,4 @@ body {
 
 .sectionRing {
     width: 25%;
-}
 }

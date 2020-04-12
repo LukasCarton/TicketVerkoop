@@ -64,9 +64,9 @@ body {
     padding: 10px;
     display: block;
     margin: auto;
-    padding:10px;
-    display:block;
-    margin:auto;
+    padding: 10px;
+    display: block;
+    margin: auto;
 }
 
 
@@ -78,9 +78,9 @@ body {
     padding: 0;
 }
 
-.matches li {
-    margin-bottom: 20px;
-}
+    .matches li {
+        margin-bottom: 20px;
+    }
 
 .tile {
     border: 1px solid lightgrey;
@@ -149,67 +149,68 @@ body {
     .reservationButton:hover {
         background-color: darkblue;
     }
+}
 
-    @media screen and (max-width: 991px) {
-        .date {
-            display: none;
-        }
-
-        .teams {
-            display: inline-block;
-            width: 70%;
-            box-sizing: border-box;
-            color: black;
-        }
-
-        .stadium {
-            display: none;
-            display: none;
-        }
-
-        .reservationArea {
-            display: inline-block;
-            width: 29%;
-            box-sizing: border-box;
-            color: black;
-        }
+@media screen and (max-width: 991px) {
+    .date {
+        display: none;
     }
 
-    /*-------------Sections partial view---------------*/
-    .sectionTile {
-        border: 1px solid lightgrey;
-        border-radius: 15px;
-        padding: 25px 20px;
-        width: auto;
-    }
-
-    .sectionTile:hover {
-        background-color: lightblue;
-    }
-
-    .sectionTile:hover {
-        background-color: lightblue;
-    }
-
-    .sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
+    .teams {
         display: inline-block;
+        width: 70%;
         box-sizing: border-box;
         color: black;
     }
 
-    .sectionName {
-        width: 24%;
+    .stadium {
+        display: none;
+        display: none;
     }
 
-    .sectionAvailablePlaces {
-        width: 24%;
+    .reservationArea {
+        display: inline-block;
+        width: 29%;
+        box-sizing: border-box;
+        color: black;
+    }
+}
+
+/*-------------Sections partial view---------------*/
+.sectionTile {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    padding: 25px 20px;
+    width: auto;
+}
+
+    .sectionTile:hover {
+        background-color: lightblue;
     }
 
-    .sectionPrice {
-        width: 25%;
+    .sectionTile:hover {
+        background-color: lightblue;
     }
 
-    .sectionRing {
-        width: 25%;
-    }
+.sectionName, .sectionAvailablePlaces, .sectionPrice, .sectionRing {
+    display: inline-block;
+    box-sizing: border-box;
+    color: black;
+}
+
+.sectionName {
+    width: 24%;
+}
+
+.sectionAvailablePlaces {
+    width: 24%;
+}
+
+.sectionPrice {
+    width: 25%;
+}
+
+.sectionRing {
+    width: 25%;
+}
 }

@@ -1,21 +1,21 @@
-﻿@model TicketVerkoop.ViewModels.SectionVM
+﻿@model TicketVerkoop.ViewModels.MatchSectionVM
 
 @if (Model != null)
 {
-<li>
-    <div class="sectionTile">
-        <div class="sectionName">
-            @Model.Name
+    <li>
+        <div class="sectionTile">
+            <div class="sectionName">
+                @Model.Name
+            </div>
+            <div class="sectionAvailablePlaces">
+                Beschikbare plaatsen: @Model.AvailablePlaces
+            </div>
+            <div class="sectionPrice">
+                Prijs: @Model.Price
+            </div>
+            <div class="sectionRing">
+                Ring: @Model.Ring
+            </div>
         </div>
-        <div class="sectionAvailablePlaces">
-            Beschikbare plaatsen: @Model.AvailablePlaces
-        </div>
-        <div class="sectionPrice">
-            @Model.Price
-        </div>
-        <div class="sectionRing">
-            Ring: @Model.Ring
-        </div>
-    </div>
-</li>
+    </li>
 }

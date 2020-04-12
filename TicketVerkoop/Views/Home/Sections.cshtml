@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TicketVerkoop.ViewModels.SectionVM>
+﻿@model IEnumerable<TicketVerkoop.ViewModels.MatchSectionVM>
 
 @{
     ViewData["Title"] = "Sections";
@@ -15,3 +15,20 @@
         }
     </ul>
 </div>
+
+<div id="test">Dit is een waarde</div>
+
+@section Scripts{
+<script>
+    $(() => {
+        console.log("test");
+        $("#test").click(() => {
+            console.log("test clicked")
+            $(this).css("background-color", "red");
+            
+        });
+        $("#test").css("background-color", "yellow");
+        
+    })
+</script>
+ }

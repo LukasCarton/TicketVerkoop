@@ -39,6 +39,12 @@ namespace TicketVerkoop.Automapper
             //CreateMap<Section, SectionVM>()
             //    .ForMember(dest => dest.AvailablePlaces, opts => opts.MapFrom(src => src.Capacity - src.OccupiedReservationSeats - src.OccupiedSubscriptionSeats))
             //    .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.PriceFactor));
+
+            CreateMap<MatchSection, MatchSectionVM>()
+                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Section.Name))
+                .ForMember(dest => dest.AvailablePlaces, opts => opts.MapFrom(src => src.Section.Capacity - src.Section.OccupiedSubscriptionSeats - src.OccupiedReservationSeats))
+                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.Match.BasePriceTicket * src.Section.PriceFactor))
+                .ForMember(dest => dest.Ring, opts => opts.MapFrom(src => src.Section.Ring));
         }
     }
 }

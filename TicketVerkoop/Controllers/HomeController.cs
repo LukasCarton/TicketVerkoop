@@ -19,15 +19,22 @@ namespace TicketVerkoop.Controllers
         private ITeamService _teamService;
         private IMatchService _matchService;
         private ISectionService _sectionService;
+        private IMatchSectionService _matchSectionService;
         private readonly IMapper _mapper;
 
-        public HomeController(IMapper mapper, ICustomerService customerService, ITeamService teamService, IMatchService matchService, ISectionService sectionService)
+        public HomeController(IMapper mapper,
+            ICustomerService customerService,
+            ITeamService teamService,
+            IMatchService matchService,
+            ISectionService sectionService,
+            IMatchSectionService matchSectionService)
         {
             _mapper = mapper;
             _customerService = customerService;
             _teamService = teamService;
             _matchService = matchService;
             _sectionService = sectionService;
+            _matchSectionService = matchSectionService;
         }
 
         public async Task<IActionResult> Index()
@@ -55,10 +62,9 @@ namespace TicketVerkoop.Controllers
         public async Task<IActionResult> Sections(string match)
         {
             var currentMatch = await _matchService.GetAsync(match);
-            var basePrice = currentMatch.BasePriceTicket;
             var stadiumId = currentMatch.StadiumId;
-            var sections = await _sectionService.GetAllByStadiumAsync(stadiumId);
-            List<SectionVM> listVM = _mapper.Map<List<SectionVM>>(sections);
+            var sections = await _matchSectionService.GetAllByStadiumAsync(stadiumId);
+            List<MatchSectionVM> listVM = _mapper.Map<List<MatchSectionVM>>(sections);
             return View(listVM);
         }
 

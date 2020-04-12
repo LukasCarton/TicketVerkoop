@@ -18,6 +18,8 @@ using TicketVerkoop.Repository.Interfaces;
 using TicketVerkoop.Service;
 using TicketVerkoop.Repository;
 using AutoMapper;
+using TicketVerkoop.Util.Mail;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace TicketVerkoop
 {
@@ -80,6 +82,16 @@ namespace TicketVerkoop
 
             //Automapper
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddTransient<IEmailSender, EmailSender>(i =>
+                new EmailSender(
+                    Configuration["EmailSender:Host"],
+                    Configuration.GetValue<int>("EmailSender:Port"),
+                    Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                    Configuration["EmailSender:UserName"],
+                    Configuration["EmailSender:Password"]
+                )
+            );
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

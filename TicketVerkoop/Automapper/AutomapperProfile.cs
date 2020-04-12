@@ -28,17 +28,17 @@ namespace TicketVerkoop.Automapper
 
             CreateMap<Reservation, ReservationVM>()
                 .ForMember(dest => dest.CustomerName, opts => opts.MapFrom(src => src.Customer.FirstName + " " + src.Customer.LastName))
-                .ForMember(dest => dest.SectionName, opts => opts.MapFrom(src => src.Section.Name))
-                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.Match.BasePriceTicket));
+                .ForMember(dest => dest.SectionName, opts => opts.MapFrom(src => src.MatchSection.Section.Name))
+                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.MatchSection.Match.BasePriceTicket));
             CreateMap<Subscription, SubscriptionVM>()
                 .ForMember(dest => dest.SeasonStartDate, opts => opts.MapFrom(src => src.Season.StartDate))
                 .ForMember(dest => dest.SeasonEndDate, opts => opts.MapFrom(src => src.Season.EndDate))
                 .ForMember(dest => dest.CustomerName, opts => opts.MapFrom(src => src.Customer.FirstName + " " + src.Customer.LastName))
                 .ForMember(dest => dest.TeamName, opts => opts.MapFrom(src => src.Team.Name));
 
-            CreateMap<Section, SectionVM>()
-                .ForMember(dest => dest.AvailablePlaces, opts => opts.MapFrom(src => src.Capacity - src.OccupiedReservationSeats - src.OccupiedSubscriptionSeats))
-                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.PriceFactor));
+            //CreateMap<Section, SectionVM>()
+            //    .ForMember(dest => dest.AvailablePlaces, opts => opts.MapFrom(src => src.Capacity - src.OccupiedReservationSeats - src.OccupiedSubscriptionSeats))
+            //    .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.PriceFactor));
         }
     }
 }

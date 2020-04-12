@@ -33,8 +33,7 @@ namespace TicketVerkoop.Controllers
         public async Task<IActionResult> Index()
         {
             // Get the id of the current user
-            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var list = await _teamService.GetAllAsync();
             List<TeamVM> listVM = _mapper.Map<List<TeamVM>>(list);
             return View(listVM);
@@ -61,7 +60,6 @@ namespace TicketVerkoop.Controllers
             List<SectionVM> listVM = _mapper.Map<List<SectionVM>>(sections);
             return View(listVM);
         }
-
 
         public IActionResult Privacy()
         {

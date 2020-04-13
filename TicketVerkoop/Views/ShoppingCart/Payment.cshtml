@@ -1,11 +1,11 @@
-﻿@model IEnumerable<TicketVerkoop.ViewModels.ReservationVM>
+﻿@model IEnumerable<TicketVerkoop.Domain.Context.Reservation>
 
 @{
-    ViewData["Title"] = "ListReservations";
+    ViewData["Title"] = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ListReservations</h1>
+<h1>Payment</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,20 +20,10 @@
                 @Html.DisplayNameFor(model => model.NumberOfTickets)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerName)
+                @Html.DisplayNameFor(model => model.CustomerId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SectionName)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.HomeTeam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayTeam)
+                @Html.DisplayNameFor(model => model.MatchSectionId)
             </th>
             <th></th>
         </tr>
@@ -48,19 +38,10 @@
                 @Html.DisplayFor(modelItem => item.NumberOfTickets)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
+                @Html.DisplayFor(modelItem => item.CustomerId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SectionName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AwayTeam)
+                @Html.DisplayFor(modelItem => item.MatchSectionId)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

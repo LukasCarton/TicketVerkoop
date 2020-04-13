@@ -29,7 +29,10 @@ namespace TicketVerkoop.Automapper
             CreateMap<Reservation, ReservationVM>()
                 .ForMember(dest => dest.CustomerName, opts => opts.MapFrom(src => src.Customer.FirstName + " " + src.Customer.LastName))
                 .ForMember(dest => dest.SectionName, opts => opts.MapFrom(src => src.MatchSection.Section.Name))
-                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.MatchSection.Match.BasePriceTicket));
+                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.MatchSection.Match.BasePriceTicket))
+                .ForMember(dest => dest.HomeTeam, opts => opts.MapFrom(src => src.MatchSection.Match.HomeTeam.Name))
+                .ForMember(dest => dest.AwayTeam, opts => opts.MapFrom(src => src.MatchSection.Match.AwayTeam.Name));
+
             CreateMap<Subscription, SubscriptionVM>()
                 .ForMember(dest => dest.SeasonStartDate, opts => opts.MapFrom(src => src.Season.StartDate))
                 .ForMember(dest => dest.SeasonEndDate, opts => opts.MapFrom(src => src.Season.EndDate))
@@ -44,7 +47,12 @@ namespace TicketVerkoop.Automapper
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Section.Name))
                 .ForMember(dest => dest.AvailablePlaces, opts => opts.MapFrom(src => src.Section.Capacity - src.Section.OccupiedSubscriptionSeats - src.OccupiedReservationSeats))
                 .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.Match.BasePriceTicket * src.Section.PriceFactor))
-                .ForMember(dest => dest.Ring, opts => opts.MapFrom(src => src.Section.Ring));
+                .ForMember(dest => dest.Ring, opts => opts.MapFrom(src => src.Section.Ring))
+                .ForMember(dest => dest.HomeTeam, opts => opts.MapFrom(src => src.Match.HomeTeam.Name))
+                .ForMember(dest => dest.AwayTeam, opts => opts.MapFrom(src => src.Match.AwayTeam.Name));
+
+            CreateMap<ReservationVM, Reservation>();
+
         }
     }
 }

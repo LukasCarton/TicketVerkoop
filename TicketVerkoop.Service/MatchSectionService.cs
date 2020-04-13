@@ -17,6 +17,11 @@ namespace TicketVerkoop.Service
             _matchSectionDAO = matchSectionDAO;
         }
 
+        public async Task<MatchSection> FindById(string Id)
+        {
+            return await _matchSectionDAO.FindById(Id);
+        }
+
         public async Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId)
         {
             return await _matchSectionDAO.GetAllByStadiumAsync(stadiumId);

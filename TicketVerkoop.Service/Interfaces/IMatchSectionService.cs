@@ -9,5 +9,7 @@ namespace TicketVerkoop.Service.Interfaces
     public interface IMatchSectionService
     {
         Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId);
+        Task<MatchSection> FindById(string Id);
+
     }
 }

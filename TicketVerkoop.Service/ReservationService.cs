@@ -22,6 +22,11 @@ namespace TicketVerkoop.Service
             await _reservationDAO.CreateAsync(reservation);
         }
 
+        public async Task<Reservation> FindById(string Id)
+        {
+            return await _reservationDAO.FindById(Id);
+        }
+
         public async Task<IEnumerable<Reservation>> GetAllReservationsFromCustomerAsync(string customerId)
         {
             return await _reservationDAO.GetAllReservationsFromCustomerAsync(customerId);

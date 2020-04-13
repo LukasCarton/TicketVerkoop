@@ -12,6 +12,7 @@ namespace TicketVerkoop.Repository.Interfaces
         Task CreateAsync(Reservation reservation);
         Task<IEnumerable<Reservation>> GetAllReservationsFromCustomerAsync(string customerId);
         Task RemoveAsync(Reservation reservation);
+        Task<Reservation> FindById(string Id);
 
     }
 }

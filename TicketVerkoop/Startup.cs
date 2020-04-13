@@ -80,6 +80,15 @@ namespace TicketVerkoop
             //Automapper
             services.AddAutoMapper(typeof(Startup));
 
+            //Session
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "TicketVerkoop.Session"; // name of the cookie
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.IdleTimeout = TimeSpan.FromMinutes(10); // expiration -> cookie lifes 10 min.
+            });
+
             services.AddTransient<IEmailSender, EmailSender>(i =>
                 new EmailSender(
                     Configuration["EmailSender:Host"],
@@ -113,7 +122,7 @@ namespace TicketVerkoop
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

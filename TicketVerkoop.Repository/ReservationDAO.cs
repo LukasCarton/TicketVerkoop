@@ -43,6 +43,17 @@ namespace TicketVerkoop.Repository
             }
         }
 
+        public async Task<Reservation> FindById(string Id)
+        {
+            try
+            {
+                return await _dbContext.Reservations.FirstOrDefaultAsync(r => r.Id == Id);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<Reservation>> GetAllReservationsFromCustomerAsync(string customerId)
         {
             try
@@ -50,6 +61,9 @@ namespace TicketVerkoop.Repository
                 return await _dbContext.Reservations.Where(r => r.CustomerId == customerId)
                     .Include(r => r.Customer)
                     .Include(r => r.MatchSection)
+                    .Include(r => r.MatchSection.Section)
+                    .Include(r => r.MatchSection.Match.HomeTeam)
+                    .Include(r => r.MatchSection.Match.AwayTeam)
                     .ToListAsync();
 
 

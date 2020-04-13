@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TicketVerkoop.Domain.Context;
 using TicketVerkoop.Service.Interfaces;
+using TicketVerkoop.ViewModels;
 
 namespace TicketVerkoop.Controllers
 {
@@ -42,7 +43,8 @@ namespace TicketVerkoop.Controllers
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var reservations = await _reservationService.GetAllReservationsFromCustomerAsync(id);
-            return View(reservations);
+            var reservationVMs = _mapper.Map<List<ReservationVM>>(reservations);
+            return View(reservationVMs);
         }
     }
 }

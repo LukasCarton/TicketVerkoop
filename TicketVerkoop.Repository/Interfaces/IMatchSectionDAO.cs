@@ -9,5 +9,7 @@ namespace TicketVerkoop.Repository.Interfaces
     public interface IMatchSectionDAO
     {
         Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId);
+        Task<MatchSection> FindById(string Id);
+
     }
 }

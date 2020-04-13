@@ -18,6 +18,22 @@ namespace TicketVerkoop.Repository
             _dbContext = new TicketVerkoopDbContext();
         }
 
+        public async Task<MatchSection> FindById(string Id)
+        {
+            try
+            {
+                return await _dbContext.MatchSections
+                    .Include(m => m.Match)
+                    .Include(m => m.Section)
+                    .Include(m => m.Match.HomeTeam)
+                    .Include(m => m.Match.AwayTeam)
+                    .FirstOrDefaultAsync(m => m.Id == Id);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId)
         {
             try

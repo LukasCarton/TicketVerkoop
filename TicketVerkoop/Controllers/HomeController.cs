@@ -65,12 +65,7 @@ namespace TicketVerkoop.Controllers
             var stadiumId = currentMatch.StadiumId;
             var sections = await _matchSectionService.GetAllByStadiumAsync(stadiumId);
             List<MatchSectionVM> listVM = _mapper.Map<List<MatchSectionVM>>(sections);
-            //return View(listVM);
-
-
-            MatchSectionInfoVM viewModel = new MatchSectionInfoVM();
-            viewModel.MatchSections = listVM;
-            return View(viewModel);
+            return View(listVM);
         }
 
 

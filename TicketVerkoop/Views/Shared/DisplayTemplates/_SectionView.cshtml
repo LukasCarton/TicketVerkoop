@@ -3,18 +3,18 @@
 @if (Model != null)
 {
     <li>
-        <div class="sectionTile">
+        <div class="sectionTile" data-price="@Model.Price">
             <div class="sectionName">
-                @Model.Name
+                <span>@Model.Name</span>
             </div>
             <div class="sectionAvailablePlaces">
-                Beschikbare plaatsen: @Model.AvailablePlaces
+                <span>Beschikbare plaatsen: @Model.AvailablePlaces</span>
             </div>
             <div class="sectionPrice">
-                Prijs: @Model.Price
+                <span>Prijs: @Model.Price</span>
             </div>
             <div class="sectionRing">
-                Ring: @Model.Ring
+                <span>Ring: @Model.Ring</span>
             </div>
         </div>
     </li>

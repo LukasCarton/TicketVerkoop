@@ -225,3 +225,7 @@ body {
 .sectionRing {
     width: 25%;
 }
+
+.selected {
+    background-color: lightblue;
+}

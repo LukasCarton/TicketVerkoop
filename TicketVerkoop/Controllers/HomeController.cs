@@ -71,9 +71,8 @@ namespace TicketVerkoop.Controllers
             MatchSectionInfoVM viewModel = new MatchSectionInfoVM();
             viewModel.MatchSections = listVM;
             return View(viewModel);
-
-
         }
+
 
         public IActionResult Privacy()
         {

@@ -1,17 +1,32 @@
-﻿@model IEnumerable<TicketVerkoop.ViewModels.MatchVM>
+﻿@model TicketVerkoop.ViewModels.TeamWithMatchesVM
 
 @{
     ViewData["Title"] = "Matches";
 }
 
-<h1>Matchen</h1>
+<h1>Thuiswedstrijden @Model.TeamName</h1>
 
-<div>
-    <ul id="matches">
-        @foreach (var item in Model)
-        {
-            @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
-
-        }
-    </ul>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a asp-controller="Home"
+               asp-action="Subscriptions"
+               asp-route-team="@Model.TeamName"
+               class="btn btn-primary">Jaarabonnement kopen</a>
+        </div>
+    </div>
 </div>
+
+
+@if (Model.MatchVMs != null)
+{
+    <div>
+        <ul id="matches">
+            @foreach (var item in Model.MatchVMs)
+            {
+                @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
+
+            }
+        </ul>
+    </div>
+}

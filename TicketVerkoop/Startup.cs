@@ -69,6 +69,9 @@ namespace TicketVerkoop
             //MatchSection
             services.AddTransient<IMatchSectionService, MatchSectionService>();
             services.AddTransient<IMatchSectionDAO, MatchSectionDAO>();
+            //Season
+            services.AddTransient<ISeasonService, SeasonService>();
+            services.AddTransient<ISeasonDAO, SeasonDAO>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

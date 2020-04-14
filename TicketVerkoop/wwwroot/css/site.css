@@ -177,16 +177,28 @@ body {
 }
 
 /*-------------Sections partial view---------------*/
-#sections {
+#sections, #subscriptionSections {
     list-style-type: none;
     /*padding-left:0;*/
     margin: 0;
     padding: 0;
 }
 
-    #sections li {
+    #sections li, #subscriptionSections li {
         margin-bottom: 20px;
     }
+
+/*#subscriptionSections {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#subscriptionSections li {
+    margin-bottom: 20px;
+}*/
+
+
 
 
 .sectionTile {
@@ -230,8 +242,8 @@ body {
     background-color: lightblue;
 }
 
-#addToShoppingCartBtn {
-    background-color:lightgray;
+#addToShoppingCartBtn, #addSubscribtionToShoppingCartBtn {
+    background-color: lightgray;
 }
 
 @media screen and (max-width: 991px) {

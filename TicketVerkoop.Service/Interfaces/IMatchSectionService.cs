@@ -10,6 +10,7 @@ namespace TicketVerkoop.Service.Interfaces
     {
         Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId);
         Task<MatchSection> FindById(string Id);
+        Task<IEnumerable<MatchSection>> GetAllByMatchAsync(string matchId);
 
     }
 }

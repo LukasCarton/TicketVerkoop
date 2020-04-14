@@ -34,7 +34,10 @@ namespace TicketVerkoop.Repository
         {
             try
             {
-                return await _dbContext.Teams.Where(t => t.Name == name).FirstOrDefaultAsync();
+                return await _dbContext.Teams
+                    .Where(t => t.Name == name)
+                    .Include(t => t.Stadium)
+                    .FirstOrDefaultAsync();
             }
             catch (Exception ex)
             {

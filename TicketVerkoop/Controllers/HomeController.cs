@@ -20,6 +20,7 @@ namespace TicketVerkoop.Controllers
         private IMatchService _matchService;
         private ISectionService _sectionService;
         private IMatchSectionService _matchSectionService;
+        private ISeasonService _seasonService;
         private readonly IMapper _mapper;
 
         public HomeController(IMapper mapper,
@@ -27,7 +28,8 @@ namespace TicketVerkoop.Controllers
             ITeamService teamService,
             IMatchService matchService,
             ISectionService sectionService,
-            IMatchSectionService matchSectionService)
+            IMatchSectionService matchSectionService,
+            ISeasonService seasonService)
         {
             _mapper = mapper;
             _customerService = customerService;
@@ -35,6 +37,7 @@ namespace TicketVerkoop.Controllers
             _matchService = matchService;
             _sectionService = sectionService;
             _matchSectionService = matchSectionService;
+            _seasonService = seasonService;
         }
 
         public async Task<IActionResult> Index()
@@ -53,7 +56,8 @@ namespace TicketVerkoop.Controllers
 
 
             var list = await _matchService.GetAllByHomeTeam(homeTeamId);
-            List<MatchVM> listVM = _mapper.Map<List<MatchVM>>(list);
+            List<MatchVM> matchVMs = _mapper.Map<List<MatchVM>>(list);
+            TeamWithMatchesVM listVM = new TeamWithMatchesVM { TeamName = currentTeam.Name, MatchVMs = matchVMs };
 
             return View(listVM);
         }
@@ -61,10 +65,33 @@ namespace TicketVerkoop.Controllers
 
         public async Task<IActionResult> Sections(string match)
         {
-            var currentMatch = await _matchService.GetAsync(match);
-            var stadiumId = currentMatch.StadiumId;
-            var sections = await _matchSectionService.GetAllByStadiumAsync(stadiumId);
-            List<MatchSectionVM> listVM = _mapper.Map<List<MatchSectionVM>>(sections);
+            var matchSections = await _matchSectionService.GetAllByMatchAsync(match);
+            List<MatchSectionVM> listVM = _mapper.Map<List<MatchSectionVM>>(matchSections);
+            return View(listVM);
+        }
+
+        public async Task<IActionResult> Subscriptions(string team)
+        {
+            var currentTeam = await _teamService.GetAsync(team);
+            var sections = await _sectionService.GetAllByStadiumAsync(currentTeam.StadiumId);
+            var season = await _seasonService.GetNextSeasonAsync();
+
+            List<SectionVM> sectionVMs = _mapper.Map<List<SectionVM>>(sections);
+
+            foreach (var item in sectionVMs)
+            {
+                item.Price = item.Price * currentTeam.SubscriptionPrice;
+            }
+
+            SubscriptionSectionVM listVM = new SubscriptionSectionVM
+            {
+                TeamName = currentTeam.Name,
+                TeamLogo = currentTeam.Logo,
+                StartDate = season.StartDate,
+                EndDate = season.EndDate,
+                SectionVMs = sectionVMs
+            };
+
             return View(listVM);
         }
 

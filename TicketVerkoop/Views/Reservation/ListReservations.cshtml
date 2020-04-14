@@ -20,9 +20,6 @@
                 @Html.DisplayNameFor(model => model.NumberOfTickets)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerName)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
@@ -48,9 +45,6 @@
                 @Html.DisplayFor(modelItem => item.NumberOfTickets)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -63,9 +57,10 @@
                 @Html.DisplayFor(modelItem => item.AwayTeam)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="DeleteReservation"
+                   asp-route-Id="@item.Id">
+                    <img src="~/images/Delete_Icon.png" />
+                </a>
             </td>
         </tr>
 }

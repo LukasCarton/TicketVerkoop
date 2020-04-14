@@ -38,10 +38,10 @@ namespace TicketVerkoop.Controllers
             return View(cartList);
         }
 
-        public IActionResult DeleteReservation(string reservationId)
+        public IActionResult DeleteReservation(string matchSectionId)
         {
 
-            if (reservationId == null)
+            if (matchSectionId == null)
             {
                 return NotFound();
             }
@@ -50,8 +50,7 @@ namespace TicketVerkoop.Controllers
               .GetObject<ShoppingCartVM>("ShoppingCart");
 
             var itemToRemove =
-                cartList.Reservations.FirstOrDefault(r => r.Id == reservationId);
-            // db.bieren.FirstOrDefault (r => 
+                cartList.Reservations.FirstOrDefault(r => r.MatchSectionId == matchSectionId);
 
             if (itemToRemove != null)
             {
@@ -97,16 +96,15 @@ namespace TicketVerkoop.Controllers
                 return NotFound();
             }
             MatchSection matchSection = await _matchSectionService.FindById(id);
-            MatchSectionVM matchSectionVM = _mapper.Map<MatchSectionVM>(matchSection);
             ReservationVM reservationVM = new ReservationVM
             {
-                MatchSectionId = id,
-                Price = matchSectionVM.Price,
-                SectionName = matchSectionVM.Name,
                 ReservationDate = matchSection.Match.MatchDate,
                 NumberOfTickets = 1,
-                HomeTeam = matchSectionVM.HomeTeam,
-                AwayTeam = matchSectionVM.AwayTeam
+                Price = matchSection.Match.BasePriceTicket,
+                SectionName = matchSection.Section.Name,
+                MatchSectionId = id,
+                HomeTeam = matchSection.Match.HomeTeam.Name,
+                AwayTeam = matchSection.Match.AwayTeam.Name
             };
 
             ShoppingCartVM shopping;
@@ -134,14 +132,17 @@ namespace TicketVerkoop.Controllers
 
         }
 
-        [Authorize]  // je moet ingelog zijn om deze action aan te spreken
+        [Authorize]  // je moet ingelogd zijn om deze action aan te spreken
         [HttpPost]
         public async Task<IActionResult> Payment(ShoppingCartVM shoppingcart)
         {
             var reservationsFromCart = shoppingcart.Reservations;
             //  opvragen ID ingelogde User
             string userID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+            if(reservationsFromCart == null || reservationsFromCart.Count == 0)
+            {
+                return NotFound();
+            }
 
             try
             {
@@ -151,7 +152,8 @@ namespace TicketVerkoop.Controllers
                     res.CustomerId = userID;
                     await _reservationService.CreateAsync(res);
                 }
-                return View(reservations);
+                HttpContext.Session.SetObject("ShoppingCart", null);
+                return View(reservationsFromCart);
             }
             catch (Exception ex)
             { }

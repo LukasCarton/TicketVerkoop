@@ -46,5 +46,15 @@ namespace TicketVerkoop.Controllers
             var reservationVMs = _mapper.Map<List<ReservationVM>>(reservations);
             return View(reservationVMs);
         }
+        
+        public async Task<IActionResult> DeleteReservation(string id)
+        {
+            var reservation = await _reservationService.FindById(id);
+            await _reservationService.RemoveAsync(reservation);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var reservations = await _reservationService.GetAllReservationsFromCustomerAsync(userId);
+            var reservationVMs = _mapper.Map<List<ReservationVM>>(reservations);
+            return View("ListReservations",reservationVMs);
+        }
     }
 }

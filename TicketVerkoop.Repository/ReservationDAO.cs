@@ -31,7 +31,7 @@ namespace TicketVerkoop.Repository
             };
             _dbContext.Entry(reservation).State = EntityState.Added;
             var matchSection = await _dbContext.MatchSections.FirstOrDefaultAsync(s => s.Id == entity.MatchSectionId);
-            matchSection.OccupiedReservationSeats++;
+            matchSection.OccupiedReservationSeats += reservation.NumberOfTickets;
 
             try
             {
@@ -78,7 +78,7 @@ namespace TicketVerkoop.Repository
         {
             _dbContext.Reservations.Remove(reservation);
             var matchSection = await _dbContext.MatchSections.FirstOrDefaultAsync(s => s.Id == reservation.MatchSectionId);
-            matchSection.OccupiedReservationSeats--;
+            matchSection.OccupiedReservationSeats -= reservation.NumberOfTickets;
             try
             {
                 await _dbContext.SaveChangesAsync();

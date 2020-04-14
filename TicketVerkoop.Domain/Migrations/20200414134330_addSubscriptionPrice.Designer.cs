@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketVerkoop.Domain.Context;
 
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    partial class TicketVerkoopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200414134330_addSubscriptionPrice")]
+    partial class addSubscriptionPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,179 +81,59 @@ namespace TicketVerkoop.Domain.Migrations
                             AwayTeamId = "2",
                             BasePriceTicket = 15.0,
                             HomeTeamId = "1",
-                            MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            MatchDate = new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SeasonId = "1",
                             StadiumId = "1"
                         },
                         new
                         {
                             Id = "2",
-                            AwayTeamId = "4",
+                            AwayTeamId = "1",
                             BasePriceTicket = 12.0,
                             HomeTeamId = "3",
-                            MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            MatchDate = new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SeasonId = "1",
-                            StadiumId = "3"
+                            StadiumId = "2"
                         },
                         new
                         {
                             Id = "3",
-                            AwayTeamId = "6",
+                            AwayTeamId = "4",
                             BasePriceTicket = 13.0,
-                            HomeTeamId = "5",
-                            MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2021, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "3"
                         },
                         new
                         {
                             Id = "4",
-                            AwayTeamId = "1",
-                            BasePriceTicket = 15.0,
-                            HomeTeamId = "6",
-                            MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            AwayTeamId = "3",
+                            BasePriceTicket = 14.0,
+                            HomeTeamId = "4",
+                            MatchDate = new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SeasonId = "1",
-                            StadiumId = "6"
+                            StadiumId = "4"
                         },
                         new
                         {
                             Id = "5",
-                            AwayTeamId = "3",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "2",
-                            MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
+                            AwayTeamId = "4",
+                            BasePriceTicket = 20.0,
+                            HomeTeamId = "6",
+                            MatchDate = new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = "2",
+                            StadiumId = "5"
                         },
                         new
                         {
                             Id = "6",
                             AwayTeamId = "5",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "4",
-                            MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
-                        },
-                        new
-                        {
-                            Id = "7",
-                            AwayTeamId = "2",
-                            BasePriceTicket = 15.0,
-                            HomeTeamId = "1",
-                            MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "1"
-                        },
-                        new
-                        {
-                            Id = "8",
-                            AwayTeamId = "4",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "3",
-                            MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "3"
-                        },
-                        new
-                        {
-                            Id = "9",
-                            AwayTeamId = "6",
-                            BasePriceTicket = 13.0,
-                            HomeTeamId = "5",
-                            MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
-                        },
-                        new
-                        {
-                            Id = "10",
-                            AwayTeamId = "6",
-                            BasePriceTicket = 15.0,
-                            HomeTeamId = "6",
-                            MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
+                            BasePriceTicket = 25.0,
+                            HomeTeamId = "2",
+                            MatchDate = new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SeasonId = "1",
                             StadiumId = "6"
-                        },
-                        new
-                        {
-                            Id = "11",
-                            AwayTeamId = "3",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "2",
-                            MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
-                        },
-                        new
-                        {
-                            Id = "12",
-                            AwayTeamId = "5",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "4",
-                            MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
-                        },
-                        new
-                        {
-                            Id = "13",
-                            AwayTeamId = "2",
-                            BasePriceTicket = 15.0,
-                            HomeTeamId = "1",
-                            MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "1"
-                        },
-                        new
-                        {
-                            Id = "14",
-                            AwayTeamId = "4",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "3",
-                            MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "3"
-                        },
-                        new
-                        {
-                            Id = "15",
-                            AwayTeamId = "6",
-                            BasePriceTicket = 13.0,
-                            HomeTeamId = "5",
-                            MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
-                        },
-                        new
-                        {
-                            Id = "16",
-                            AwayTeamId = "1",
-                            BasePriceTicket = 15.0,
-                            HomeTeamId = "6",
-                            MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "6"
-                        },
-                        new
-                        {
-                            Id = "17",
-                            AwayTeamId = "3",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "2",
-                            MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
-                        },
-                        new
-                        {
-                            Id = "18",
-                            AwayTeamId = "5",
-                            BasePriceTicket = 12.0,
-                            HomeTeamId = "4",
-                            MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
                         });
                 });
 
@@ -336,952 +218,280 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "9",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "17"
+                            SectionId = "9"
                         },
                         new
                         {
                             Id = "10",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "18"
+                            SectionId = "10"
                         },
                         new
                         {
                             Id = "11",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "19"
+                            SectionId = "11"
                         },
                         new
                         {
                             Id = "12",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "20"
+                            SectionId = "12"
                         },
                         new
                         {
                             Id = "13",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "21"
+                            SectionId = "13"
                         },
                         new
                         {
                             Id = "14",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "22"
+                            SectionId = "14"
                         },
                         new
                         {
                             Id = "15",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "23"
+                            SectionId = "15"
                         },
                         new
                         {
                             Id = "16",
                             MatchId = "2",
                             OccupiedReservationSeats = 0,
-                            SectionId = "24"
+                            SectionId = "16"
                         },
                         new
                         {
                             Id = "17",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "33"
+                            SectionId = "17"
                         },
                         new
                         {
                             Id = "18",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "34"
+                            SectionId = "18"
                         },
                         new
                         {
                             Id = "19",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "35"
+                            SectionId = "19"
                         },
                         new
                         {
                             Id = "20",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "36"
+                            SectionId = "20"
                         },
                         new
                         {
                             Id = "21",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "37"
+                            SectionId = "21"
                         },
                         new
                         {
                             Id = "22",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "38"
+                            SectionId = "22"
                         },
                         new
                         {
                             Id = "23",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "39"
+                            SectionId = "23"
                         },
                         new
                         {
                             Id = "24",
                             MatchId = "3",
                             OccupiedReservationSeats = 0,
-                            SectionId = "40"
+                            SectionId = "24"
                         },
                         new
                         {
                             Id = "25",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "41"
+                            SectionId = "25"
                         },
                         new
                         {
                             Id = "26",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "42"
+                            SectionId = "26"
                         },
                         new
                         {
                             Id = "27",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "43"
+                            SectionId = "27"
                         },
                         new
                         {
                             Id = "28",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "44"
+                            SectionId = "28"
                         },
                         new
                         {
                             Id = "29",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "45"
+                            SectionId = "29"
                         },
                         new
                         {
                             Id = "30",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "46"
+                            SectionId = "30"
                         },
                         new
                         {
                             Id = "31",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "17"
+                            SectionId = "31"
                         },
                         new
                         {
                             Id = "32",
                             MatchId = "4",
                             OccupiedReservationSeats = 0,
-                            SectionId = "48"
+                            SectionId = "32"
                         },
                         new
                         {
                             Id = "33",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "9"
+                            SectionId = "33"
                         },
                         new
                         {
                             Id = "34",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "10"
+                            SectionId = "34"
                         },
                         new
                         {
                             Id = "35",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "11"
+                            SectionId = "35"
                         },
                         new
                         {
                             Id = "36",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "12"
+                            SectionId = "36"
                         },
                         new
                         {
                             Id = "37",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "13"
+                            SectionId = "37"
                         },
                         new
                         {
                             Id = "38",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "14"
+                            SectionId = "38"
                         },
                         new
                         {
                             Id = "39",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "15"
+                            SectionId = "39"
                         },
                         new
                         {
                             Id = "40",
                             MatchId = "5",
                             OccupiedReservationSeats = 0,
-                            SectionId = "16"
+                            SectionId = "40"
                         },
                         new
                         {
                             Id = "41",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "25"
+                            SectionId = "41"
                         },
                         new
                         {
                             Id = "42",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "26"
+                            SectionId = "42"
                         },
                         new
                         {
                             Id = "43",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "27"
+                            SectionId = "43"
                         },
                         new
                         {
                             Id = "44",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "28"
+                            SectionId = "44"
                         },
                         new
                         {
                             Id = "45",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "29"
+                            SectionId = "45"
                         },
                         new
                         {
                             Id = "46",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "30"
+                            SectionId = "46"
                         },
                         new
                         {
                             Id = "47",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "31"
+                            SectionId = "47"
                         },
                         new
                         {
                             Id = "48",
                             MatchId = "6",
                             OccupiedReservationSeats = 0,
-                            SectionId = "32"
-                        },
-                        new
-                        {
-                            Id = "49",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "1"
-                        },
-                        new
-                        {
-                            Id = "50",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "2"
-                        },
-                        new
-                        {
-                            Id = "51",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "3"
-                        },
-                        new
-                        {
-                            Id = "52",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "4"
-                        },
-                        new
-                        {
-                            Id = "53",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "5"
-                        },
-                        new
-                        {
-                            Id = "54",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "6"
-                        },
-                        new
-                        {
-                            Id = "55",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "7"
-                        },
-                        new
-                        {
-                            Id = "56",
-                            MatchId = "7",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "8"
-                        },
-                        new
-                        {
-                            Id = "57",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "17"
-                        },
-                        new
-                        {
-                            Id = "58",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "18"
-                        },
-                        new
-                        {
-                            Id = "59",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "19"
-                        },
-                        new
-                        {
-                            Id = "60",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "20"
-                        },
-                        new
-                        {
-                            Id = "61",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "21"
-                        },
-                        new
-                        {
-                            Id = "62",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "22"
-                        },
-                        new
-                        {
-                            Id = "63",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "23"
-                        },
-                        new
-                        {
-                            Id = "64",
-                            MatchId = "8",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "24"
-                        },
-                        new
-                        {
-                            Id = "65",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "33"
-                        },
-                        new
-                        {
-                            Id = "66",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "34"
-                        },
-                        new
-                        {
-                            Id = "67",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "35"
-                        },
-                        new
-                        {
-                            Id = "68",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "36"
-                        },
-                        new
-                        {
-                            Id = "69",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "37"
-                        },
-                        new
-                        {
-                            Id = "70",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "38"
-                        },
-                        new
-                        {
-                            Id = "71",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "39"
-                        },
-                        new
-                        {
-                            Id = "72",
-                            MatchId = "9",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "40"
-                        },
-                        new
-                        {
-                            Id = "73",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "41"
-                        },
-                        new
-                        {
-                            Id = "74",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "42"
-                        },
-                        new
-                        {
-                            Id = "75",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "43"
-                        },
-                        new
-                        {
-                            Id = "76",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "44"
-                        },
-                        new
-                        {
-                            Id = "77",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "45"
-                        },
-                        new
-                        {
-                            Id = "78",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "46"
-                        },
-                        new
-                        {
-                            Id = "79",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "17"
-                        },
-                        new
-                        {
-                            Id = "80",
-                            MatchId = "10",
-                            OccupiedReservationSeats = 0,
                             SectionId = "48"
-                        },
-                        new
-                        {
-                            Id = "81",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "9"
-                        },
-                        new
-                        {
-                            Id = "82",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "10"
-                        },
-                        new
-                        {
-                            Id = "83",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "11"
-                        },
-                        new
-                        {
-                            Id = "84",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "12"
-                        },
-                        new
-                        {
-                            Id = "85",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "13"
-                        },
-                        new
-                        {
-                            Id = "86",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "14"
-                        },
-                        new
-                        {
-                            Id = "87",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "15"
-                        },
-                        new
-                        {
-                            Id = "88",
-                            MatchId = "11",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "16"
-                        },
-                        new
-                        {
-                            Id = "89",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "25"
-                        },
-                        new
-                        {
-                            Id = "90",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "26"
-                        },
-                        new
-                        {
-                            Id = "91",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "27"
-                        },
-                        new
-                        {
-                            Id = "92",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "28"
-                        },
-                        new
-                        {
-                            Id = "93",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "29"
-                        },
-                        new
-                        {
-                            Id = "94",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "30"
-                        },
-                        new
-                        {
-                            Id = "95",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "31"
-                        },
-                        new
-                        {
-                            Id = "96",
-                            MatchId = "12",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "32"
-                        },
-                        new
-                        {
-                            Id = "97",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "1"
-                        },
-                        new
-                        {
-                            Id = "98",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "2"
-                        },
-                        new
-                        {
-                            Id = "99",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "3"
-                        },
-                        new
-                        {
-                            Id = "100",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "4"
-                        },
-                        new
-                        {
-                            Id = "101",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "5"
-                        },
-                        new
-                        {
-                            Id = "102",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "6"
-                        },
-                        new
-                        {
-                            Id = "103",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "7"
-                        },
-                        new
-                        {
-                            Id = "104",
-                            MatchId = "13",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "8"
-                        },
-                        new
-                        {
-                            Id = "105",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "17"
-                        },
-                        new
-                        {
-                            Id = "106",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "18"
-                        },
-                        new
-                        {
-                            Id = "107",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "19"
-                        },
-                        new
-                        {
-                            Id = "108",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "20"
-                        },
-                        new
-                        {
-                            Id = "109",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "21"
-                        },
-                        new
-                        {
-                            Id = "110",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "22"
-                        },
-                        new
-                        {
-                            Id = "111",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "23"
-                        },
-                        new
-                        {
-                            Id = "112",
-                            MatchId = "14",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "24"
-                        },
-                        new
-                        {
-                            Id = "113",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "33"
-                        },
-                        new
-                        {
-                            Id = "114",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "34"
-                        },
-                        new
-                        {
-                            Id = "115",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "35"
-                        },
-                        new
-                        {
-                            Id = "116",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "36"
-                        },
-                        new
-                        {
-                            Id = "117",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "37"
-                        },
-                        new
-                        {
-                            Id = "118",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "38"
-                        },
-                        new
-                        {
-                            Id = "119",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "39"
-                        },
-                        new
-                        {
-                            Id = "120",
-                            MatchId = "15",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "40"
-                        },
-                        new
-                        {
-                            Id = "121",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "41"
-                        },
-                        new
-                        {
-                            Id = "122",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "42"
-                        },
-                        new
-                        {
-                            Id = "123",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "43"
-                        },
-                        new
-                        {
-                            Id = "124",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "44"
-                        },
-                        new
-                        {
-                            Id = "125",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "45"
-                        },
-                        new
-                        {
-                            Id = "126",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "46"
-                        },
-                        new
-                        {
-                            Id = "127",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "17"
-                        },
-                        new
-                        {
-                            Id = "128",
-                            MatchId = "16",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "48"
-                        },
-                        new
-                        {
-                            Id = "129",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "9"
-                        },
-                        new
-                        {
-                            Id = "130",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "10"
-                        },
-                        new
-                        {
-                            Id = "131",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "11"
-                        },
-                        new
-                        {
-                            Id = "132",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "12"
-                        },
-                        new
-                        {
-                            Id = "133",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "13"
-                        },
-                        new
-                        {
-                            Id = "134",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "14"
-                        },
-                        new
-                        {
-                            Id = "135",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "15"
-                        },
-                        new
-                        {
-                            Id = "136",
-                            MatchId = "17",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "16"
-                        },
-                        new
-                        {
-                            Id = "137",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "25"
-                        },
-                        new
-                        {
-                            Id = "138",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "26"
-                        },
-                        new
-                        {
-                            Id = "139",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "27"
-                        },
-                        new
-                        {
-                            Id = "140",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "28"
-                        },
-                        new
-                        {
-                            Id = "141",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "29"
-                        },
-                        new
-                        {
-                            Id = "142",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "30"
-                        },
-                        new
-                        {
-                            Id = "143",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "31"
-                        },
-                        new
-                        {
-                            Id = "144",
-                            MatchId = "18",
-                            OccupiedReservationSeats = 0,
-                            SectionId = "32"
                         });
                 });
 
@@ -1879,20 +1089,20 @@ namespace TicketVerkoop.Domain.Migrations
                         new
                         {
                             Id = "2",
-                            City = "Oostende",
-                            Country = "België",
-                            Name = "Albertparkstadion",
-                            Street = "Leopold Van Tyghemlaan 62",
-                            Zipcode = "8400"
-                        },
-                        new
-                        {
-                            Id = "3",
                             City = "Brussel",
                             Country = "België",
                             Name = "Constant Vanden Stock stadion",
                             Street = "Theo Verbeecklaan 2",
                             Zipcode = "1070"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            City = "Oostende",
+                            Country = "België",
+                            Name = "Albertparkstadion",
+                            Street = "Leopold Van Tyghemlaan 62",
+                            Zipcode = "8400"
                         },
                         new
                         {
@@ -1906,20 +1116,20 @@ namespace TicketVerkoop.Domain.Migrations
                         new
                         {
                             Id = "5",
-                            City = "Genk",
-                            Country = "België",
-                            Name = "Cristal Arena",
-                            Street = "Stadionplein",
-                            Zipcode = "3600"
-                        },
-                        new
-                        {
-                            Id = "6",
                             City = "Gentbrugge",
                             Country = "België",
                             Name = "Ghelamco Arena",
                             Street = "Bruiloftstraat 42",
                             Zipcode = "9050"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            City = "Genk",
+                            Country = "België",
+                            Name = "Cristal Arena",
+                            Street = "Stadionplein",
+                            Zipcode = "3600"
                         });
                 });
 

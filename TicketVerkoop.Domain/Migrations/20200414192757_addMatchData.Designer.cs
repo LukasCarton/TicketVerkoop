@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketVerkoop.Domain.Context;
 
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    partial class TicketVerkoopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200414192757_addMatchData")]
+    partial class addMatchData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

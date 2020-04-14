@@ -9,7 +9,7 @@ using TicketVerkoop.Repository.Interfaces;
 
 namespace TicketVerkoop.Repository
 {
-    public class MatchSectionDAO: IMatchSectionDAO
+    public class MatchSectionDAO : IMatchSectionDAO
     {
         private readonly TicketVerkoopDbContext _dbContext;
 
@@ -28,10 +28,20 @@ namespace TicketVerkoop.Repository
                     .Include(m => m.Match.HomeTeam)
                     .Include(m => m.Match.AwayTeam)
                     .FirstOrDefaultAsync(m => m.Id == Id);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public async Task<IEnumerable<MatchSection>> GetAllByMatchAsync(string matchId)
+        {
+            return await _dbContext.MatchSections
+                .Where(m => m.MatchId == matchId)
+                .Include(m => m.Section)
+                .Include(m => m.Match)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<MatchSection>> GetAllByStadiumAsync(string stadiumId)
@@ -39,9 +49,9 @@ namespace TicketVerkoop.Repository
             try
             {
                 return await _dbContext.MatchSections
-                    .Where(m => m.Section.Stadium.Id  == stadiumId)
+                    .Where(m => m.Section.Stadium.Id == stadiumId)
                     .Include(m => m.Section)
-                    .Include(m =>m.Match)
+                    .Include(m => m.Match)
                     .ToListAsync();
             }
             catch (Exception ex)

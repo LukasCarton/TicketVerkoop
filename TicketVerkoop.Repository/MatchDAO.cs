@@ -41,6 +41,7 @@ namespace TicketVerkoop.Repository
             try
             {
                 return await _dbContext.Matches.Where(m => m.HomeTeamId == homeTeamId)
+                    .Where(m => m.MatchDate >= DateTime.Now && m.MatchDate <= DateTime.Now.AddMonths(1))
                     .Include(m => m.Stadium)
                     .Include(m => m.Season)
                     .Include(m => m.HomeTeam)

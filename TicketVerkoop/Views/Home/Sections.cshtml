@@ -9,19 +9,7 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <input type="submit" value="Reservate" class="btn btn-primary" />
-        </div>
-        <button type="submit" id="calculatePrice">Calculate total price</button>
-        <div class="form-group">
-            <label class="control-label"></label>
-            <input type="number" class="form-control" value="0" id="numberOfTickets" />
-            <span class="text-danger"></span>
-        </div>
-        <div>
-            <p>Section price: <span id="price">0</span></p>
-        </div>
-        <div>
-            <p>Total price: <span id="totalPrice">0</span></p>
+            <a href="" id="addToShoppingCartBtn" class="btn">Add to Shopping Cart</a>
         </div>
     </div>
 </div>
@@ -42,39 +30,23 @@
 @section Scripts{
     <script>
         $(() => {
-            let price = 0.0;
-            let numberOfTickets = 0;
-            let totalPrice = 0.0;
+
+            let matchId = "";
+
+            let shoppingCartBtn = $("#addToShoppingCartBtn");
+
             $("#sections .sectionTile").on("click", (event) => {
                 let section = $(event.target).closest(".sectionTile");
                 $("#sections .sectionTile").removeClass("selected");
                 section.addClass("selected");
 
-                let priceString = section.data("price");
-                $("#price").text(priceString);
+                matchId = section.data("id")
+                console.log(matchId);
 
-
-                //let numberOfTicketsString = $("#numberOfTickets").val();
-
-                //// parse price and numberOfTickets to number
-                //price = parseFloat(price);
-                //numberOfTickets = parseInt(numberOfTickets);
-
-                //let test = parseFloat(numberOfTickets);
-                //console.log(priceString);
-                //console.log(numberOfTickets);
-
-                //totalPrice = numberOfTickets * price;
-                //$("#totalPrice").text(totalPrice);
+                shoppingCartBtn.attr("href", "/ShoppingCart/Select/" + matchId);
+                shoppingCartBtn.css("background-color", "#007bff");
+                shoppingCartBtn.css("color", "white");
             });
-
-            //$("#calculatePrice").on("click", (event) => {
-            //    numberOfTickets = $("#numberOfTickets").val();
-            //    if (price != 0) {
-            //        totalPrice = numberOfTickets * price;
-            //        $("#totalPrice").text(totalPrice);
-            //    }
-            //});
 
         });
     </script>

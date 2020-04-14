@@ -229,3 +229,7 @@ body {
 .selected {
     background-color: lightblue;
 }
+
+#addToShoppingCartBtn {
+    background-color:lightgray;
+}

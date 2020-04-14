@@ -3,7 +3,7 @@
 @if (Model != null)
 {
     <li>
-        <div class="sectionTile">
+        <div class="sectionTile" data-id="@Model.Id">
             <div class="sectionName">
                 <span>@Model.Name</span>
             </div>
@@ -16,9 +16,9 @@
             <div class="sectionRing">
                 <span>Ring: @Model.Ring</span>
             </div>
-            <div>
+            @*<div>
                 @Html.ActionLink("Add To ShoppingCart", "Select","ShoppingCart", new { id = Model.Id })
-            </div>
+            </div>*@
         </div>
     </li>
 }

@@ -10,8 +10,8 @@ using TicketVerkoop.Domain.Context;
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    [Migration("20200414192757_addMatchData")]
-    partial class addMatchData
+    [Migration("20200414201802_toevoegenData")]
+    partial class toevoegenData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

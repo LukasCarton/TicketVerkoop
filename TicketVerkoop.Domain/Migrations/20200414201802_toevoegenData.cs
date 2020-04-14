@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TicketVerkoop.Domain.Migrations
 {
-    public partial class addDataAndModels : Migration
+    public partial class toevoegenData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,19 +55,6 @@ namespace TicketVerkoop.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teams",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Logo = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Teams", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Sections",
                 columns: table => new
                 {
@@ -84,6 +71,27 @@ namespace TicketVerkoop.Domain.Migrations
                     table.PrimaryKey("PK_Sections", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Sections_Stadia_StadiumId",
+                        column: x => x.StadiumId,
+                        principalTable: "Stadia",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teams",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Logo = table.Column<string>(nullable: true),
+                    StadiumId = table.Column<string>(nullable: true),
+                    SubscriptionPrice = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teams", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Teams_Stadia_StadiumId",
                         column: x => x.StadiumId,
                         principalTable: "Stadia",
                         principalColumn: "Id",
@@ -229,7 +237,8 @@ namespace TicketVerkoop.Domain.Migrations
                 values: new object[,]
                 {
                     { "1", new DateTime(2020, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { "2", new DateTime(2021, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { "2", new DateTime(2021, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { "3", new DateTime(2022, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -238,37 +247,11 @@ namespace TicketVerkoop.Domain.Migrations
                 values: new object[,]
                 {
                     { "1", "Brugge", "België", "Jan Breydelstadion", "Olympialaan 74", "8000" },
-                    { "2", "Brussel", "België", "Constant Vanden Stock stadion", "Theo Verbeecklaan 2", "1070" },
-                    { "3", "Oostende", "België", "Albertparkstadion", "Leopold Van Tyghemlaan 62", "8400" },
+                    { "2", "Oostende", "België", "Albertparkstadion", "Leopold Van Tyghemlaan 62", "8400" },
+                    { "3", "Brussel", "België", "Constant Vanden Stock stadion", "Theo Verbeecklaan 2", "1070" },
                     { "4", "Waregem", "België", "Regenboogstadion", "Zuiderlaan 17", "8790" },
-                    { "5", "Gentbrugge", "België", "Ghelamco Arena", "Bruiloftstraat 42", "9050" },
-                    { "6", "Genk", "België", "Cristal Arena", "Stadionplein", "3600" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Teams",
-                columns: new[] { "Id", "Logo", "Name" },
-                values: new object[,]
-                {
-                    { "1", "/images/Club_Brugge.png", "Club Brugge" },
-                    { "2", "/images/Oostende.png", "Oostende" },
-                    { "3", "/images/RSC_Anderlecht.png", "RSC Anderlecht" },
-                    { "4", "/images/Zulte_Waregem.png", "Zulte Waregem" },
-                    { "5", "/images/Genk.png", "Genk" },
-                    { "6", "/images/AA_Gent.png", "AA Gent" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Matches",
-                columns: new[] { "Id", "AwayTeamId", "BasePriceTicket", "HomeTeamId", "MatchDate", "SeasonId", "StadiumId" },
-                values: new object[,]
-                {
-                    { "5", "4", 20.0, "6", new DateTime(2021, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "5" },
-                    { "1", "2", 15.0, "1", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1" },
-                    { "2", "1", 12.0, "3", new DateTime(2020, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
-                    { "6", "5", 25.0, "2", new DateTime(2020, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
-                    { "4", "3", 14.0, "4", new DateTime(2020, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
-                    { "3", "4", 13.0, "2", new DateTime(2021, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "2", "3" }
+                    { "5", "Genk", "België", "Cristal Arena", "Stadionplein", "3600" },
+                    { "6", "Gentbrugge", "België", "Ghelamco Arena", "Bruiloftstraat 42", "9050" }
                 });
 
             migrationBuilder.InsertData(
@@ -276,29 +259,31 @@ namespace TicketVerkoop.Domain.Migrations
                 columns: new[] { "Id", "Capacity", "Name", "OccupiedSubscriptionSeats", "PriceFactor", "Ring", "StadiumId" },
                 values: new object[,]
                 {
+                    { "1", 1000, "North", 0, 0.80000000000000004, 0, "1" },
+                    { "48", 3000, "West", 0, 1.5, 1, "6" },
+                    { "25", 1000, "North", 0, 0.80000000000000004, 0, "4" },
+                    { "26", 3000, "East", 0, 1.2, 0, "4" },
+                    { "27", 1000, "South", 0, 0.80000000000000004, 0, "4" },
+                    { "28", 3000, "West", 0, 1.2, 0, "4" },
                     { "29", 1000, "North", 0, 1.1000000000000001, 1, "4" },
                     { "30", 3000, "East", 0, 1.5, 1, "4" },
                     { "31", 1000, "South", 0, 1.1000000000000001, 1, "4" },
                     { "32", 3000, "West", 0, 1.5, 1, "4" },
-                    { "33", 1000, "North", 0, 0.80000000000000004, 0, "5" },
+                    { "24", 3000, "West", 0, 1.5, 1, "3" },
+                    { "45", 1000, "North", 0, 1.1000000000000001, 1, "6" },
                     { "34", 3000, "East", 0, 1.2, 0, "5" },
                     { "35", 1000, "South", 0, 0.80000000000000004, 0, "5" },
                     { "36", 3000, "West", 0, 1.2, 0, "5" },
                     { "37", 1000, "North", 0, 1.1000000000000001, 1, "5" },
                     { "38", 3000, "East", 0, 1.5, 1, "5" },
-                    { "28", 3000, "West", 0, 1.2, 0, "4" },
-                    { "41", 1000, "North", 0, 0.80000000000000004, 0, "6" },
-                    { "42", 3000, "East", 0, 1.2, 0, "6" },
-                    { "43", 1000, "South", 0, 0.80000000000000004, 0, "6" },
-                    { "44", 3000, "West", 0, 1.2, 0, "6" },
-                    { "45", 1000, "North", 0, 1.1000000000000001, 1, "6" },
-                    { "46", 3000, "East", 0, 1.5, 1, "6" },
-                    { "47", 1000, "South", 0, 1.1000000000000001, 1, "6" },
-                    { "48", 3000, "West", 0, 1.5, 1, "6" },
                     { "39", 1000, "South", 0, 1.1000000000000001, 1, "5" },
                     { "40", 3000, "West", 0, 1.5, 1, "5" },
-                    { "27", 1000, "South", 0, 0.80000000000000004, 0, "4" },
-                    { "25", 1000, "North", 0, 0.80000000000000004, 0, "4" },
+                    { "44", 3000, "West", 0, 1.2, 0, "6" },
+                    { "41", 1000, "North", 0, 0.80000000000000004, 0, "6" },
+                    { "33", 1000, "North", 0, 0.80000000000000004, 0, "5" },
+                    { "23", 1000, "South", 0, 1.1000000000000001, 1, "3" },
+                    { "22", 3000, "East", 0, 1.5, 1, "3" },
+                    { "21", 1000, "North", 0, 1.1000000000000001, 1, "3" },
                     { "2", 3000, "East", 0, 1.2, 0, "1" },
                     { "3", 1000, "South", 0, 0.80000000000000004, 0, "1" },
                     { "4", 3000, "West", 0, 1.2, 0, "1" },
@@ -306,6 +291,7 @@ namespace TicketVerkoop.Domain.Migrations
                     { "6", 3000, "East", 0, 1.5, 1, "1" },
                     { "7", 1000, "South", 0, 1.1000000000000001, 1, "1" },
                     { "8", 3000, "West", 0, 1.5, 1, "1" },
+                    { "47", 1000, "South", 0, 1.1000000000000001, 1, "6" },
                     { "9", 1000, "North", 0, 0.80000000000000004, 0, "2" },
                     { "10", 3000, "East", 0, 1.2, 0, "2" },
                     { "11", 1000, "South", 0, 0.80000000000000004, 0, "2" },
@@ -314,16 +300,51 @@ namespace TicketVerkoop.Domain.Migrations
                     { "14", 3000, "East", 0, 1.5, 1, "2" },
                     { "15", 1000, "South", 0, 1.1000000000000001, 1, "2" },
                     { "16", 3000, "West", 0, 1.5, 1, "2" },
+                    { "46", 3000, "East", 0, 1.5, 1, "6" },
                     { "17", 1000, "North", 0, 0.80000000000000004, 0, "3" },
                     { "18", 3000, "East", 0, 1.2, 0, "3" },
                     { "19", 1000, "South", 0, 0.80000000000000004, 0, "3" },
                     { "20", 3000, "West", 0, 1.2, 0, "3" },
-                    { "21", 1000, "North", 0, 1.1000000000000001, 1, "3" },
-                    { "22", 3000, "East", 0, 1.5, 1, "3" },
-                    { "23", 1000, "South", 0, 1.1000000000000001, 1, "3" },
-                    { "24", 3000, "West", 0, 1.5, 1, "3" },
-                    { "26", 3000, "East", 0, 1.2, 0, "4" },
-                    { "1", 1000, "North", 0, 0.80000000000000004, 0, "1" }
+                    { "42", 3000, "East", 0, 1.2, 0, "6" },
+                    { "43", 1000, "South", 0, 0.80000000000000004, 0, "6" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Teams",
+                columns: new[] { "Id", "Logo", "Name", "StadiumId", "SubscriptionPrice" },
+                values: new object[,]
+                {
+                    { "2", "/images/Oostende.png", "Oostende", "3", 200.0 },
+                    { "4", "/images/Zulte_Waregem.png", "Zulte Waregem", "4", 250.0 },
+                    { "3", "/images/RSC_Anderlecht.png", "RSC Anderlecht", "2", 500.0 },
+                    { "1", "/images/Club_Brugge.png", "Club Brugge", "1", 450.0 },
+                    { "6", "/images/AA_Gent.png", "AA Gent", "5", 300.0 },
+                    { "5", "/images/Genk.png", "Genk", "6", 350.0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Matches",
+                columns: new[] { "Id", "AwayTeamId", "BasePriceTicket", "HomeTeamId", "MatchDate", "SeasonId", "StadiumId" },
+                values: new object[,]
+                {
+                    { "1", "2", 15.0, "1", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1", "1" },
+                    { "12", "5", 12.0, "4", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
+                    { "9", "6", 13.0, "5", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1", "5" },
+                    { "6", "5", 12.0, "4", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" },
+                    { "3", "6", 13.0, "5", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1", "5" },
+                    { "16", "1", 15.0, "6", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
+                    { "10", "6", 15.0, "6", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
+                    { "4", "1", 15.0, "6", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1", "6" },
+                    { "14", "4", 12.0, "3", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1", "3" },
+                    { "8", "4", 12.0, "3", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1", "3" },
+                    { "2", "4", 12.0, "3", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1", "3" },
+                    { "17", "3", 12.0, "2", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
+                    { "13", "2", 15.0, "1", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1", "1" },
+                    { "11", "3", 12.0, "2", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
+                    { "7", "2", 15.0, "1", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1", "1" },
+                    { "5", "3", 12.0, "2", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1", "2" },
+                    { "15", "6", 13.0, "5", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1", "5" },
+                    { "18", "5", 12.0, "4", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1", "4" }
                 });
 
             migrationBuilder.InsertData(
@@ -332,53 +353,149 @@ namespace TicketVerkoop.Domain.Migrations
                 values: new object[,]
                 {
                     { "1", "1", 0, "1" },
-                    { "27", "4", 0, "27" },
-                    { "28", "4", 0, "28" },
-                    { "29", "4", 0, "29" },
-                    { "30", "4", 0, "30" },
-                    { "31", "4", 0, "31" },
-                    { "32", "4", 0, "32" },
-                    { "41", "6", 0, "41" },
-                    { "42", "6", 0, "42" },
-                    { "43", "6", 0, "43" },
-                    { "26", "4", 0, "26" },
-                    { "44", "6", 0, "44" },
-                    { "46", "6", 0, "46" },
-                    { "47", "6", 0, "47" },
-                    { "48", "6", 0, "48" },
-                    { "33", "5", 0, "33" },
-                    { "34", "5", 0, "34" },
-                    { "35", "5", 0, "35" },
-                    { "36", "5", 0, "36" },
-                    { "37", "5", 0, "37" },
-                    { "38", "5", 0, "38" },
-                    { "45", "6", 0, "45" },
-                    { "25", "4", 0, "25" },
-                    { "24", "3", 0, "24" },
-                    { "23", "3", 0, "23" },
+                    { "125", "16", 0, "45" },
+                    { "126", "16", 0, "46" },
+                    { "127", "16", 0, "17" },
+                    { "128", "16", 0, "48" },
+                    { "17", "3", 0, "33" },
+                    { "18", "3", 0, "34" },
+                    { "124", "16", 0, "44" },
+                    { "19", "3", 0, "35" },
+                    { "21", "3", 0, "37" },
+                    { "22", "3", 0, "38" },
+                    { "23", "3", 0, "39" },
+                    { "24", "3", 0, "40" },
+                    { "41", "6", 0, "25" },
+                    { "42", "6", 0, "26" },
+                    { "20", "3", 0, "36" },
+                    { "43", "6", 0, "27" },
+                    { "123", "16", 0, "43" },
+                    { "121", "16", 0, "41" },
+                    { "27", "4", 0, "43" },
+                    { "28", "4", 0, "44" },
+                    { "29", "4", 0, "45" },
+                    { "30", "4", 0, "46" },
+                    { "31", "4", 0, "17" },
+                    { "32", "4", 0, "48" },
+                    { "122", "16", 0, "42" },
+                    { "73", "10", 0, "41" },
+                    { "75", "10", 0, "43" },
+                    { "76", "10", 0, "44" },
+                    { "77", "10", 0, "45" },
+                    { "78", "10", 0, "46" },
+                    { "79", "10", 0, "17" },
+                    { "80", "10", 0, "48" },
+                    { "74", "10", 0, "42" },
+                    { "26", "4", 0, "42" },
+                    { "44", "6", 0, "28" },
+                    { "46", "6", 0, "30" },
+                    { "113", "15", 0, "33" },
+                    { "114", "15", 0, "34" },
+                    { "115", "15", 0, "35" },
+                    { "116", "15", 0, "36" },
+                    { "117", "15", 0, "37" },
+                    { "118", "15", 0, "38" },
+                    { "96", "12", 0, "32" },
+                    { "119", "15", 0, "39" },
+                    { "137", "18", 0, "25" },
+                    { "138", "18", 0, "26" },
+                    { "139", "18", 0, "27" },
+                    { "140", "18", 0, "28" },
+                    { "141", "18", 0, "29" },
+                    { "142", "18", 0, "30" },
+                    { "120", "15", 0, "40" },
+                    { "45", "6", 0, "29" },
+                    { "95", "12", 0, "31" },
+                    { "93", "12", 0, "29" },
+                    { "47", "6", 0, "31" },
+                    { "48", "6", 0, "32" },
+                    { "65", "9", 0, "33" },
+                    { "66", "9", 0, "34" },
+                    { "67", "9", 0, "35" },
+                    { "68", "9", 0, "36" },
+                    { "94", "12", 0, "30" },
+                    { "69", "9", 0, "37" },
+                    { "71", "9", 0, "39" },
+                    { "72", "9", 0, "40" },
+                    { "89", "12", 0, "25" },
+                    { "90", "12", 0, "26" },
+                    { "91", "12", 0, "27" },
+                    { "92", "12", 0, "28" },
+                    { "70", "9", 0, "38" },
+                    { "25", "4", 0, "41" },
+                    { "112", "14", 0, "24" },
+                    { "111", "14", 0, "23" },
+                    { "52", "7", 0, "4" },
+                    { "53", "7", 0, "5" },
+                    { "54", "7", 0, "6" },
+                    { "55", "7", 0, "7" },
+                    { "56", "7", 0, "8" },
+                    { "81", "11", 0, "9" },
+                    { "51", "7", 0, "3" },
+                    { "82", "11", 0, "10" },
+                    { "84", "11", 0, "12" },
+                    { "85", "11", 0, "13" },
+                    { "86", "11", 0, "14" },
+                    { "87", "11", 0, "15" },
+                    { "88", "11", 0, "16" },
+                    { "97", "13", 0, "1" },
+                    { "83", "11", 0, "11" },
+                    { "98", "13", 0, "2" },
+                    { "50", "7", 0, "2" },
+                    { "40", "5", 0, "16" },
                     { "2", "1", 0, "2" },
                     { "3", "1", 0, "3" },
                     { "4", "1", 0, "4" },
                     { "5", "1", 0, "5" },
                     { "6", "1", 0, "6" },
                     { "7", "1", 0, "7" },
+                    { "49", "7", 0, "1" },
                     { "8", "1", 0, "8" },
-                    { "9", "2", 0, "9" },
-                    { "10", "2", 0, "10" },
-                    { "11", "2", 0, "11" },
-                    { "12", "2", 0, "12" },
-                    { "13", "2", 0, "13" },
-                    { "14", "2", 0, "14" },
-                    { "15", "2", 0, "15" },
-                    { "16", "2", 0, "16" },
-                    { "17", "3", 0, "17" },
-                    { "18", "3", 0, "18" },
-                    { "19", "3", 0, "19" },
-                    { "20", "3", 0, "20" },
-                    { "21", "3", 0, "21" },
-                    { "22", "3", 0, "22" },
-                    { "39", "5", 0, "39" },
-                    { "40", "5", 0, "40" }
+                    { "34", "5", 0, "10" },
+                    { "35", "5", 0, "11" },
+                    { "36", "5", 0, "12" },
+                    { "37", "5", 0, "13" },
+                    { "38", "5", 0, "14" },
+                    { "39", "5", 0, "15" },
+                    { "33", "5", 0, "9" },
+                    { "99", "13", 0, "3" },
+                    { "100", "13", 0, "4" },
+                    { "101", "13", 0, "5" },
+                    { "57", "8", 0, "17" },
+                    { "58", "8", 0, "18" },
+                    { "59", "8", 0, "19" },
+                    { "60", "8", 0, "20" },
+                    { "61", "8", 0, "21" },
+                    { "62", "8", 0, "22" },
+                    { "16", "2", 0, "24" },
+                    { "63", "8", 0, "23" },
+                    { "105", "14", 0, "17" },
+                    { "106", "14", 0, "18" },
+                    { "107", "14", 0, "19" },
+                    { "108", "14", 0, "20" },
+                    { "109", "14", 0, "21" },
+                    { "110", "14", 0, "22" },
+                    { "64", "8", 0, "24" },
+                    { "15", "2", 0, "23" },
+                    { "14", "2", 0, "22" },
+                    { "13", "2", 0, "21" },
+                    { "102", "13", 0, "6" },
+                    { "103", "13", 0, "7" },
+                    { "104", "13", 0, "8" },
+                    { "129", "17", 0, "9" },
+                    { "130", "17", 0, "10" },
+                    { "131", "17", 0, "11" },
+                    { "132", "17", 0, "12" },
+                    { "133", "17", 0, "13" },
+                    { "134", "17", 0, "14" },
+                    { "135", "17", 0, "15" },
+                    { "136", "17", 0, "16" },
+                    { "9", "2", 0, "17" },
+                    { "10", "2", 0, "18" },
+                    { "11", "2", 0, "19" },
+                    { "12", "2", 0, "20" },
+                    { "143", "18", 0, "31" },
+                    { "144", "18", 0, "32" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -445,6 +562,11 @@ namespace TicketVerkoop.Domain.Migrations
                 name: "IX_Subscriptions_TeamId",
                 table: "Subscriptions",
                 column: "TeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Teams_StadiumId",
+                table: "Teams",
+                column: "StadiumId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

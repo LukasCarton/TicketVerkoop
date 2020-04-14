@@ -165,7 +165,7 @@ body {
 
     .stadium {
         display: none;
-        display: none;
+        /*display: none;*/
     }
 
     .reservationArea {
@@ -233,3 +233,28 @@ body {
 #addToShoppingCartBtn {
     background-color:lightgray;
 }
+
+@media screen and (max-width: 991px) {
+    .sectionName {
+        display: none;
+    }
+
+    .sectionAvailablePlaces {
+        display: inline-block;
+        width: 70%;
+        box-sizing: border-box;
+        color: black;
+    }
+
+    .sectionPrice {
+        display: inline-block;
+        width: 29%;
+        box-sizing: border-box;
+        color: black;
+    }
+
+    .sectionRing {
+        display:none;
+    }
+}
+

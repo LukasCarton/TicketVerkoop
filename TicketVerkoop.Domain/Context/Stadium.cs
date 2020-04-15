@@ -16,7 +16,6 @@ namespace TicketVerkoop.Domain.Context
         public string Country { get; set; }
 
         public ICollection<Section> Sections { get; set; }
-        public ICollection<Match> Matches { get; set; }
         public ICollection<Team> Teams { get; set; }
     }
 }

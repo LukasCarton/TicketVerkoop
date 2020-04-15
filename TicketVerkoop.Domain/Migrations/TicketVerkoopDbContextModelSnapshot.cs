@@ -58,8 +58,6 @@ namespace TicketVerkoop.Domain.Migrations
 
                     b.Property<string>("SeasonId");
 
-                    b.Property<string>("StadiumId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AwayTeamId");
@@ -67,8 +65,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasIndex("HomeTeamId");
 
                     b.HasIndex("SeasonId");
-
-                    b.HasIndex("StadiumId");
 
                     b.ToTable("Matches");
 
@@ -80,8 +76,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "1",
                             MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "1"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -90,8 +85,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "3",
                             MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "3"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -100,8 +94,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 13.0,
                             HomeTeamId = "5",
                             MatchDate = new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -110,8 +103,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "6",
                             MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "6"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -120,8 +112,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "2",
                             MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -130,8 +121,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "4",
                             MatchDate = new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -140,8 +130,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "1",
                             MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "1"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -150,8 +139,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "3",
                             MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "3"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -160,8 +148,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 13.0,
                             HomeTeamId = "5",
                             MatchDate = new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -170,8 +157,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "6",
                             MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "6"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -180,8 +166,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "2",
                             MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -190,8 +175,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "4",
                             MatchDate = new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -200,8 +184,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "1",
                             MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "1"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -210,8 +193,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "3",
                             MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "3"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -220,8 +202,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 13.0,
                             HomeTeamId = "5",
                             MatchDate = new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "5"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -230,8 +211,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 15.0,
                             HomeTeamId = "6",
                             MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "6"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -240,8 +220,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "2",
                             MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "2"
+                            SeasonId = "1"
                         },
                         new
                         {
@@ -250,8 +229,7 @@ namespace TicketVerkoop.Domain.Migrations
                             BasePriceTicket = 12.0,
                             HomeTeamId = "4",
                             MatchDate = new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            SeasonId = "1",
-                            StadiumId = "4"
+                            SeasonId = "1"
                         });
                 });
 
@@ -1982,7 +1960,7 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "2",
                             Logo = "/images/Oostende.png",
                             Name = "Oostende",
-                            StadiumId = "3",
+                            StadiumId = "2",
                             SubscriptionPrice = 200.0
                         },
                         new
@@ -1990,7 +1968,7 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "3",
                             Logo = "/images/RSC_Anderlecht.png",
                             Name = "RSC Anderlecht",
-                            StadiumId = "2",
+                            StadiumId = "3",
                             SubscriptionPrice = 500.0
                         },
                         new
@@ -2006,7 +1984,7 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "5",
                             Logo = "/images/Genk.png",
                             Name = "Genk",
-                            StadiumId = "6",
+                            StadiumId = "5",
                             SubscriptionPrice = 350.0
                         },
                         new
@@ -2014,7 +1992,7 @@ namespace TicketVerkoop.Domain.Migrations
                             Id = "6",
                             Logo = "/images/AA_Gent.png",
                             Name = "AA Gent",
-                            StadiumId = "5",
+                            StadiumId = "6",
                             SubscriptionPrice = 300.0
                         });
                 });
@@ -2032,10 +2010,6 @@ namespace TicketVerkoop.Domain.Migrations
                     b.HasOne("TicketVerkoop.Domain.Context.Season", "Season")
                         .WithMany("Matches")
                         .HasForeignKey("SeasonId");
-
-                    b.HasOne("TicketVerkoop.Domain.Context.Stadium", "Stadium")
-                        .WithMany("Matches")
-                        .HasForeignKey("StadiumId");
                 });
 
             modelBuilder.Entity("TicketVerkoop.Domain.Context.MatchSection", b =>

@@ -1,49 +1,52 @@
-﻿@model TicketVerkoop.Domain.Context.Subscription
+﻿@model TicketVerkoop.ViewModels.SubscriptionSectionVM
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Subscriptions";
 }
 
-<h1>Index</h1>
+<h1 id="team" data-team="@Model.TeamName">Jaarabonnement @Model.TeamName</h1>
+<h2>@Model.StartDate.Year - @Model.EndDate.Year</h2>
 
-<div>
-    <h4>Subscription</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SeasonId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SeasonId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TeamId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TeamId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SectionId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SectionId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-    </dl>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="" id="addSubscribtionToShoppingCartBtn" class="btn">Add to Shopping Cart</a>
+        </div>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@if (Model.SectionVMs != null)
+{
+    <div>
+        <ul id="subscriptionSections">
+            @foreach (var item in Model.SectionVMs)
+            {
+                @await Html.PartialAsync("DisplayTemplates/_SectionView", item)
+
+            }
+        </ul>
+    </div>
+}
+
+@section Scripts{
+    <script>
+        $(() => {
+
+            let subscriptionSectionId = "";
+            let shoppingCartBtn = $("#addSubscribtionToShoppingCartBtn");
+            let teamname = $("#team").data("team");
+            $("#subscriptionSections .sectionTile").on("click", (event) => {
+                let section = $(event.target).closest(".sectionTile");
+                $("#subscriptionSections .sectionTile").removeClass("selected");
+                section.addClass("selected");
+
+                subscriptionSectionId = section.data("id")
+
+                shoppingCartBtn.attr("href", "/ShoppingCart/SelectSubscription?id=" + subscriptionSectionId + "&teamName=" + teamname);
+                shoppingCartBtn.css("background-color", "#007bff");
+                shoppingCartBtn.css("color", "white");
+            });
+
+        });
+    </script>
+}

@@ -1,77 +1,32 @@
-﻿@model IEnumerable<TicketVerkoop.ViewModels.MatchVM>
+﻿@model TicketVerkoop.ViewModels.TeamWithMatchesVM
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Matches";
 }
 
-<h1>Kalender</h1>
+<h1>Thuiswedstrijden @Model.TeamName</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Match"
-              asp-action="Index">
-
-            <div class="form-group">
-                <label for="teamId" class="control-label"></label>
-                <select name="teamId" id="teamId"
-                        asp-items="@ViewBag.lstTeams" class="form-control">
-                    <option id="null" value="">Selecteer een team</option>
-                </select>
-            </div>
-
-            @*<div class="form-group">
-                <input type="submit" value="Zoeken" class="btn btn-primary" />
-            </div>*@
-        </form>
+        <div class="form-group">
+            <a asp-controller="Subscription"
+               asp-action="Index"
+               asp-route-team="@Model.TeamName"
+               class="btn btn-primary">Jaarabonnement kopen</a>
+        </div>
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MatchDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeTeamNaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayTeamNaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StadiumNaam)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.MatchDate.ToString("g")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeTeamNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AwayTeamNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StadiumNaam)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 
-@section scripts
+@if (Model.MatchVMs != null)
 {
-    <script>
-        $("#teamId").on("change", () => {
+    <div>
+        <ul id="matches">
+            @foreach (var item in Model.MatchVMs)
+            {
+                @await Html.PartialAsync("DisplayTemplates/_MatchView", item)
 
-            $("form").trigger("submit");
-        });
-    </script>
+            }
+        </ul>
+    </div>
 }

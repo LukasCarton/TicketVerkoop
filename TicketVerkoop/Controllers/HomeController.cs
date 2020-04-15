@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TicketVerkoop.Domain.Context;
 using TicketVerkoop.Models;
 using TicketVerkoop.Service.Interfaces;
 using TicketVerkoop.ViewModels;
@@ -15,29 +12,13 @@ namespace TicketVerkoop.Controllers
 {
     public class HomeController : Controller
     {
-        private ICustomerService _customerService;
         private ITeamService _teamService;
-        private IMatchService _matchService;
-        private ISectionService _sectionService;
-        private IMatchSectionService _matchSectionService;
-        private ISeasonService _seasonService;
         private readonly IMapper _mapper;
 
-        public HomeController(IMapper mapper,
-            ICustomerService customerService,
-            ITeamService teamService,
-            IMatchService matchService,
-            ISectionService sectionService,
-            IMatchSectionService matchSectionService,
-            ISeasonService seasonService)
+        public HomeController(IMapper mapper, ITeamService teamService)
         {
             _mapper = mapper;
-            _customerService = customerService;
             _teamService = teamService;
-            _matchService = matchService;
-            _sectionService = sectionService;
-            _matchSectionService = matchSectionService;
-            _seasonService = seasonService;
         }
 
         public async Task<IActionResult> Index()
@@ -48,53 +29,6 @@ namespace TicketVerkoop.Controllers
             List<TeamVM> listVM = _mapper.Map<List<TeamVM>>(list);
             return View(listVM);
         }
-
-        public async Task<IActionResult> Matches(string team)
-        {
-            var currentTeam = await _teamService.GetAsync(team);
-            var homeTeamId = currentTeam.Id;
-
-
-            var list = await _matchService.GetAllByHomeTeam(homeTeamId);
-            List<MatchVM> matchVMs = _mapper.Map<List<MatchVM>>(list);
-            TeamWithMatchesVM listVM = new TeamWithMatchesVM { TeamName = currentTeam.Name,StadiumId=currentTeam.StadiumId, MatchVMs = matchVMs };
-
-            return View(listVM);
-        }
-
-
-        public async Task<IActionResult> Sections(string match)
-        {
-            var matchSections = await _matchSectionService.GetAllByMatchAsync(match);
-            List<MatchSectionVM> listVM = _mapper.Map<List<MatchSectionVM>>(matchSections);
-            return View(listVM);
-        }
-
-        public async Task<IActionResult> Subscriptions(string team)
-        {
-            var currentTeam = await _teamService.GetAsync(team);
-            var sections = await _sectionService.GetAllByStadiumAsync(currentTeam.StadiumId);
-            var season = await _seasonService.GetNextSeasonAsync();
-
-            List<SectionVM> sectionVMs = _mapper.Map<List<SectionVM>>(sections);
-
-            foreach (var item in sectionVMs)
-            {
-                item.Price = item.Price * currentTeam.SubscriptionPrice;
-            }
-
-            SubscriptionSectionVM listVM = new SubscriptionSectionVM
-            {
-                TeamName = currentTeam.Name,
-                TeamLogo = currentTeam.Logo,
-                StartDate = season.StartDate,
-                EndDate = season.EndDate,
-                SectionVMs = sectionVMs
-            };
-
-            return View(listVM);
-        }
-
 
         public IActionResult Privacy()
         {

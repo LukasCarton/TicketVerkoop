@@ -1,52 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TicketVerkoop.Domain.Context;
 using TicketVerkoop.Service.Interfaces;
+using TicketVerkoop.ViewModels;
 
 namespace TicketVerkoop.Controllers
 {
     public class SubscriptionController : Controller
     {
         private ISubscriptionService _subscriptionService;
+        private ITeamService _teamService;
+        private ISectionService _sectionService;
+        private ISeasonService _seasonService;
 
         private readonly IMapper _mapper;
 
-        public SubscriptionController(ISubscriptionService subscriptionService, IMapper mapper)
+        public SubscriptionController(IMapper mapper, 
+            ISubscriptionService subscriptionService, 
+            ITeamService teamService, 
+            ISectionService sectionService,
+            ISeasonService seasonService)
         {
-            _subscriptionService = subscriptionService;
             _mapper = mapper;
+            _subscriptionService = subscriptionService;
+            _teamService = teamService;
+            _sectionService = sectionService;
+            _seasonService = seasonService;
+
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string team)
         {
-            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Subscription s = new Subscription
+            var currentTeam = await _teamService.GetAsync(team);
+            var sections = await _sectionService.GetAllByStadiumAsync(currentTeam.StadiumId);
+            var season = await _seasonService.GetNextSeasonAsync();
+
+            List<SectionVM> sectionVMs = _mapper.Map<List<SectionVM>>(sections);
+
+            foreach (var item in sectionVMs)
             {
-                SeasonId = "1",
-                TeamId = "1",
-                CustomerId = id,
-                SectionId = "1"
+                item.Price = item.Price * currentTeam.SubscriptionPrice;
+            }
+
+            SubscriptionSectionVM listVM = new SubscriptionSectionVM
+            {
+                TeamName = currentTeam.Name,
+                TeamLogo = currentTeam.Logo,
+                StartDate = season.StartDate,
+                EndDate = season.EndDate,
+                SectionVMs = sectionVMs
             };
-            await _subscriptionService.CreateAsync(s);
-            return View(s);
-        }
 
-        public async Task<IActionResult> ListSubscriptions()
-        {
-            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var subscriptions = await _subscriptionService.GetAllCustomerSubscriptionAsync(id);
-            return View(subscriptions);
+            return View(listVM);
         }
-
-        public string Id { get; set; }
-        public string SeasonId { get; set; }
-        public string TeamId { get; set; }
-        public string SectionId { get; set; }
-        public string CustomerId { get; set; }
     }
 }

@@ -24,21 +24,6 @@ namespace TicketVerkoop.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Reservation r = new Reservation
-            {
-                Id = "e0fcc3a5-dc32-4753-87ac-7956db6a517f",
-                ReservationDate = DateTime.Today,
-                NumberOfTickets = 5,
-                CustomerId = id,
-                MatchSectionId = "1"
-            };
-            await _reservationService.CreateAsync(r);
-            return View(r);
-        }
-
         public async Task<IActionResult> ListReservations()
         {
             var id = User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -13,6 +13,7 @@ namespace TicketVerkoop.Domain.Context
         public int NumberOfTickets { get; set; }
         public string CustomerId { get; set; }
         public string MatchSectionId { get; set; }
+        public double Price{ get; set; }
 
         public Customer Customer { get; set; }
         public MatchSection MatchSection { get; set; }

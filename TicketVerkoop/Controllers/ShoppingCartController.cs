@@ -112,7 +112,7 @@ namespace TicketVerkoop.Controllers
             return View("index", cartList);
 
         }
-
+        [Authorize]
         public async Task<IActionResult> Select(string id)
         {
             if (id == null)
@@ -153,6 +153,7 @@ namespace TicketVerkoop.Controllers
             return RedirectToAction("Index", "ShoppingCart");
 
         }
+        [Authorize]
         public async Task<IActionResult> SelectSubscription(string id,string teamName)
         {
             if (id == null || teamName == null)
@@ -209,6 +210,7 @@ namespace TicketVerkoop.Controllers
                 {
                     reservations[i].CustomerId = userID;
                     shoppingcart.Reservations[i].Price = shoppingcart.Reservations[i].Price * shoppingcart.Reservations[i].NumberOfTickets;
+                    reservations[i].Price = shoppingcart.Reservations[i].Price;
                     await _reservationService.CreateAsync(reservations[i]);
                 }
             }
@@ -268,8 +270,6 @@ namespace TicketVerkoop.Controllers
                     message += "------<br/>";
                 }
             }
-
-
             return message;
         }
     }

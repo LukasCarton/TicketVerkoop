@@ -75,8 +75,7 @@
                                readonly="readonly" class="form-control" />
 
                         @{
-                            var subtotaal = Math.Round(Model.Reservations[i].Price
-                                            * Model.Reservations[i].NumberOfTickets,2);
+                            var subtotaal = Model.Reservations[i].Price * Model.Reservations[i].NumberOfTickets;
                             totalPrice += (float)subtotaal;
                         }
                     </td>

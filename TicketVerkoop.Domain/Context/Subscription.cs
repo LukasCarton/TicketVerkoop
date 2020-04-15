@@ -13,6 +13,7 @@ namespace TicketVerkoop.Domain.Context
         public string TeamId { get; set; }
         public string SectionId { get; set; }
         public string CustomerId { get; set; }
+        public double Price { get; set; }
 
         public Season Season { get; set; }
         public Team Team { get; set; }

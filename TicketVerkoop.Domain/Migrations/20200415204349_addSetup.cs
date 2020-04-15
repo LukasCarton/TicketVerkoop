@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TicketVerkoop.Domain.Migrations
 {
-    public partial class AddMigrationv1 : Migration
+    public partial class addSetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,7 +140,8 @@ namespace TicketVerkoop.Domain.Migrations
                     SeasonId = table.Column<string>(nullable: true),
                     TeamId = table.Column<string>(nullable: true),
                     SectionId = table.Column<string>(nullable: true),
-                    CustomerId = table.Column<string>(nullable: true)
+                    CustomerId = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -205,7 +206,8 @@ namespace TicketVerkoop.Domain.Migrations
                     ReservationDate = table.Column<DateTime>(nullable: false),
                     NumberOfTickets = table.Column<int>(nullable: false),
                     CustomerId = table.Column<string>(nullable: true),
-                    MatchSectionId = table.Column<string>(nullable: true)
+                    MatchSectionId = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {

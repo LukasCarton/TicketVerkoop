@@ -10,8 +10,8 @@ using TicketVerkoop.Domain.Context;
 namespace TicketVerkoop.Domain.Migrations
 {
     [DbContext(typeof(TicketVerkoopDbContext))]
-    [Migration("20200415200647_AddMigrationv1")]
-    partial class AddMigrationv1
+    [Migration("20200415204349_addSetup")]
+    partial class addSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1276,6 +1276,8 @@ namespace TicketVerkoop.Domain.Migrations
 
                     b.Property<int>("NumberOfTickets");
 
+                    b.Property<double>("Price");
+
                     b.Property<DateTime>("ReservationDate");
 
                     b.HasKey("Id");
@@ -1909,6 +1911,8 @@ namespace TicketVerkoop.Domain.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CustomerId");
+
+                    b.Property<double>("Price");
 
                     b.Property<string>("SeasonId");
 

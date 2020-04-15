@@ -29,7 +29,6 @@ namespace TicketVerkoop.Automapper
 
             CreateMap<Reservation, ReservationVM>()
                 .ForMember(dest => dest.SectionName, opts => opts.MapFrom(src => src.MatchSection.Section.Name))
-                .ForMember(dest => dest.Price, opts => opts.MapFrom(src => src.MatchSection.Match.BasePriceTicket*src.NumberOfTickets))
                 .ForMember(dest => dest.HomeTeam, opts => opts.MapFrom(src => src.MatchSection.Match.HomeTeam.Name))
                 .ForMember(dest => dest.MatchDate, opts => opts.MapFrom(src => src.MatchSection.Match.MatchDate))
                 .ForMember(dest => dest.AwayTeam, opts => opts.MapFrom(src => src.MatchSection.Match.AwayTeam.Name));

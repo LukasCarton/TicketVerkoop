@@ -1274,6 +1274,8 @@ namespace TicketVerkoop.Domain.Migrations
 
                     b.Property<int>("NumberOfTickets");
 
+                    b.Property<double>("Price");
+
                     b.Property<DateTime>("ReservationDate");
 
                     b.HasKey("Id");
@@ -1907,6 +1909,8 @@ namespace TicketVerkoop.Domain.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CustomerId");
+
+                    b.Property<double>("Price");
 
                     b.Property<string>("SeasonId");
 

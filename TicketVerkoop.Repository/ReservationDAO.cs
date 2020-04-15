@@ -28,6 +28,7 @@ namespace TicketVerkoop.Repository
                 NumberOfTickets = entity.NumberOfTickets,
                 CustomerId = entity.CustomerId,
                 MatchSectionId = entity.MatchSectionId,
+                Price = entity.Price
             };
             _dbContext.Entry(reservation).State = EntityState.Added;
             var matchSection = await _dbContext.MatchSections.FirstOrDefaultAsync(s => s.Id == entity.MatchSectionId);

@@ -54,6 +54,7 @@ namespace TicketVerkoop.Automapper
                 .ForMember(dest => dest.AwayTeam, opts => opts.MapFrom(src => src.Match.AwayTeam.Name));
 
             CreateMap<ReservationVM, Reservation>();
+            CreateMap<SubscriptionCartVM, Subscription>();
 
         }
     }

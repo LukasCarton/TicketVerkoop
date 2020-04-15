@@ -1,0 +1,20 @@
+﻿@model TicketVerkoop.ViewModels.SubscriptionCartVM
+
+<li>
+    <div>
+        <div>
+            <span>Season: @Model.SeasonStartDate - @Model.SeasonEndDate</span>
+        </div>
+        <div>
+            <span>Team: @Model.TeamName</span>
+        </div>
+        <div>
+            <span>Section: @Model.SectionName</span>
+        </div>
+        <div>
+            <span>Price: @Model.Price.ToString("C2")</span>
+        </div>
+    </div>
+</li>
+    
+

@@ -1,0 +1,24 @@
+﻿@model TicketVerkoop.ViewModels.ReservationVM
+
+<li>
+    <div>
+        <div>
+            <span>Matchday: @Model.MatchDate</span>
+        </div>
+        <div>
+            <span>Tickets: @Model.NumberOfTickets</span>
+        </div>
+        <div>
+            <span>Price: @Model.Price.ToString("C2")</span>
+        </div>
+        <div>
+            <span>Section: @Model.SectionName</span>
+        </div>
+        <div>
+            <span>Home: @Model.HomeTeam</span>
+        </div>
+        <div>
+            <span>Home: @Model.AwayTeam</span>
+        </div>
+    </div>
+</li>

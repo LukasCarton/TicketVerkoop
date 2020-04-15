@@ -14,40 +14,40 @@
         <em>Review</em> your cart:
     </h3>
 
-
-
-    @if (Model != null)
+    @if (Model != null && (Model.Reservations != null || Model.Subscriptions != null) && (Model.Reservations.Count != 0 || Model.Subscriptions.Count != 0))
     {
-
-<form>
-    @if (Model.Reservations != null && Model.Reservations.Count != 0)
-    {
-        <table>
-            <tr>
-                <th>
-                    Home Team
-                </th>
-                <th>
-                    Away Team
-                </th>
-                <th>
-                    Section
-                </th>
-                <th>
-                    Amount
-                </th>
-                <th>
-                    Price
-                </th>
-                <th>
-                    Subtotaal
-                </th>
-            </tr>
-            @{ float total = 0;}
-            @for (var i = 0; i < Model.Reservations.Count; i++)
+        <form asp-action="Payment">
+            @{ float totalPrice = 0;}
+            @if (Model.Reservations != null && Model.Reservations.Count != 0)
             {
+                <h1>Reservations</h1>
+                <table>
+                    <tr>
+                        <th>
+                            Home Team
+                        </th>
+                        <th>
+                            Away Team
+                        </th>
+                        <th>
+                            Section
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Subtotaal
+                        </th>
+                    </tr>
+
+                    @for (var i = 0; i < Model.Reservations.Count; i++)
+                    {
 
                 <tr>
+                    @Html.HiddenFor(m => Model.Reservations[i].MatchDate)
                     @Html.HiddenFor(m => Model.Reservations[i].MatchSectionId)
                     @Html.HiddenFor(m => Model.Reservations[i].ReservationDate)
                     <td>
@@ -75,9 +75,9 @@
                                readonly="readonly" class="form-control" />
 
                         @{
-                            var subtotaal = Model.Reservations[i].Price
-                                            * Model.Reservations[i].NumberOfTickets;
-                            total += (float)subtotaal;
+                            var subtotaal = Math.Round(Model.Reservations[i].Price
+                                            * Model.Reservations[i].NumberOfTickets,2);
+                            totalPrice += (float)subtotaal;
                         }
                     </td>
                     <td>
@@ -93,135 +93,117 @@
                         </a>
                     </td>
                 </tr>
-            }
-            <tr>
-                <td>
-                    <div class="reservationArea">
-                        <input type="submit" text value="Check Out" class="reservationButton">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-
-                <td id="cart-total">
-                    Total  <input id="txtTotal" value="@total"
-                                  type="number" readonly="readonly" />
-                </td>
-            </tr>
-        </table>
-    }
-    @if (Model.Subscriptions != null && Model.Subscriptions.Count != 0)
-    {
-        <table>
-            <tr>
-                <th>
-                    StartDate
-                </th>
-                <th>
-                    EndDate
-                </th>
-                <th>
-                    Team Name
-                </th>
-                <th>
-                    Section Name
-                </th>
-                <th>
-                    Price
-                </th>
-                <th>
-                    Subtotaal
-                </th>
-            </tr>
-            @{ float total = 0;}
-            @for (var i = 0; i < Model.Subscriptions.Count; i++)
+                                    }
+                </table>
+                                    }
+            @if (Model.Subscriptions != null && Model.Subscriptions.Count != 0)
             {
+                <h1>Subscriptions</h1>
+                <table>
+                    <tr>
+                        <th>
+                            StartDate
+                        </th>
+                        <th>
+                            EndDate
+                        </th>
+                        <th>
+                            Team Name
+                        </th>
+                        <th>
+                            Section Name
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Subtotaal
+                        </th>
+                    </tr>
+                    @for (var i = 0; i < Model.Subscriptions.Count; i++)
+                    {
 
-                <tr>
-                    @Html.HiddenFor(m => Model.Reservations[i].MatchSectionId)
-                    @Html.HiddenFor(m => Model.Reservations[i].ReservationDate)
-                    <td>
-                        <input asp-for="@Model.Subscriptions[i].SeasonStartDate" readonly="readonly"
-                               class="form-control" />
+                        <tr>
+                            @Html.HiddenFor(m => Model.Subscriptions[i].TeamId)
+                            @Html.HiddenFor(m => Model.Subscriptions[i].SectionId)
+                            <td>
+                                <input asp-for="@Model.Subscriptions[i].SeasonStartDate" readonly="readonly"
+                                       class="form-control" />
 
-                    </td>
-                    <td>
-                        <input asp-for="@Model.Subscriptions[i].SeasonEndDate" readonly="readonly"
-                               class="form-control" />
+                            </td>
+                            <td>
+                                <input asp-for="@Model.Subscriptions[i].SeasonEndDate" readonly="readonly"
+                                       class="form-control" />
 
-                    </td>
-                    <td>
-                        <input asp-for="@Model.Subscriptions[i].TeamName" readonly="readonly"
-                               class="form-control" />
+                            </td>
+                            <td>
+                                <input asp-for="@Model.Subscriptions[i].TeamName" readonly="readonly"
+                                       class="form-control" />
 
-                    </td>
-                    <td>
-                        <input asp-for="@Model.Subscriptions[i].SectionName" type="number"
-                               min="1" max="10" data-aantal=@i class="form-control" />
+                            </td>
+                            <td>
+                                <input asp-for="@Model.Subscriptions[i].SectionName" class="form-control" />
 
-                    </td>
-                    <td>
-                        <input asp-for="@Model.Subscriptions[i].Price"
-                               readonly="readonly" class="form-control" />
-
-                        @{
-                            var subtotaal = Model.Reservations[i].Price
-                                            * Model.Reservations[i].NumberOfTickets;
-                            total += (float)subtotaal;
-                        }
-                    </td>
-                    <td>
-                        <input id="@("txtSubTotal" + @i)"
-                               value="@subtotaal"
-                               readonly="readonly" class="form-control" />
-                    </td>
-                    <td>
-                        <a asp-controller="ShoppingCart"
-                           asp-action="DeleteSubscription"
-                           asp-route-teamId="@Model.Subscriptions[i].TeamId">
-                            <img src="~/images/Delete_Icon.png" />
-                        </a>
-                    </td>
-                </tr>
-            }
-            <tr>
-                <td>
-                    <div class="reservationArea">
-                        <input type="submit" text value="Check Out" class="reservationButton">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-
-                <td id="cart-total">
-                    Total  <input id="txtTotal" value="@total"
+                            </td>
+                            <td>
+                                <input asp-for="@Model.Subscriptions[i].Price"
+                                       readonly="readonly" class="form-control" />
+                                @{
+                                    var subtotaal = Math.Round((double) Model.Subscriptions[i].Price,2);
+                                    totalPrice += (float)subtotaal;
+                                }
+                            </td>
+                            <td>
+                                <input id="@("txtSubTotal" + @i)"
+                                       value="@subtotaal"
+                                       readonly="readonly" class="form-control" />
+                            </td>
+                            <td>
+                                <a asp-controller="ShoppingCart"
+                                   asp-action="DeleteSubscription"
+                                   asp-route-teamId="@Model.Subscriptions[i].TeamId">
+                                    <img src="~/images/Delete_Icon.png" />
+                                </a>
+                            </td>
+                        </tr>
+                                    }
+                </table>
+                                    }
+            @if ((Model.Reservations != null && Model.Reservations.Count != 0) || (Model.Subscriptions != null && Model.Subscriptions.Count != 0))
+            {
+                <div class="reservationArea">
+                    <input type="submit" text value="Check Out" class="reservationButton">
+                </div>
+                <div id="cart-total">
+                    Total  <input id="txtTotal" value="@totalPrice"
                                   type="number" readonly="readonly" />
-                </td>
-            </tr>
-        </table>
-    }
-</form>
-        
+                </div>
+            }
+        </form>
+
     }
     else
-    { @Html.Raw("Your shoppingcart is empty at the moment")}
-    <a asp-controller="Home"
-       asp-action="Index">
-        Back to homepage
-    </a>
-}
-else
-{
+    {
+        @Html.Raw("Your shoppingcart is empty at the moment")}
+        <a asp-controller="Home"
+           asp-action="Index">
+            Back to homepage
+        </a>
+    }                                                       
+
+    else
+    {
     @await Html.PartialAsync("DisplayTemplates/_NotLoggedInView")
-}
+    }
+
+
 
 @section Scripts {
-
 
     <script>
 
         $(() => {
-            //selecteer alle input elementen die eindigen met aantal
+            //selecteer alle input elementen die eindigen met NumberOfTickets
             $("[id$=NumberOfTickets]").on('change', (e) => {
                 console.log("change");
                 let number = $(e.currentTarget).data("aantal"); // hoeveelste element, bijhouden in een data-aantal atttribute

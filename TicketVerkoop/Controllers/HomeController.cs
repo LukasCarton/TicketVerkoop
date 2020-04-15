@@ -57,7 +57,7 @@ namespace TicketVerkoop.Controllers
 
             var list = await _matchService.GetAllByHomeTeam(homeTeamId);
             List<MatchVM> matchVMs = _mapper.Map<List<MatchVM>>(list);
-            TeamWithMatchesVM listVM = new TeamWithMatchesVM { TeamName = currentTeam.Name, MatchVMs = matchVMs };
+            TeamWithMatchesVM listVM = new TeamWithMatchesVM { TeamName = currentTeam.Name,StadiumId=currentTeam.StadiumId, MatchVMs = matchVMs };
 
             return View(listVM);
         }

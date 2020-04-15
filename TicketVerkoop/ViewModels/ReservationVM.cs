@@ -8,6 +8,7 @@ namespace TicketVerkoop.ViewModels
     public class ReservationVM
     {
         public string Id { get; set; }
+        public DateTime MatchDate { get; set; }
         public DateTime ReservationDate { get; set; }
         public int NumberOfTickets { get; set; }
         public double Price { get; set; }

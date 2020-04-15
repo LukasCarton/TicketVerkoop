@@ -18,6 +18,18 @@ namespace TicketVerkoop.Repository
             _dbContext = new TicketVerkoopDbContext();
         }
 
+        public async Task<Section> FindById(string sectionId)
+        {
+            try
+            {
+                return await _dbContext.Sections.FirstOrDefaultAsync(s => s.Id == sectionId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<Section>> GetAllAsync()
         {
             try

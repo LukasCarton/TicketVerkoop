@@ -59,6 +59,7 @@ namespace TicketVerkoop.Repository
             try
             {
                 return await _dbContext.Reservations.Where(r => r.CustomerId == customerId)
+                    .Where(r => r.ReservationDate >= DateTime.Today)
                     .Include(r => r.Customer)
                     .Include(r => r.MatchSection)
                     .Include(r => r.MatchSection.Section)

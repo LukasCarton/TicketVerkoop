@@ -4,7 +4,7 @@
     ViewData["Title"] = "Subscriptions";
 }
 
-<h1>Jaarabonnement @Model.TeamName</h1>
+<h1 data-team="@Model.TeamName">Jaarabonnement @Model.TeamName</h1>
 <h2>@Model.StartDate.Year - @Model.EndDate.Year</h2>
 
 <div class="row">
@@ -33,7 +33,6 @@
         $(() => {
 
             let subscriptionSectionId = "";
-
             let shoppingCartBtn = $("#addSubscribtionToShoppingCartBtn");
 
             $("#subscriptionSections .sectionTile").on("click", (event) => {
@@ -43,7 +42,7 @@
 
                 subscriptionSectionId = section.data("id")
 
-                shoppingCartBtn.attr("href", "/ShoppingCart/Select/" + subscriptionSectionId);
+                shoppingCartBtn.attr("href", "/ShoppingCart/SelectSubscription/" + subscriptionSectionId);
                 shoppingCartBtn.css("background-color", "#007bff");
                 shoppingCartBtn.css("color", "white");
             });

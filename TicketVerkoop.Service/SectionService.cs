@@ -17,6 +17,11 @@ namespace TicketVerkoop.Service
             _sectionDAO = sectionDAO;
         }
 
+        public async Task<Section> FindById(string sectionId)
+        {
+            return await _sectionDAO.FindById(sectionId);
+        }
+
         public async Task<IEnumerable<Section>> GetAllAsync()
         {
             return await _sectionDAO.GetAllAsync();

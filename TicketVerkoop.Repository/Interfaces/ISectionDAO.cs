@@ -10,5 +10,6 @@ namespace TicketVerkoop.Repository.Interfaces
     {
         Task<IEnumerable<Section>> GetAllAsync();
         Task<IEnumerable<Section>> GetAllByStadiumAsync(string stadiumId);
+        Task<Section> FindById(string sectionId);
     }
 }

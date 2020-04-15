@@ -11,5 +11,6 @@ namespace TicketVerkoop.Repository.Interfaces
         Task<IEnumerable<Match>> GetAllAsync();
         Task<Match> GetAsync(string id);
         Task<IEnumerable<Match>> GetAllByHomeTeam(string homeTeamId);
+        Task<IEnumerable<Match>> GetAllByTeam(string teamId);
     }
 }

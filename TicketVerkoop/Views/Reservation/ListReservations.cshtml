@@ -57,8 +57,7 @@
                     @Html.DisplayFor(modelItem => item.AwayTeam)
                 </td>
                 <td>
-                    @* Moet ReservationDate nog veranderen naar matchDate *@
-                    @if (item.ReservationDate - DateTime.Now >= TimeSpan.FromDays(7))
+                    @if (item.MatchDate - DateTime.Now >= TimeSpan.FromDays(7))
                     {
                         <a asp-action="DeleteReservation"
                            asp-route-Id="@item.Id">

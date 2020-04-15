@@ -5,31 +5,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Kalender</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Match"
+              asp-action="Index">
+
+            <div class="form-group">
+                <label for="teamId" class="control-label"></label>
+                <select name="teamId" id="teamId"
+                        asp-items="@ViewBag.lstTeams" class="form-control">
+                    <option id="null" value="">Selecteer een team</option>
+                </select>
+            </div>
+
+            @*<div class="form-group">
+                <input type="submit" value="Zoeken" class="btn btn-primary" />
+            </div>*@
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.MatchDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BasePriceTicket)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StadiumNaam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeasonStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeasonEndDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.HomeTeamNaam)
@@ -37,42 +39,39 @@
             <th>
                 @Html.DisplayNameFor(model => model.AwayTeamNaam)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StadiumNaam)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatchDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BasePriceTicket)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StadiumNaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeasonStartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeasonEndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeTeamNaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AwayTeamNaam)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.MatchDate.ToString("g")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeTeamNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AwayTeamNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StadiumNaam)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section scripts
+{
+    <script>
+        $("#teamId").on("change", () => {
+
+            $("form").trigger("submit");
+        });
+    </script>
+}

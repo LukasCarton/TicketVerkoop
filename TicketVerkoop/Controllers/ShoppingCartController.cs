@@ -108,7 +108,7 @@ namespace TicketVerkoop.Controllers
             MatchSection matchSection = await _matchSectionService.FindById(id);
             ReservationVM reservationVM = new ReservationVM
             {
-                ReservationDate = matchSection.Match.MatchDate,
+                ReservationDate = DateTime.Now,
                 NumberOfTickets = 1,
                 Price = matchSection.Match.BasePriceTicket,
                 SectionName = matchSection.Section.Name,

@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ListReservations</h1>
+<h1>Mijn Reservaties</h1>
+@*<h2>voor geplande wedstrijden</h2>*@
+<p>U kunt een ticket annuleren 1 week voor de wedstrijd, zonder kosten.</p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -36,33 +35,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReservationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfTickets)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SectionName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeTeam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AwayTeam)
-            </td>
-            <td>
-                <a asp-action="DeleteReservation"
-                   asp-route-Id="@item.Id">
-                    <img src="~/images/Delete_Icon.png" />
-                </a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfTickets)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SectionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeTeam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AwayTeam)
+                </td>
+                <td>
+                    @* Moet ReservationDate nog veranderen naar matchDate *@
+                    @if (item.ReservationDate - DateTime.Now >= TimeSpan.FromDays(7))
+                    {
+                        <a asp-action="DeleteReservation"
+                           asp-route-Id="@item.Id">
+                            <img src="~/images/Delete_Icon.png" />
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -33,10 +33,10 @@
                     @Html.DisplayNameFor(model => model.Reservations[0].NumberOfTickets)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Reservations[0].Price)
+                    € Prijs
                 </th>
                 <th>
-                    Subtotaal
+                    € Subtotaal
                 </th>
             </tr>
 
@@ -143,7 +143,7 @@
 
                     </td>
                     <td>
-                        <input asp-for="@Model.Subscriptions[i].Price"
+                        <input asp-for="@Model.Subscriptions[i].Price
                                readonly="readonly" class="form-control" />
                         @{
                             var subtotaal = Math.Round((double)Model.Subscriptions[i].Price, 2);
@@ -172,7 +172,7 @@
             <input type="submit" text value="Check Out" class="reservationButton">
         </div>
         <div id="cart-total">
-            Totaal  <input id="txtTotal" value="@totalPrice"
+            Totaal  €<input id="txtTotal" value="@totalPrice"
                           type="number" readonly="readonly" />
         </div>
     }

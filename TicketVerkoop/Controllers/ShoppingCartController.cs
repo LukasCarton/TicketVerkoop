@@ -203,20 +203,20 @@ namespace TicketVerkoop.Controllers
             var reservationsFromCart = shoppingcart.Reservations;
             var subscriptionsFromCart = shoppingcart.Subscriptions;
             string userID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var validations = await IsValidReservations(userID, reservationsFromCart);
-            if (!validations[0])
-            {
-                ModelState.AddModelError("error", "U kunt maar 10 tickets per match kopen.");
-                return View("Index",shoppingcart);
-            }
-            if (!validations[1])
-            {
-                ModelState.AddModelError("error", "U kunt geen 2 verschillende matchen op dezelfde dag kopen.");
-                return View("Index", shoppingcart);
-            }
-
             if (reservationsFromCart != null && reservationsFromCart.Count != 0)
             {
+                var validations = await IsValidReservations(userID, reservationsFromCart);
+                if (!validations[0])
+                {
+                    ModelState.AddModelError("error", "U kunt maar 10 tickets per match kopen.");
+                    return View("Index", shoppingcart);
+                }
+                if (!validations[1])
+                {
+                    ModelState.AddModelError("error", "U kunt geen 2 verschillende matchen op dezelfde dag kopen.");
+                    return View("Index", shoppingcart);
+                }
+
                 List<Reservation> reservations = _mapper.Map<List<Reservation>>(reservationsFromCart);
                 for(var i = 0; i < reservationsFromCart.Count;i++)
                 {

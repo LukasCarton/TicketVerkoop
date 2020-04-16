@@ -122,6 +122,7 @@ namespace TicketVerkoop.Controllers
             MatchSection matchSection = await _matchSectionService.FindById(id);
             ReservationVM reservationVM = new ReservationVM
             {
+                MatchId = matchSection.Match.Id,
                 ReservationDate = DateTime.Now,
                 NumberOfTickets = 1,
                 Price = matchSection.Match.BasePriceTicket * matchSection.Section.PriceFactor,
@@ -148,7 +149,6 @@ namespace TicketVerkoop.Controllers
             }
             shopping.Reservations.Add(reservationVM);
             HttpContext.Session.SetObject("ShoppingCart", shopping);
-            //  Session["ShoppingCart"] = shopping;
 
             return RedirectToAction("Index", "ShoppingCart");
 
@@ -188,6 +188,7 @@ namespace TicketVerkoop.Controllers
                 shopping = new ShoppingCartVM();
                 shopping.Reservations = new List<ReservationVM>();
                 shopping.Subscriptions = new List<SubscriptionCartVM>();
+
             }
             shopping.Subscriptions.Add(subscriptionCartVM);
             HttpContext.Session.SetObject("ShoppingCart", shopping);
@@ -202,8 +203,19 @@ namespace TicketVerkoop.Controllers
             var reservationsFromCart = shoppingcart.Reservations;
             var subscriptionsFromCart = shoppingcart.Subscriptions;
             string userID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            
-            if(reservationsFromCart != null && reservationsFromCart.Count != 0)
+            var validations = await IsValidReservations(userID, reservationsFromCart);
+            if (!validations[0])
+            {
+                ModelState.AddModelError("error", "U kunt maar 10 tickets per match kopen.");
+                return View("Index",shoppingcart);
+            }
+            if (!validations[1])
+            {
+                ModelState.AddModelError("error", "U kunt geen 2 verschillende matchen op dezelfde dag kopen.");
+                return View("Index", shoppingcart);
+            }
+
+            if (reservationsFromCart != null && reservationsFromCart.Count != 0)
             {
                 List<Reservation> reservations = _mapper.Map<List<Reservation>>(reservationsFromCart);
                 for(var i = 0; i < reservationsFromCart.Count;i++)
@@ -224,13 +236,12 @@ namespace TicketVerkoop.Controllers
                 }
             }
             
-            
             var user = await _userManager.FindByIdAsync(userID);
             var useremail = user.Email;
             var customer = await _customerService.GetAsync(userID);
             await _emailSender.SendEmailAsync(
                     useremail,
-                    "Payment Received",
+                    "Betaling Ontvangen",
                     BuildVoucherMessage(shoppingcart, customer.LastName + " " + customer.FirstName)
                     );
 
@@ -240,20 +251,21 @@ namespace TicketVerkoop.Controllers
         private string BuildVoucherMessage(ShoppingCartVM shoppingCart, string name)
         {
             string message = 
-            $@"Dear {name} <br/> 
-            We have Registered your payment for <br/>";
+            $@"Beste {name} <br/>
+            We hebben uw betaling geregistreerd. <br/>";
             if(shoppingCart.Reservations != null && shoppingCart.Reservations.Count != 0)
             {
                 foreach (var reservation in shoppingCart.Reservations)
                 {
                     message += "RESERVATION <br/>";
-                    message += $@"Matchdate: {reservation.MatchDate} <br/>";
-                    message += $@"Home Team: {reservation.HomeTeam} <br/>";
-                    message += $@"Away Team: {reservation.AwayTeam} <br/>";
+                    message += $@"Match Datum: {reservation.MatchDate} <br/>";
+                    message += $@"Thuis Ploeg: {reservation.HomeTeam} <br/>";
+                    message += $@"Uit Ploeg: {reservation.AwayTeam} <br/>";
                     message += $@"Tickets: {reservation.NumberOfTickets} <br/>";
-                    message += $@"Section: {reservation.SectionName} <br/>";
-                    message += $@"Price: {reservation.Price.ToString("C2")} <br/>";
-                    message += $@"Reservation Date: {reservation.ReservationDate} <br/>";
+                    message += $@"Vak: {reservation.SectionName} <br/>";
+                    message += $@"Prijs: {reservation.Price.ToString("C2")} <br/>";
+                    message += $@"Reservatie datum: {reservation.ReservationDate} <br/>";
+                    message += $@"Match datum: {reservation.MatchDate} <br/>";
                     message += "------<br/>";
                 }
             }
@@ -262,15 +274,34 @@ namespace TicketVerkoop.Controllers
                 foreach (var subscription in shoppingCart.Subscriptions)
                 {
                     message += "SUBSCRIPTION <br/>";
-                    message += $@"Start Date: {subscription.SeasonStartDate} <br/>";
-                    message += $@"End Date: {subscription.SeasonEndDate} <br/>";
+                    message += $@"Start Datum: {subscription.SeasonStartDate} <br/>";
+                    message += $@"Eind Datum: {subscription.SeasonEndDate} <br/>";
                     message += $@"Team: {subscription.TeamName} <br/>";
-                    message += $@"Section: {subscription.SectionName} <br/>";
-                    message += $@"Price: {subscription.Price.ToString("C2")} <br/>";
+                    message += $@"Vak: {subscription.SectionName} <br/>";
+                    message += $@"Prijs: {subscription.Price.ToString("C2")} <br/>";
                     message += "------<br/>";
                 }
             }
             return message;
+        }
+
+        private async Task<List<bool>> IsValidReservations(string customerId,List<ReservationVM> reservations)
+        {
+            List<bool> validations = new List<bool>();
+            validations.Add(true);
+            validations.Add(true);
+            foreach (var res in reservations)
+            {
+                var ticketsinDb = await _reservationService.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, res.MatchId);
+                if (res.NumberOfTickets + ticketsinDb > 10)
+                {
+                    validations[0] = false;
+                }
+                if(!await _reservationService.HasNoOtherMatchOnDay(customerId, res.MatchDate, res.MatchId)){
+                    validations[1] = false;
+                }
+            }
+            return validations;
         }
     }
     

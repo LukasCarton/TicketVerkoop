@@ -246,6 +246,19 @@ body {
     background-color: lightgray;
 }
 
+#cart-total{
+    margin:20px;
+    margin-left:0px;
+}
+
+#btnCheckOut {
+    margin-top: 20px;
+}
+
+#abonnementenHeader{
+    margin-top:20px;
+}
+
 @media screen and (max-width: 991px) {
     .sectionName {
         display: none;

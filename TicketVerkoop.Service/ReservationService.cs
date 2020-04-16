@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TicketVerkoop.Domain.Context;
 using TicketVerkoop.Repository.Interfaces;
@@ -37,9 +36,9 @@ namespace TicketVerkoop.Service
             return await _reservationDAO.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, matchId);
         }
 
-        public async Task<bool> HasNoMatchOnDay(string customerId, DateTime matchDate)
+        public async Task<bool> HasNoOtherMatchOnDay(string customerId, DateTime matchDate,string matchId)
         {
-            return await _reservationDAO.HasNoMatchOnDay(customerId, matchDate);
+            return await _reservationDAO.HasNoOtherMatchOnDay(customerId, matchDate, matchId);
         }
 
         public async Task RemoveAsync(Reservation reservation)

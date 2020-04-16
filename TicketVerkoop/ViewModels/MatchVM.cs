@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TicketVerkoop.ViewModels
 {
@@ -16,9 +13,9 @@ namespace TicketVerkoop.ViewModels
         public string StadiumNaam { get; set; }
         public DateTime SeasonStartDate { get; set; }
         public DateTime SeasonEndDate { get; set; }
-        [Display(Name = "Home Team")]
+        [Display(Name = "Thuis Ploeg")]
         public string HomeTeamNaam { get; set; }
-        [Display(Name = "Away Team")]
+        [Display(Name = "Uit Ploeg")]
         public string AwayTeamNaam { get; set; }
     }
 }

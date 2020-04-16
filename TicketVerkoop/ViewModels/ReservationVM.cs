@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace TicketVerkoop.ViewModels
 {
     public class ReservationVM
     {
         public string Id { get; set; }
-        [Display(Name ="Matched datum")]
+        [Display(Name ="Match datum")]
         public DateTime MatchDate { get; set; }
         [Display(Name = "Reservatie datum")]
         public DateTime ReservationDate { get; set; }
@@ -20,9 +18,10 @@ namespace TicketVerkoop.ViewModels
         [Display(Name = "Vak")]
         public string SectionName { get; set; }
         public string MatchSectionId { get; set; }
-        [Display(Name = "Home Team")]
+        [Display(Name = "Thuis Ploeg")]
         public string HomeTeam { get; set; }
-        [Display(Name = "Away Team")]
+        [Display(Name = "Uit Ploeg")]
         public string AwayTeam { get; set; }
+        public string MatchId { get; set; }
     }
 }

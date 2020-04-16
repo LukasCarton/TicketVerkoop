@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketVerkoop.Domain.Context;
 using TicketVerkoop.Repository.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace TicketVerkoop.Repository
@@ -81,19 +79,34 @@ namespace TicketVerkoop.Repository
         {
             return await _dbContext.Reservations
                 .Where(r => r.CustomerId == customerId && r.MatchSection.MatchId == matchId)
-                .CountAsync();
+                .SumAsync(r => r.NumberOfTickets);
         }
 
-        public async Task<bool> HasNoMatchOnDay(string customerId, DateTime matchDate)
+        public async Task<bool> HasNoOtherMatchOnDay(string customerId, DateTime matchDate,string matchId)
         {
-            var matches = await _dbContext.Reservations
-                .Where(r => r.CustomerId == customerId && r.MatchSection.Match.MatchDate == matchDate)
-                .CountAsync();
-            if (matches == 0)
+            var reservations = await _dbContext.Reservations
+                .Include(r => r.MatchSection)
+                .Include(r => r.MatchSection.Section)
+                .Include(r => r.MatchSection.Match)
+                .Where(r => r.CustomerId == customerId && r.MatchSection.Match.MatchDate.Date.Equals(matchDate.Date))
+                .ToListAsync();
+            if (reservations.Count() == 0)
             {
                 return true;
             }
-            return false;
+            else
+            {
+                var total = 0;
+                foreach(var reservation in reservations)
+                {
+                    if (reservation.MatchSection.Match.Id.Equals(matchId))
+                    {
+                        total++;
+                    }
+                }
+                return total == reservations.Count;
+            }
+            
         }
 
         public async Task RemoveAsync(Reservation reservation)

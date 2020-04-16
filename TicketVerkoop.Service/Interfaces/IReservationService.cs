@@ -10,6 +10,8 @@ namespace TicketVerkoop.Service.Interfaces
     {
         Task CreateAsync(Reservation reservation);
         Task<IEnumerable<Reservation>> GetAllReservationsFromCustomerAsync(string customerId);
+        Task<int> GetNumberOfAllReservationsForMatchFromCustomerAsync(string customerId, string matchId);
+        Task<bool> HasNoMatchOnDay(string customerId, DateTime matchDate);
         Task RemoveAsync(Reservation reservation);
         Task<Reservation> FindById(string Id);
     }

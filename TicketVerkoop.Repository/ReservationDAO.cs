@@ -49,7 +49,8 @@ namespace TicketVerkoop.Repository
             try
             {
                 return await _dbContext.Reservations.FirstOrDefaultAsync(r => r.Id == Id);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -74,6 +75,25 @@ namespace TicketVerkoop.Repository
             {
                 throw ex;
             }
+        }
+
+        public async Task<int> GetNumberOfAllReservationsForMatchFromCustomerAsync(string customerId, string matchId)
+        {
+            return await _dbContext.Reservations
+                .Where(r => r.CustomerId == customerId && r.MatchSection.MatchId == matchId)
+                .CountAsync();
+        }
+
+        public async Task<bool> HasNoMatchOnDay(string customerId, DateTime matchDate)
+        {
+            var matches = await _dbContext.Reservations
+                .Where(r => r.CustomerId == customerId && r.MatchSection.Match.MatchDate == matchDate)
+                .CountAsync();
+            if (matches == 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task RemoveAsync(Reservation reservation)

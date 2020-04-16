@@ -32,6 +32,16 @@ namespace TicketVerkoop.Service
             return await _reservationDAO.GetAllReservationsFromCustomerAsync(customerId);
         }
 
+        public async Task<int> GetNumberOfAllReservationsForMatchFromCustomerAsync(string customerId, string matchId)
+        {
+            return await _reservationDAO.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, matchId);
+        }
+
+        public async Task<bool> HasNoMatchOnDay(string customerId, DateTime matchDate)
+        {
+            return await _reservationDAO.HasNoMatchOnDay(customerId, matchDate);
+        }
+
         public async Task RemoveAsync(Reservation reservation)
         {
             await _reservationDAO.RemoveAsync(reservation);

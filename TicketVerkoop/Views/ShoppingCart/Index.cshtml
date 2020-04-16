@@ -204,37 +204,52 @@ else
         $(() => {
             //selecteer alle input elementen die eindigen met NumberOfTickets
             $("[id$=NumberOfTickets]").on('change', (e) => {
-                console.log("change");
-                let number = $(e.currentTarget).data("aantal"); // hoeveelste element, bijhouden in een data-aantal atttribute
 
-                console.log(number)
+                let elementNumber = $(e.currentTarget).data("aantal");
 
-                let selectorPrice = "Reservations_" + number + "__Price";
-                let price = $("#" + selectorPrice).val();
-                let selector = "txtSubTotal" + number;
-                $('#' + selector).val($(e.currentTarget).val()
-                    * price);
-                let sum = 0;
-                $('[id^=txtSubTotal]').each((index, element) => {
-                    if (!isNaN($(element).val())) {
-                        sum += parseFloat($(element).val());
+                let amountString = $(e.currentTarget).val();
+
+                // controleer ofdat input een geheel getal is
+                if (parseInt(amountString) == parseFloat(amountString)) {
+                    let amount = parseInt(amountString);
+
+                    let priceObject = $("#Reservations_" + elementNumber + "__Price");
+                    let priceString = priceObject.val();
+
+                    // het getal wordt bij parseFloat afgrond wanneer er een komma gebruikt wordt, bij een punt gebeurt dit niet
+                    let hasComma = priceObject.val().includes(",");
+                    if (hasComma) {
+                        priceString = priceString.replace(",", ".");
                     }
-                });
 
-                $('#txtTotal').val(sum);
+                    let price = parseFloat(priceString)
+
+                    let subTotal = (amount * price).toString();
+
+                    if (hasComma) {
+                        subTotal = subTotal.replace(".", ",")
+                    }
+                    $("#txtSubTotal" + elementNumber).val(subTotal);
+
+                    $('#txtTotal').val(calculateTotal());
+                }
             });
 
+            const calculateTotal = () => {
+                let total = 0;
+                $('[id^=txtSubTotal]').each((index, element) => {
+                    // convert string to number and add make sum
+                    let subTotalString = $(element).val();
 
+                    let hasComma = subTotalString.includes(",");
 
-            //let amountString = $("#Reservations_0__NumberOfTickets").val();
-            //let amount = parseInt(amountString);
-
-            //let priceString = $('#Reservations_0__Price').val().replace(",", ".");
-            //let price = parseFloat(priceString);
-            //console.log(price);
-            //console.log(typeof price);
-
-
+                    if (hasComma) {
+                        subTotalString = subTotalString.replace(",", ".");
+                    }
+                    total += parseFloat(subTotalString);
+                });
+                return total
+            }
         });
     </script>
 }

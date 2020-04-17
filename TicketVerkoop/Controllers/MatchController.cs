@@ -23,10 +23,10 @@ namespace TicketVerkoop.Controllers
         public async Task<IActionResult> Index(string team)
         {
             var currentTeam = await _teamService.GetAsync(team);
-            var homeTeamId = currentTeam.Id;
+            var teamId = currentTeam.Id;
 
 
-            var list = await _matchService.GetAllByHomeTeam(homeTeamId);
+            var list = await _matchService.GetAllByTeamOneMonth(teamId);
             List<MatchVM> matchVMs = _mapper.Map<List<MatchVM>>(list);
             TeamWithMatchesVM listVM = new TeamWithMatchesVM { TeamName = currentTeam.Name, StadiumId = currentTeam.StadiumId, MatchVMs = matchVMs };
 

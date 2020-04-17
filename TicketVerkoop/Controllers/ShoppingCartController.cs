@@ -295,7 +295,7 @@ namespace TicketVerkoop.Controllers
             validations.Add(true);
             foreach (var res in reservations)
             {
-                var matchSection = await _matchSectionService.FindById(res.MatchId);
+                var matchSection = await _matchSectionService.FindById(res.MatchSectionId);
                 var ticketsinDb = await _reservationService.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, res.MatchId);
                 if (res.NumberOfTickets + ticketsinDb > 10)
                 {

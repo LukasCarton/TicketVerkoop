@@ -56,6 +56,25 @@ namespace TicketVerkoop.Repository
             }
         }
 
+        public async Task<IEnumerable<Match>> GetAllByTeamOneMonth(string teamId)
+        {
+            try
+            {
+                return await _dbContext.Matches.Where(m => m.HomeTeamId == teamId || m.AwayTeamId == teamId)
+                    .Where(m => m.MatchDate >= DateTime.Now && m.MatchDate <= DateTime.Now.AddMonths(1))
+                    .Include(m => m.Season)
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.HomeTeam.Stadium)
+                    .Include(m => m.AwayTeam)
+                    .OrderBy(m => m.MatchDate)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<Match>> GetAllByTeam(string teamId)
         {
             try

@@ -31,6 +31,11 @@ namespace TicketVerkoop.Service
             return await _matchDAO.GetAllByTeam(teamId);
         }
 
+        public async Task<IEnumerable<Match>> GetAllByTeamOneMonth(string teamId)
+        {
+            return await _matchDAO.GetAllByTeamOneMonth(teamId);
+        }
+
         public async Task<Match> GetAsync(string id)
         {
             return await _matchDAO.GetAsync(id);

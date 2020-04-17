@@ -16,6 +16,7 @@ using TicketVerkoop.Repository;
 using AutoMapper;
 using TicketVerkoop.Util.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.OpenApi.Models;
 
 namespace TicketVerkoop
 {
@@ -98,6 +99,32 @@ namespace TicketVerkoop
                 )
             );
 
+            //Swagger API
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "My API Match",
+                    Version = "version 1",
+                    Description = "An API to get all the matches",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "TicketVerkoop Admin",
+                        Email = "ticketverkoopvives@gmail.com",
+                        Url = new Uri("https://vives.be"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Employee API LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+
+
+                });
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -115,6 +142,21 @@ namespace TicketVerkoop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            var swaggerOptions = new Options.SwaggerOptions();
+            Configuration.GetSection(nameof(Options.SwaggerOptions)).Bind(swaggerOptions);
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            //RouteTemplate legt het path vast waar de JSON-file wordt aangemaakt
+            app.UseSwagger(option => { option.RouteTemplate = swaggerOptions.JsonRoute; });
+
+            // By default, your Swagger UI loads up under / swagger /.If you want to change this, it's thankfully very straight-forward. Simply set the RoutePrefix option in your call to app.UseSwaggerUI in StartUp.cs:
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description);
+            });
+
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

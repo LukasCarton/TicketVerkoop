@@ -58,9 +58,6 @@ namespace TicketVerkoop.Controllers
             ShoppingCartVM cartList =
               HttpContext.Session.GetObject<ShoppingCartVM>("ShoppingCart");
 
-            // call SessionID
-            //var SessionId =  HttpContext.Session.Id;
-
             return View(cartList);
         }
 
@@ -216,6 +213,11 @@ namespace TicketVerkoop.Controllers
                     ModelState.AddModelError("error", "U kunt geen 2 verschillende matchen op dezelfde dag kopen.");
                     return View("Index", shoppingcart);
                 }
+                if (!validations[2])
+                {
+                    ModelState.AddModelError("error", "Uw aantal tickets overschrijdt het aantal beschikbare plaatsen.");
+                    return View("Index", shoppingcart);
+                }
 
                 List<Reservation> reservations = _mapper.Map<List<Reservation>>(reservationsFromCart);
                 for(var i = 0; i < reservationsFromCart.Count;i++)
@@ -290,8 +292,10 @@ namespace TicketVerkoop.Controllers
             List<bool> validations = new List<bool>();
             validations.Add(true);
             validations.Add(true);
+            validations.Add(true);
             foreach (var res in reservations)
             {
+                var matchSection = await _matchSectionService.FindById(res.MatchId);
                 var ticketsinDb = await _reservationService.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, res.MatchId);
                 if (res.NumberOfTickets + ticketsinDb > 10)
                 {
@@ -299,6 +303,10 @@ namespace TicketVerkoop.Controllers
                 }
                 if(!await _reservationService.HasNoOtherMatchOnDay(customerId, res.MatchDate, res.MatchId)){
                     validations[1] = false;
+                }
+                if(matchSection.OccupiedReservationSeats + res.NumberOfTickets + matchSection.Section.OccupiedSubscriptionSeats > matchSection.Section.Capacity)
+                {
+                    validations[2] = false;
                 }
             }
             return validations;

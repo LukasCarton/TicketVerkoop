@@ -133,10 +133,18 @@ namespace TicketVerkoop.Controllers
             ShoppingCartVM shopping;
 
 
-            // var objComplex = HttpContext.Session.GetObject<ShoppingCartVM>("ComplexObject");
             if (HttpContext.Session.GetObject<ShoppingCartVM>("ShoppingCart") != null)
             {
                 shopping = HttpContext.Session.GetObject<ShoppingCartVM>("ShoppingCart");
+                var matchIds = shopping.Reservations.Select(m => m.MatchId).ToList();
+                if(matchIds != null)
+                {
+                    if (matchIds.Contains(reservationVM.MatchId))
+                    {
+                        ModelState.AddModelError("error", "U heeft al een ticket voor deze match in uw Winkelmandje.");
+                        return View("Index", shopping);
+                    }
+                }
             }
             else
             {
@@ -293,8 +301,11 @@ namespace TicketVerkoop.Controllers
             validations.Add(true);
             validations.Add(true);
             validations.Add(true);
+            validations.Add(true);
+            List<DateTime> matchDates = new List<DateTime>();
             foreach (var res in reservations)
             {
+                matchDates.Add(res.MatchDate.Date);
                 var matchSection = await _matchSectionService.FindById(res.MatchSectionId);
                 var ticketsinDb = await _reservationService.GetNumberOfAllReservationsForMatchFromCustomerAsync(customerId, res.MatchId);
                 if (res.NumberOfTickets + ticketsinDb > 10)
@@ -308,6 +319,11 @@ namespace TicketVerkoop.Controllers
                 {
                     validations[2] = false;
                 }
+            }
+            var uniqueDates = matchDates.Select(d => d.Date).Distinct().ToList();
+            if(matchDates.Count != uniqueDates.Count)
+            {
+                validations[1] = false;
             }
             return validations;
         }

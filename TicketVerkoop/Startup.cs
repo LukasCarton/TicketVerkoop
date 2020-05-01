@@ -17,6 +17,8 @@ using AutoMapper;
 using TicketVerkoop.Util.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Http;
+using System.Net.Http;
 
 namespace TicketVerkoop
 {
@@ -123,6 +125,14 @@ namespace TicketVerkoop
 
                 });
             });
+            services.AddHttpClient("API Client", client =>
+            {
+                client.BaseAddress = new Uri("https://www.metaweather.com/");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+            // Add the re-try policy: in this instance, re-try three times,
+            // in 1, 3 and 5 seconds intervals.
+            
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

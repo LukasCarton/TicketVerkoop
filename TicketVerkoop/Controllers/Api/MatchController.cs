@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TicketVerkoop.Service.Interfaces;
 using TicketVerkoop.ViewModels;
 
@@ -46,7 +48,5 @@ namespace TicketVerkoop.Controllers.Api
             var list = await _matchService.GetAllByTeam(id);
             return _mapper.Map<List<MatchApiVM>>(list);
         }
-
-
     }
 }

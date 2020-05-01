@@ -1,0 +1,20 @@
+﻿@model TicketVerkoop.ViewModels.Temperatures
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="text-left">
+        <h1 class="display-4">Weersvoorspelling voor @Model.Title</h1>
+        @foreach (var forecast in Model.ConsolidatedWeather)
+        {
+            <div>
+                <h4>@forecast.ApplicableDate.Date</h4>
+                <div>Min: @forecast.MinTemp Cº, Max: @forecast.MaxTemp Cº</div>
+                <div>@forecast.WeatherStateName</div>
+                <img src="https://www.metaweather.com/static/img/weather/@(forecast.WeatherStateAbbr).svg" style="width:32px" />
+                <hr />
+            </div>
+        }
+    </div>

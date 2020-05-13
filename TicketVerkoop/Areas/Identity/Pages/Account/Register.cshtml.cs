@@ -106,7 +106,6 @@ namespace TicketVerkoop.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    // moet nog afhandelen als wegschrijven naar database is mislukt!
                     var customer = new Customer
                     {
                         Id = user.Id,

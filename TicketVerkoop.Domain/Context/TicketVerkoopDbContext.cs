@@ -51,7 +51,7 @@ namespace TicketVerkoop.Domain.Context
                 team1, team2, team3, team4, team5, team6
                 );
 
-            var season1 = new Season { Id = "1", StartDate = new DateTime(2019, 7, 26), EndDate = new DateTime(2020, 5, 24) };
+            var season1 = new Season { Id = "1", StartDate = new DateTime(2019, 7, 26), EndDate = new DateTime(2020, 6, 27) };
             var season2 = new Season { Id = "2", StartDate = new DateTime(2020, 7, 24), EndDate = new DateTime(2021, 5, 23) };
             var season3 = new Season { Id = "3", StartDate = new DateTime(2021, 7, 23), EndDate = new DateTime(2022, 5, 22) };
 
@@ -146,16 +146,16 @@ namespace TicketVerkoop.Domain.Context
             var match7 = new Match { Id = "7", MatchDate = new DateTime(2020, 5, 2, 19, 30, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
             var match8 = new Match { Id = "8", MatchDate = new DateTime(2020, 5, 2, 19, 30, 0), BasePriceTicket = 12,  SeasonId = "1", HomeTeamId = "3", AwayTeamId = "4" };
             var match9 = new Match { Id = "9", MatchDate = new DateTime(2020, 5, 2, 19, 30, 0), BasePriceTicket = 13, SeasonId = "1", HomeTeamId = "5", AwayTeamId = "6" };
-            var match10 = new Match { Id = "10", MatchDate = new DateTime(2020, 5, 9, 19, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "6", AwayTeamId = "6" };
-            var match11 = new Match { Id = "11", MatchDate = new DateTime(2020, 5, 9, 19, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "2", AwayTeamId = "3" };
-            var match12 = new Match { Id = "12", MatchDate = new DateTime(2020, 5, 9, 19, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "4", AwayTeamId = "5" };
+            var match10 = new Match { Id = "10", MatchDate = new DateTime(2020, 5, 30, 19, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "6", AwayTeamId = "6" };
+            var match11 = new Match { Id = "11", MatchDate = new DateTime(2020, 5, 30, 19, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "2", AwayTeamId = "3" };
+            var match12 = new Match { Id = "12", MatchDate = new DateTime(2020, 5, 30, 19, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "4", AwayTeamId = "5" };
 
-            var match13 = new Match { Id = "13", MatchDate = new DateTime(2020, 5, 16, 17, 30, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
-            var match14 = new Match { Id = "14", MatchDate = new DateTime(2020, 5, 16, 17, 30, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "3", AwayTeamId = "4" };
-            var match15 = new Match { Id = "15", MatchDate = new DateTime(2020, 5, 16, 17, 30, 0), BasePriceTicket = 13, SeasonId = "1", HomeTeamId = "5", AwayTeamId = "6" };
-            var match16 = new Match { Id = "16", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "6", AwayTeamId = "1" };
-            var match17 = new Match { Id = "17", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "2", AwayTeamId = "3" };
-            var match18 = new Match { Id = "18", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "4", AwayTeamId = "5" };
+            var match13 = new Match { Id = "13", MatchDate = new DateTime(2020, 6, 06, 17, 30, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
+            var match14 = new Match { Id = "14", MatchDate = new DateTime(2020, 6, 06, 17, 30, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "3", AwayTeamId = "4" };
+            var match15 = new Match { Id = "15", MatchDate = new DateTime(2020, 6, 06, 17, 30, 0), BasePriceTicket = 13, SeasonId = "1", HomeTeamId = "5", AwayTeamId = "6" };
+            var match16 = new Match { Id = "16", MatchDate = new DateTime(2020, 6, 13, 17, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "6", AwayTeamId = "1" };
+            var match17 = new Match { Id = "17", MatchDate = new DateTime(2020, 6, 13, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "2", AwayTeamId = "3" };
+            var match18 = new Match { Id = "18", MatchDate = new DateTime(2020, 6, 13, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "4", AwayTeamId = "5" };
 
             modelBuilder.Entity<Match>().HasData(
                 match1, match2, match3, match4, match5, match6, match7, match8, match9, match10,

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TicketVerkoop.Domain.Migrations
 {
-    public partial class addSetup : Migration
+    public partial class addData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -231,7 +231,7 @@ namespace TicketVerkoop.Domain.Migrations
                 columns: new[] { "Id", "EndDate", "StartDate" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2020, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { "1", new DateTime(2020, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { "2", new DateTime(2021, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 7, 24, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { "3", new DateTime(2022, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
@@ -323,23 +323,23 @@ namespace TicketVerkoop.Domain.Migrations
                 values: new object[,]
                 {
                     { "1", "2", 15.0, "1", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "10", "6", 15.0, "6", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "10", "6", 15.0, "6", new DateTime(2020, 5, 30, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "9", "6", 13.0, "5", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "4", "1", 15.0, "6", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "3", "6", 13.0, "5", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "18", "5", 12.0, "4", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "12", "5", 12.0, "4", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "18", "5", 12.0, "4", new DateTime(2020, 6, 13, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "12", "5", 12.0, "4", new DateTime(2020, 5, 30, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "6", "5", 12.0, "4", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "14", "4", 12.0, "3", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "14", "4", 12.0, "3", new DateTime(2020, 6, 6, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "8", "4", 12.0, "3", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "2", "4", 12.0, "3", new DateTime(2020, 4, 18, 18, 30, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "17", "3", 12.0, "2", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "11", "3", 12.0, "2", new DateTime(2020, 5, 9, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "17", "3", 12.0, "2", new DateTime(2020, 6, 13, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "11", "3", 12.0, "2", new DateTime(2020, 5, 30, 19, 0, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "5", "3", 12.0, "2", new DateTime(2020, 4, 25, 18, 0, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "13", "2", 15.0, "1", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "13", "2", 15.0, "1", new DateTime(2020, 6, 6, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
                     { "7", "2", 15.0, "1", new DateTime(2020, 5, 2, 19, 30, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "15", "6", 13.0, "5", new DateTime(2020, 5, 16, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
-                    { "16", "1", 15.0, "6", new DateTime(2020, 5, 24, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" }
+                    { "15", "6", 13.0, "5", new DateTime(2020, 6, 6, 17, 30, 0, 0, DateTimeKind.Unspecified), "1" },
+                    { "16", "1", 15.0, "6", new DateTime(2020, 6, 13, 17, 0, 0, 0, DateTimeKind.Unspecified), "1" }
                 });
 
             migrationBuilder.InsertData(

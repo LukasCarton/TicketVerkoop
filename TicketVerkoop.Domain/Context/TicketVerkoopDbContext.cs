@@ -156,10 +156,11 @@ namespace TicketVerkoop.Domain.Context
             var match16 = new Match { Id = "16", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "6", AwayTeamId = "1" };
             var match17 = new Match { Id = "17", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "2", AwayTeamId = "3" };
             var match18 = new Match { Id = "18", MatchDate = new DateTime(2020, 5, 24, 17, 0, 0), BasePriceTicket = 12, SeasonId = "1", HomeTeamId = "4", AwayTeamId = "5" };
+            var match19 = new Match { Id = "19", MatchDate = new DateTime(2020, 4, 26, 17, 0, 0), BasePriceTicket = 15, SeasonId = "1", HomeTeamId = "1", AwayTeamId = "2" };
 
             modelBuilder.Entity<Match>().HasData(
                 match1, match2, match3, match4, match5, match6, match7, match8, match9, match10,
-                match11, match12, match13, match14, match15, match16, match17, match18);
+                match11, match12, match13, match14, match15, match16, match17, match18,match19);
 
             //Add matchsections
             var matchSection1 = new MatchSection { Id = "1", OccupiedReservationSeats = 0, MatchId = "1", SectionId = "1" };
@@ -324,6 +325,15 @@ namespace TicketVerkoop.Domain.Context
             var matchSection143 = new MatchSection { Id = "143", OccupiedReservationSeats = 0, MatchId = "18", SectionId = "31" };
             var matchSection144 = new MatchSection { Id = "144", OccupiedReservationSeats = 0, MatchId = "18", SectionId = "32" };
 
+            var matchSection145 = new MatchSection { Id = "145", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "1" };
+            var matchSection146 = new MatchSection { Id = "146", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "2" };
+            var matchSection147 = new MatchSection { Id = "147", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "3" };
+            var matchSection148 = new MatchSection { Id = "148", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "4" };
+            var matchSection149 = new MatchSection { Id = "149", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "5" };
+            var matchSection150 = new MatchSection { Id = "150", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "6" };
+            var matchSection151 = new MatchSection { Id = "151", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "7" };
+            var matchSection152 = new MatchSection { Id = "152", OccupiedReservationSeats = 0, MatchId = "19", SectionId = "8" };
+
 
 
             modelBuilder.Entity<MatchSection>().HasData(
@@ -341,8 +351,9 @@ namespace TicketVerkoop.Domain.Context
                 matchSection110, matchSection111, matchSection112, matchSection113, matchSection114, matchSection115, matchSection116, matchSection117, matchSection118, matchSection119,
                 matchSection120, matchSection121, matchSection122, matchSection123, matchSection124, matchSection125, matchSection126, matchSection127, matchSection128, matchSection129,
                 matchSection130, matchSection131, matchSection132, matchSection133, matchSection134, matchSection135, matchSection136, matchSection137, matchSection138, matchSection139,
-                matchSection140, matchSection141, matchSection142, matchSection143, matchSection144
-                );
+                matchSection140, matchSection141, matchSection142, matchSection143, matchSection144, matchSection145, matchSection146, matchSection147, matchSection148, matchSection149, 
+                matchSection150, matchSection151, matchSection152
+                ) ;
 
 
 

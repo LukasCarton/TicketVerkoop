@@ -342,7 +342,7 @@ namespace TicketVerkoop.Domain.Context
                 matchSection120, matchSection121, matchSection122, matchSection123, matchSection124, matchSection125, matchSection126, matchSection127, matchSection128, matchSection129,
                 matchSection130, matchSection131, matchSection132, matchSection133, matchSection134, matchSection135, matchSection136, matchSection137, matchSection138, matchSection139,
                 matchSection140, matchSection141, matchSection142, matchSection143, matchSection144
-                );
+                ) ;
 
 
 

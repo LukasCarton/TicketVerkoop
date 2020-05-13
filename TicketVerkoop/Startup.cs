@@ -89,6 +89,8 @@ namespace TicketVerkoop
                 options.Cookie.Name = "TicketVerkoop.Session"; // name of the cookie
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 options.IdleTimeout = TimeSpan.FromMinutes(10); // expiration -> cookie lifes 10 min.
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
             });
 
             services.AddTransient<IEmailSender, EmailSender>(i =>
